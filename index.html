@@ -4,18 +4,18 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
-<title>REPORA — Intelligent Internship Report Creation &amp; Professional Portfolio Platform</title>
-<meta name="description" content="REPORA transforms real teaching internship experiences, classroom activities, reflections and professional growth into a structured, academically organised internship report ready for review and submission." />
-<meta name="theme-color" content="#071426" />
+<title>REPORTX.COM — Intelligent Internship Report &amp; Portfolio Platform</title>
+<meta name="description" content="REPORTX.COM transforms real teaching internship experiences, classroom activities, reflections and professional growth into a structured, academically organised internship report ready for review and submission." />
+<meta name="theme-color" content="#04121f" />
 <meta name="robots" content="index, follow" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="REPORA — Your Experience. Your Growth. Your Professional Story." />
+<meta property="og:title" content="REPORTX.COM — Your Experience. Your Growth. Your Professional Story." />
 <meta property="og:description" content="From Classroom Experience to Professional Achievement. Build a structured internship report from your real documented experience." />
 <meta property="og:type" content="website" />
 
-<!-- Favicon (inline SVG, no external asset) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071426'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+<!-- Favicon (inline SVG) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121f'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,12 +23,12 @@
 
 <style>
 /* =========================================================================
-   REPORA — Design tokens
+   REPORTX.COM — Design tokens
    ========================================================================= */
 :root{
-  --navy-900:#071426;
-  --navy-850:#091a30;
-  --navy-800:#0b1c33;
+  --navy-900:#04121f;
+  --navy-850:#071a2c;
+  --navy-800:#0a2138;
   --navy-700:#102642;
   --blue:#00A1DE;
   --cyan:#40D9FF;
@@ -45,7 +45,7 @@
   --line-soft:rgba(234,240,247,.09);
 
   --glass:rgba(9,26,48,.66);
-  --glass-strong:rgba(7,20,38,.88);
+  --glass-strong:rgba(4,18,31,.88);
 
   --radius-sm:10px;
   --radius:16px;
@@ -90,84 +90,37 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.18;margin:0 0 .6em;fon
 p{margin:0 0 1em}
 ul{margin:0;padding:0;list-style:none}
 
-:focus-visible{
-  outline:2px solid var(--cyan);
-  outline-offset:3px;
-  border-radius:6px;
-}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
 
 .skip-link{
   position:absolute;left:-9999px;top:0;z-index:2000;
-  background:var(--gold);color:#071426;font-weight:700;
+  background:var(--gold);color:#04121f;font-weight:700;
   padding:.7rem 1.1rem;border-radius:0 0 10px 0;
 }
 .skip-link:focus{left:0}
 
-.sr-only{
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
-}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* =========================================================================
-   Background layers
+   Background — WATER & SUNRISE canvas
    ========================================================================= */
-.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none}
+#bgCanvas{
+  position:fixed;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;display:block;
+}
 
-#bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.9}
-
-.bg-gradient{
+.bg-vignette{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(1100px 620px at 82% -8%, rgba(0,161,222,.20), transparent 62%),
-    radial-gradient(900px 560px at 6% 12%, rgba(32,96,61,.22), transparent 60%),
-    radial-gradient(1000px 700px at 50% 118%, rgba(64,217,255,.10), transparent 62%),
-    linear-gradient(180deg,#071426 0%, #061120 48%, #071426 100%);
-}
-
-.bg-grid{
-  background-image:
-    linear-gradient(rgba(64,217,255,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(64,217,255,.055) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 35%, transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 35%, transparent 100%);
-  opacity:.55;
-}
-
-.bg-beams{overflow:hidden;opacity:.5}
-.bg-beams span{
-  position:absolute;top:-30%;width:1px;height:160%;
-  background:linear-gradient(180deg,transparent,rgba(64,217,255,.55),transparent);
-  filter:blur(.4px);
-  animation:beamDrift 16s linear infinite;
-}
-.bg-beams span:nth-child(1){left:14%;animation-duration:19s;animation-delay:-2s}
-.bg-beams span:nth-child(2){left:38%;animation-duration:25s;animation-delay:-8s;opacity:.6}
-.bg-beams span:nth-child(3){left:67%;animation-duration:21s;animation-delay:-4s}
-.bg-beams span:nth-child(4){left:88%;animation-duration:28s;animation-delay:-12s;opacity:.5}
-@keyframes beamDrift{
-  0%{transform:translateX(0) rotate(8deg)}
-  50%{transform:translateX(40px) rotate(8deg)}
-  100%{transform:translateX(0) rotate(8deg)}
-}
-
-.bg-orbs{overflow:hidden}
-.bg-orbs i{
-  position:absolute;border-radius:50%;filter:blur(60px);opacity:.4;
-  animation:orbFloat 24s ease-in-out infinite;
-}
-.bg-orbs i:nth-child(1){width:420px;height:420px;left:-120px;top:8%;background:rgba(0,161,222,.30)}
-.bg-orbs i:nth-child(2){width:340px;height:340px;right:-90px;top:32%;background:rgba(32,96,61,.34);animation-delay:-7s}
-.bg-orbs i:nth-child(3){width:300px;height:300px;left:42%;bottom:-120px;background:rgba(64,217,255,.20);animation-delay:-13s}
-@keyframes orbFloat{
-  0%,100%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(24px,-34px,0) scale(1.08)}
+    radial-gradient(1200px 700px at 50% -10%, rgba(0,0,0,0) 30%, rgba(2,8,16,.55) 100%),
+    linear-gradient(180deg, rgba(2,8,16,.35) 0%, rgba(2,8,16,0) 30%, rgba(2,8,16,0) 70%, rgba(2,8,16,.6) 100%);
 }
 
 /* =========================================================================
    Layout helpers
    ========================================================================= */
 .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:22px}
-.page{position:relative;z-index:1}
+.page{position:relative;z-index:2}
 
 .section{padding:96px 0;position:relative}
 .section--tight{padding:72px 0}
@@ -263,8 +216,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
   border-radius:var(--radius);
   padding:1rem 1.15rem;
   color:var(--text-muted);
-  font-size:.9rem;
-  line-height:1.6;
+  font-size:.9rem;line-height:1.6;
 }
 .notice strong{color:var(--text)}
 .notice--gold{
@@ -297,24 +249,22 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .brand:hover{text-decoration:none}
 .brand-mark{
   width:38px;height:38px;border-radius:11px;flex:0 0 auto;
-  background:linear-gradient(145deg,#0d2540,#071426);
+  background:linear-gradient(145deg,#0d2540,#04121f);
   border:1px solid rgba(64,217,255,.35);
   display:grid;place-items:center;
   box-shadow:0 0 0 1px rgba(0,0,0,.4), 0 8px 22px rgba(0,161,222,.22);
 }
 .brand-word{
-  font-family:var(--font-display);font-weight:700;font-size:1.22rem;
+  font-family:var(--font-display);font-weight:700;font-size:1.18rem;
   letter-spacing:.13em;color:var(--white);
 }
 .brand-word span{color:var(--cyan)}
 .brand-tag{
-  display:block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--text-dim);font-weight:600;margin-top:-3px;
 }
 
-.nav-links{
-  display:none;align-items:center;gap:.2rem;margin-inline:auto;
-}
+.nav-links{display:none;align-items:center;gap:.2rem;margin-inline:auto}
 .nav-links a{
   color:var(--text-muted);font-size:.9rem;font-weight:500;
   padding:.55rem .8rem;border-radius:var(--radius-sm);
@@ -338,9 +288,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 }
 .lang-select option{background:#0b1c33;color:#EAF0F7}
 
-.nav-user{
-  display:none;align-items:center;gap:.6rem;
-}
+.nav-user{display:none;align-items:center;gap:.6rem}
 .nav-user.show{display:flex}
 .avatar{
   width:34px;height:34px;border-radius:50%;flex:0 0 auto;
@@ -366,10 +314,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* Mobile drawer */
-.drawer{
-  position:fixed;inset:0;z-index:950;
-  visibility:hidden;pointer-events:none;
-}
+.drawer{position:fixed;inset:0;z-index:950;visibility:hidden;pointer-events:none}
 .drawer.open{visibility:visible;pointer-events:auto}
 .drawer-scrim{
   position:absolute;inset:0;background:rgba(3,10,20,.66);
@@ -378,7 +323,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .drawer.open .drawer-scrim{opacity:1}
 .drawer-panel{
   position:absolute;top:0;right:0;height:100%;width:min(340px,86vw);
-  background:linear-gradient(180deg,#0a1c33,#071426);
+  background:linear-gradient(180deg,#0a1c33,#04121f);
   border-left:1px solid var(--line);
   box-shadow:-24px 0 60px rgba(0,0,0,.55);
   transform:translateX(102%);transition:transform .34s var(--ease);
@@ -404,12 +349,77 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .drawer-meta{margin-top:1.4rem;font-size:.76rem;color:var(--text-dim);line-height:1.6}
 
 /* =========================================================================
+   3D ADMIN APPLE
+   ========================================================================= */
+.apple-admin{
+  position:fixed;
+  right:22px;bottom:22px;
+  z-index:850;
+  width:74px;height:74px;
+  border:0;background:transparent;
+  cursor:pointer;
+  padding:0;
+  border-radius:50%;
+  perspective:600px;
+  filter:drop-shadow(0 12px 26px rgba(220,40,40,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.55));
+  animation:appleFloat 5.5s ease-in-out infinite;
+  transition:transform .3s var(--ease);
+}
+.apple-admin:hover{transform:scale(1.12)}
+.apple-admin:active{transform:scale(.96)}
+.apple-admin:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.apple-admin svg{
+  width:100%;height:100%;
+  animation:appleSpin 9s linear infinite;
+  transform-origin:50% 55%;
+  transform-style:preserve-3d;
+}
+@keyframes appleSpin{
+  0%   {transform:rotateY(0deg)   rotateZ(-3deg)}
+  25%  {transform:rotateY(90deg)  rotateZ(2deg)}
+  50%  {transform:rotateY(180deg) rotateZ(-3deg)}
+  75%  {transform:rotateY(270deg) rotateZ(2deg)}
+  100% {transform:rotateY(360deg) rotateZ(-3deg)}
+}
+@keyframes appleFloat{
+  0%,100%{transform:translateY(0)}
+  50%    {transform:translateY(-10px)}
+}
+.apple-glow{
+  position:absolute;inset:-14px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,80,80,.38), transparent 68%);
+  filter:blur(8px);z-index:-1;
+  animation:appleGlowPulse 3.2s ease-in-out infinite;
+}
+@keyframes appleGlowPulse{
+  0%,100%{opacity:.55;transform:scale(.94)}
+  50%    {opacity:.95;transform:scale(1.06)}
+}
+.apple-tip{
+  position:absolute;right:78px;bottom:24px;
+  background:var(--glass-strong);
+  border:1px solid rgba(250,210,1,.35);
+  color:var(--gold);
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  padding:.4rem .75rem;border-radius:99px;
+  white-space:nowrap;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  opacity:0;transform:translateX(8px);pointer-events:none;
+  transition:opacity .25s, transform .25s;
+}
+.apple-admin:hover + .apple-tip,
+.apple-admin:focus-visible + .apple-tip{opacity:1;transform:translateX(0)}
+
+@media (max-width:520px){
+  .apple-admin{width:60px;height:60px;right:14px;bottom:14px}
+  .apple-tip{right:64px;bottom:16px;font-size:.66rem}
+}
+
+/* =========================================================================
    Hero
    ========================================================================= */
 .hero{position:relative;padding:64px 0 88px;overflow:hidden}
-.hero-grid{
-  display:grid;grid-template-columns:1fr;gap:56px;align-items:center;
-}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center}
 .hero-copy{max-width:660px}
 .hero h1{
   font-size:clamp(2.05rem,5.2vw,3.55rem);
@@ -422,9 +432,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 
 .hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.9rem 0 1.1rem}
 .hero-login{font-size:.9rem;color:var(--text-dim)}
-.hero-login button{
-  background:none;border:0;padding:0;color:var(--cyan);font-weight:600;cursor:pointer;font-size:.9rem;
-}
+.hero-login button{background:none;border:0;padding:0;color:var(--cyan);font-weight:600;cursor:pointer;font-size:.9rem}
 .hero-login button:hover{text-decoration:underline}
 
 .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.9rem}
@@ -437,32 +445,21 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .pill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(32,96,61,.9)}
 .pill.gold::before{background:var(--gold);box-shadow:0 0 8px var(--gold)}
 
-/* --- 3D hero scene --- */
-.hero-visual{
-  position:relative;
-  perspective:1400px;
-  min-height:400px;
-  display:grid;place-items:center;
-}
+/* 3D hero scene */
+.hero-visual{position:relative;perspective:1400px;min-height:400px;display:grid;place-items:center}
 .scene{
   position:relative;width:min(420px,88vw);aspect-ratio:1/1.06;
   transform-style:preserve-3d;
   transform:rotateX(calc(var(--ry,0) * 1deg)) rotateY(calc(-18deg + var(--rx,0) * 1deg));
   transition:transform .5s var(--ease);
 }
-.scene-inner{
-  position:absolute;inset:0;transform-style:preserve-3d;
-  animation:sceneFloat 9s ease-in-out infinite;
-}
-@keyframes sceneFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-16px)}
-}
+.scene-inner{position:absolute;inset:0;transform-style:preserve-3d;animation:sceneFloat 9s ease-in-out infinite}
+@keyframes sceneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
 .report-card{
   position:absolute;left:8%;top:9%;width:62%;aspect-ratio:1/1.36;
   border-radius:6px 14px 14px 6px;
-  background:linear-gradient(160deg,#0f2a4a 0%,#0a1e37 52%,#08182c 100%);
+  background:linear-gradient(160deg,#0f2a4a 0%,#0a1e37 52%,#04121f 100%);
   border:1px solid rgba(64,217,255,.30);
   box-shadow:0 34px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(0,0,0,.35);
   transform:translateZ(60px);
@@ -569,11 +566,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
   background:radial-gradient(420px 200px at var(--mx,50%) var(--my,0%), rgba(64,217,255,.12), transparent 70%);
   opacity:0;transition:opacity .35s;
 }
-.card:hover{
-  border-color:rgba(64,217,255,.36);
-  box-shadow:var(--shadow-glow);
-  transform:translateY(-4px);
-}
+.card:hover{border-color:rgba(64,217,255,.36);box-shadow:var(--shadow-glow);transform:translateY(-4px)}
 .card:hover::before{opacity:1}
 
 .card-icon{
@@ -590,7 +583,6 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .card h3{font-size:1.08rem;margin-bottom:.5rem}
 .card p{color:var(--text-muted);font-size:.92rem;margin:0}
 
-/* Feature list inside cards */
 .item-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
 .item-list li{
   font-size:.78rem;color:var(--text-muted);
@@ -624,10 +616,6 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .step h3{font-size:1rem;margin-bottom:.4rem}
 .step p{color:var(--text-muted);font-size:.9rem;margin:0}
 
-.step-connector{
-  display:none;
-}
-
 /* =========================================================================
    Report structure (document preview)
    ========================================================================= */
@@ -636,8 +624,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
   position:relative;
   border-radius:var(--radius);
   border:1px solid var(--line);
-  background:
-    linear-gradient(180deg, rgba(234,240,247,.045), rgba(234,240,247,.015));
+  background:linear-gradient(180deg, rgba(234,240,247,.045), rgba(234,240,247,.015));
   padding:1.6rem 1.5rem;
   box-shadow:var(--shadow);
   max-height:620px;overflow-y:auto;
@@ -655,10 +642,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
   color:var(--gold);margin-bottom:.5rem;font-weight:700;
 }
 .doc-group ol{list-style:none;counter-reset:doc;padding:0;margin:0}
-.doc-group li{
-  position:relative;padding-left:1.65rem;margin-bottom:.35rem;
-  font-size:.88rem;color:var(--text-muted);
-}
+.doc-group li{position:relative;padding-left:1.65rem;margin-bottom:.35rem;font-size:.88rem;color:var(--text-muted)}
 .doc-group.numbered li::before{
   counter-increment:doc;content:counter(doc);
   position:absolute;left:0;top:.15rem;
@@ -724,9 +708,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
   background:radial-gradient(circle, rgba(0,161,222,.16), transparent 68%);
 }
 .pricing-head{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:flex-end;margin-bottom:1.4rem}
-.pricing-amount{
-  font-family:var(--font-display);font-size:1.5rem;color:var(--white);font-weight:600;
-}
+.pricing-amount{font-family:var(--font-display);font-size:1.5rem;color:var(--white);font-weight:600}
 .pricing-amount small{display:block;font-size:.78rem;color:var(--text-dim);font-weight:500;letter-spacing:.02em;margin-top:.25rem}
 .pricing-list{display:grid;gap:.6rem;margin:1.4rem 0 1.7rem}
 .pricing-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:var(--text-muted)}
@@ -769,18 +751,15 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
    Footer
    ========================================================================= */
 .footer{
-  position:relative;z-index:1;
+  position:relative;z-index:2;
   border-top:1px solid var(--line-soft);
-  background:linear-gradient(180deg, rgba(7,20,38,.4), rgba(4,12,22,.92));
+  background:linear-gradient(180deg, rgba(4,18,31,.7), rgba(2,8,16,.96));
   padding:64px 0 32px;
   margin-top:40px;
 }
 .footer-grid{display:grid;gap:36px;grid-template-columns:1fr}
 .footer-brand p{color:var(--text-muted);font-size:.88rem;max-width:36ch;margin-top:.9rem}
-.footer h4{
-  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--white);margin-bottom:.9rem;font-weight:700;
-}
+.footer h4{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--white);margin-bottom:.9rem;font-weight:700}
 .footer-links{display:flex;flex-direction:column;gap:.5rem}
 .footer-links a{color:var(--text-muted);font-size:.88rem}
 .footer-links a:hover{color:var(--cyan);text-decoration:none}
@@ -803,11 +782,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 /* =========================================================================
    Modals
    ========================================================================= */
-.modal{
-  position:fixed;inset:0;z-index:1000;
-  display:none;align-items:center;justify-content:center;
-  padding:18px;
-}
+.modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:18px}
 .modal.open{display:flex}
 .modal-scrim{
   position:absolute;inset:0;background:rgba(3,10,20,.74);
@@ -818,7 +793,7 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .modal-panel{
   position:relative;width:100%;max-width:480px;
   max-height:calc(100vh - 36px);overflow-y:auto;
-  background:linear-gradient(180deg,#0c2138,#081729);
+  background:linear-gradient(180deg,#0c2138,#04121f);
   border:1px solid var(--line);border-radius:var(--radius-lg);
   box-shadow:var(--shadow);
   padding:1.8rem 1.6rem;
@@ -836,12 +811,12 @@ h2.section-title{font-size:clamp(1.7rem,3.4vw,2.6rem);margin-bottom:.5rem}
 .modal h2{font-size:1.32rem;margin-bottom:.35rem;padding-right:2.4rem}
 .modal-sub{color:var(--text-muted);font-size:.9rem;margin-bottom:1.4rem}
 
-/* Forms */
 .form-grid{display:grid;gap:.95rem}
 .form-grid.two{grid-template-columns:1fr}
 .field{display:flex;flex-direction:column;gap:.4rem}
 .field label{font-size:.8rem;font-weight:600;color:var(--text-muted);letter-spacing:.02em}
 .field .hint{font-size:.72rem;color:var(--text-dim)}
+
 input[type="text"],input[type="email"],input[type="tel"],input[type="password"],input[type="search"],select,textarea{
   width:100%;
   background:rgba(4,14,26,.6);
@@ -853,8 +828,6 @@ input[type="text"],input[type="email"],input[type="tel"],input[type="password"],
   transition:border-color .22s, box-shadow .22s, background .22s;
   min-height:46px;
 }
-input::placeholder,textarea::placeholder{color:#5d7characters}
-input::placeholder,textarea::placeholder{color:#5d7characters}
 input::placeholder{color:#5b7793}
 textarea{min-height:110px;resize:vertical}
 input:focus,select:focus,textarea:focus{
@@ -915,9 +888,7 @@ input[aria-invalid="true"]{border-color:rgba(255,110,110,.7)}
 @keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
 
-/* =========================================================================
-   Reveal animations
-   ========================================================================= */
+/* Reveal */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s var(--ease), transform .75s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 .reveal.d1{transition-delay:.08s}
@@ -934,7 +905,6 @@ input[aria-invalid="true"]{border-color:rgba(255,110,110,.7)}
   .form-grid.two{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:repeat(2,1fr)}
 }
-
 @media (min-width:900px){
   .section{padding:112px 0}
   .grid-3{grid-template-columns:repeat(3,1fr)}
@@ -942,7 +912,6 @@ input[aria-invalid="true"]{border-color:rgba(255,110,110,.7)}
   .structure-layout{grid-template-columns:1.55fr 1fr;align-items:start}
   .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}
 }
-
 @media (min-width:1024px){
   .nav-links{display:flex}
   .hamburger{display:none}
@@ -953,14 +922,11 @@ input[aria-invalid="true"]{border-color:rgba(255,110,110,.7)}
   .steps{grid-template-columns:repeat(3,1fr)}
   .hero-visual{min-height:520px}
 }
-
 @media (min-width:1280px){
   .wrap,.nav-inner{padding-inline:32px}
 }
 
-/* =========================================================================
-   Reduced motion
-   ========================================================================= */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{
@@ -971,29 +937,19 @@ input[aria-invalid="true"]{border-color:rgba(255,110,110,.7)}
   }
   .reveal{opacity:1;transform:none}
   .scene{transform:none !important}
-  #bgCanvas{display:none}
-  .bg-beams,.bg-orbs{display:none}
+  .apple-admin svg{animation:none}
 }
-
-/* Lightweight mode applied by JS on low-power / small screens */
-body.lite-fx .bg-beams,
-body.lite-fx .bg-orbs{opacity:.28}
-body.lite-fx .scene{animation:none}
-body.lite-fx .report-card::after{display:none}
 </style>
 </head>
 
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- ===================== Background layers ===================== -->
-<div class="bg-layer bg-gradient" aria-hidden="true"></div>
-<div class="bg-layer bg-grid" aria-hidden="true"></div>
-<div class="bg-layer bg-beams" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-<div class="bg-layer bg-orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+<!-- ===================== WATER + SUNRISE background ===================== -->
 <canvas id="bgCanvas" aria-hidden="true"></canvas>
+<div class="bg-vignette" aria-hidden="true"></div>
 
-<!-- ===================== Configuration banner ===================== -->
+<!-- ===================== Firebase config banner ===================== -->
 <div class="banner" id="configBanner" role="status" hidden>
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#FAD201" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1001,14 +957,14 @@ body.lite-fx .report-card::after{display:none}
   <span>
     <strong>Firebase configuration required.</strong>
     Authentication and cloud saving are disabled until the <code>firebaseConfig</code> object in this file is replaced with your
-    own Firebase Web App credentials. All interface elements below remain fully browsable.
+    own Firebase Web App credentials.
   </span>
 </div>
 
 <!-- ===================== Navigation ===================== -->
 <header class="nav" id="siteNav">
   <div class="nav-inner">
-    <a class="brand" href="#home" aria-label="REPORA home">
+    <a class="brand" href="#home" aria-label="REPORTX.COM home">
       <span class="brand-mark" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
           <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
@@ -1016,7 +972,7 @@ body.lite-fx .report-card::after{display:none}
         </svg>
       </span>
       <span>
-        <span class="brand-word">REP<span>O</span>RA</span>
+        <span class="brand-word">REPORT<span>X</span>.COM</span>
         <span class="brand-tag">Report Platform</span>
       </span>
     </a>
@@ -1039,13 +995,11 @@ body.lite-fx .report-card::after{display:none}
         <option value="sw">SW</option>
       </select>
 
-      <!-- Signed-out controls -->
       <div class="auth-buttons" id="authButtons">
         <button type="button" class="btn btn-quiet" data-open-modal="loginModal" data-i18n="nav.login">Log In</button>
         <button type="button" class="btn btn-primary btn-sm" data-open-modal="registerModal" data-i18n="nav.create">Create Account</button>
       </div>
 
-      <!-- Signed-in controls -->
       <div class="nav-user" id="navUser">
         <span class="avatar" id="navAvatar" aria-hidden="true">R</span>
         <span class="nav-user-name" id="navUserName">Account</span>
@@ -1065,7 +1019,7 @@ body.lite-fx .report-card::after{display:none}
   <div class="drawer-scrim" data-close-drawer></div>
   <div class="drawer-panel">
     <div class="drawer-head">
-      <span class="brand-word">REP<span>O</span>RA</span>
+      <span class="brand-word">REPORT<span>X</span>.COM</span>
       <button type="button" class="drawer-close" id="drawerClose" aria-label="Close navigation menu">✕</button>
     </div>
 
@@ -1090,33 +1044,60 @@ body.lite-fx .report-card::after{display:none}
     </div>
 
     <p class="drawer-meta">
-      REPORA — Intelligent Internship Report Creation &amp; Professional Portfolio Platform.<br />
+      REPORTX.COM — Intelligent Internship Report Creation &amp; Professional Portfolio Platform.<br />
       Your Experience. Your Growth. Your Professional Story.
     </p>
   </div>
 </div>
 
+<!-- ===================== 3D ADMIN APPLE ===================== -->
+<button type="button" class="apple-admin" id="adminApple"
+        aria-label="Open the administration panel"
+        title="Administration">
+  <span class="apple-glow" aria-hidden="true"></span>
+  <svg viewBox="0 0 100 110" aria-hidden="true">
+    <!-- leaf -->
+    <path d="M52 18c-2-8 4-14 12-15 1 8-4 15-12 15Z" fill="#4CAF50"/>
+    <path d="M52 18c2-6 7-10 12-11" stroke="#2E7D32" stroke-width="1" fill="none"/>
+    <!-- stem -->
+    <path d="M50 20c0-6 0-10 1-14" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+    <!-- apple body -->
+    <defs>
+      <radialGradient id="appleBody" cx="38%" cy="32%" r="72%">
+        <stop offset="0%"  stop-color="#FF8A80"/>
+        <stop offset="35%" stop-color="#EF3B2D"/>
+        <stop offset="75%" stop-color="#B71C1C"/>
+        <stop offset="100%" stop-color="#7A0E0E"/>
+      </radialGradient>
+      <radialGradient id="appleHighlight" cx="30%" cy="24%" r="34%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".75"/>
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <path d="M50 22c-10-6-26-4-30 10-3 11 2 30 12 44 5 7 11 11 18 11s13-4 18-11c10-14 15-33 12-44-4-14-20-16-30-10Z"
+          fill="url(#appleBody)"/>
+    <ellipse cx="42" cy="42" rx="15" ry="20" fill="url(#appleHighlight)"/>
+    <!-- bottom shadow -->
+    <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,.4)"/>
+  </svg>
+</button>
+<span class="apple-tip">Admin Panel → admin.html</span>
+
 <!-- ===================== Main ===================== -->
 <main id="main" class="page">
 
-  <!-- =========================================================
-       SECTION 2 — HERO
-       ========================================================= -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="wrap hero-grid">
-
       <div class="hero-copy">
         <span class="eyebrow" data-i18n="hero.eyebrow">Internship report platform</span>
-
         <h1 data-i18n="hero.title">Your Internship Journey Deserves a Professional Report.</h1>
-
         <p class="hero-lede" data-i18n="hero.sub">
           Transform your real teaching experiences, classroom activities, reflections, achievements and
-          professional growth into a structured internship report with REPORA.
+          professional growth into a structured internship report with REPORTX.COM.
         </p>
-
         <p class="hero-extra" data-i18n="hero.extra">
-          From your first day of school attachment to your final reflection, REPORA helps you document your
+          From your first day of school attachment to your final reflection, REPORTX.COM helps you document your
           journey and prepare a professional report ready for review and submission.
         </p>
 
@@ -1140,7 +1121,6 @@ body.lite-fx .report-card::after{display:none}
         </ul>
       </div>
 
-      <!-- Animated 3D report preview (decorative) -->
       <div class="hero-visual" aria-hidden="true">
         <div class="scene" id="scene">
           <div class="scene-inner">
@@ -1158,7 +1138,7 @@ body.lite-fx .report-card::after{display:none}
               <div>
                 <p class="cover-kicker">School Attachment</p>
                 <p class="cover-title">Teaching Internship Report</p>
-                <p class="cover-sub">Prepared with REPORA</p>
+                <p class="cover-sub">Prepared with REPORTX.COM</p>
               </div>
               <div class="cover-rule"></div>
               <div class="cover-lines"><i></i><i></i><i></i></div>
@@ -1186,20 +1166,17 @@ body.lite-fx .report-card::after{display:none}
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 3 — TRUST AND PURPOSE
-       ========================================================= -->
+  <!-- TRUST -->
   <section class="section section--tight" id="about">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow" data-i18n="trust.eyebrow">Purpose</span>
         <h2 class="section-title" data-i18n="trust.title">Designed for Real Academic and Professional Experiences</h2>
         <p class="section-sub" data-i18n="trust.sub">
-          REPORA is built around genuine, documented internship activity — not generated fiction. It gives
+          REPORTX.COM is built around genuine, documented internship activity — not generated fiction. It gives
           student teachers and internship participants a structured way to record what actually happened and
           present it professionally.
         </p>
@@ -1245,22 +1222,20 @@ body.lite-fx .report-card::after{display:none}
           <path d="M12 8h.01M11 12h1v4h1" stroke="#FAD201" stroke-width="1.7" stroke-linecap="round"/>
         </svg>
         <span data-i18n="trust.notice">
-          <strong>Honest notice:</strong> REPORA is an independent report preparation platform. Final report
-          requirements and acceptance remain subject to the relevant institution. REPORA does not issue,
+          <strong>Honest notice:</strong> REPORTX.COM is an independent report preparation platform. Final report
+          requirements and acceptance remain subject to the relevant institution. REPORTX.COM does not issue,
           replace or guarantee institutional approval, certification or endorsement.
         </span>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 4 — HOW REPORA WORKS
-       ========================================================= -->
+  <!-- HOW -->
   <section class="section" id="how">
     <div class="wrap">
       <div class="section-head center reveal">
         <span class="eyebrow" data-i18n="how.eyebrow">Process</span>
-        <h2 class="section-title" data-i18n="how.title">How REPORA Works</h2>
+        <h2 class="section-title" data-i18n="how.title">How REPORTX.COM Works</h2>
         <p class="section-sub" data-i18n="how.sub">
           Six clear stages take you from creating an account to downloading a finished, structured report.
         </p>
@@ -1272,31 +1247,26 @@ body.lite-fx .report-card::after{display:none}
           <h3 data-i18n="how.s1">Create Your Account</h3>
           <p data-i18n="how.s1p">Register securely using email and password, or continue with Google.</p>
         </article>
-
         <article class="step reveal d2">
           <span class="step-num">2</span>
           <h3 data-i18n="how.s2">Complete Your Internship Profile</h3>
           <p data-i18n="how.s2p">Enter your academic details, college, host school, teaching subjects, classes, academic year, term and internship dates.</p>
         </article>
-
         <article class="step reveal d3">
           <span class="step-num">3</span>
           <h3 data-i18n="how.s3">Document Your Experience</h3>
           <p data-i18n="how.s3p">Record daily activities, lesson plans, school events, challenges, achievements, testimonies and reflections.</p>
         </article>
-
         <article class="step reveal d1">
           <span class="step-num">4</span>
           <h3 data-i18n="how.s4">Build Your Report</h3>
           <p data-i18n="how.s4p">Organise your information into professional academic chapters using a configurable template.</p>
         </article>
-
         <article class="step reveal d2">
           <span class="step-num">5</span>
           <h3 data-i18n="how.s5">Verify Your Payment</h3>
           <p data-i18n="how.s5p">Submit your payment reference and enter the access code issued after administrator verification.</p>
         </article>
-
         <article class="step reveal d3">
           <span class="step-num">6</span>
           <h3 data-i18n="how.s6">Generate and Download</h3>
@@ -1318,9 +1288,7 @@ body.lite-fx .report-card::after{display:none}
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 5 — COMPLETE REPORT INFORMATION
-       ========================================================= -->
+  <!-- FEATURES -->
   <section class="section" id="features">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1333,7 +1301,6 @@ body.lite-fx .report-card::after{display:none}
       </div>
 
       <div class="grid grid-2">
-
         <article class="card reveal d1">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -1402,14 +1369,11 @@ body.lite-fx .report-card::after{display:none}
             <li>Personal reflections</li>
           </ul>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 6 — PROFESSIONAL REPORT STRUCTURE
-       ========================================================= -->
+  <!-- STRUCTURE -->
   <section class="section" id="structure">
     <div class="wrap">
       <div class="section-head reveal">
@@ -1422,7 +1386,6 @@ body.lite-fx .report-card::after{display:none}
       </div>
 
       <div class="structure-layout">
-
         <div class="doc-preview reveal" tabindex="0" role="region" aria-label="Proposed report structure preview">
           <p class="doc-title">Proposed Report Structure</p>
 
@@ -1517,44 +1480,25 @@ body.lite-fx .report-card::after{display:none}
         <aside class="structure-aside">
           <div class="aside-card reveal d1">
             <h3>Configurable, not fixed</h3>
-            <p>
-              This is a proposed structure. REPORA does not claim that every institution requires exactly these
-              headings. Institution-specific templates can be configured by an administrator.
-            </p>
+            <p>This is a proposed structure. REPORTX.COM does not claim that every institution requires exactly these headings. Institution-specific templates can be configured by an administrator.</p>
           </div>
-
           <div class="aside-card reveal d2">
             <h3>Preliminary pages</h3>
-            <p>
-              Cover, declaration, certification, dedication, acknowledgements, abstract, tables of contents,
-              figures and abbreviations are generated from your saved information.
-            </p>
+            <p>Cover, declaration, certification, dedication, acknowledgements, abstract, tables of contents, figures and abbreviations are generated from your saved information.</p>
           </div>
-
           <div class="aside-card reveal d3">
             <h3>Final sections</h3>
-            <p>
-              References, appendices, lesson plans, logbook and observation records are attached from the
-              documents you upload and confirm.
-            </p>
+            <p>References, appendices, lesson plans, logbook and observation records are attached from the documents you upload and confirm.</p>
           </div>
-
           <div class="notice notice--gold reveal d4">
-            <span>
-              <strong>Note:</strong> Signature pages, institutional stamps and approval statements are prepared
-              for your institution's own review and signing. REPORA does not produce official signatures,
-              approvals or endorsements.
-            </span>
+            <span><strong>Note:</strong> Signature pages, institutional stamps and approval statements are prepared for your institution's own review and signing. REPORTX.COM does not produce official signatures, approvals or endorsements.</span>
           </div>
         </aside>
-
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 7 — AI-ASSISTED REPORT CREATION
-       ========================================================= -->
+  <!-- AI -->
   <section class="section" id="ai">
     <div class="wrap">
       <div class="section-head reveal">
@@ -1574,7 +1518,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Structure &amp; clarity</h3>
           <p>Organise user-provided information, convert notes into structured paragraphs and improve coherence.</p>
         </article>
-
         <article class="card reveal d2">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -1582,7 +1525,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Language support</h3>
           <p>Improve academic grammar, assist with formal English and help transform Kinyarwanda notes into English drafts.</p>
         </article>
-
         <article class="card reveal d3">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -1590,7 +1532,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Completeness checks</h3>
           <p>Suggest headings, identify missing report sections and check consistency of dates and names.</p>
         </article>
-
         <article class="card reveal d1">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -1598,7 +1539,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Summaries &amp; reflections</h3>
           <p>Summarise documented events and suggest appropriate reflection framing based on what you recorded.</p>
         </article>
-
         <article class="card reveal d2">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1606,7 +1546,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>References</h3>
           <p>Organise the references you supply into a consistent citation layout.</p>
         </article>
-
         <article class="card reveal d3">
           <span class="card-icon green" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1630,9 +1569,7 @@ body.lite-fx .report-card::after{display:none}
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 8 — DOCUMENT EXPORT
-       ========================================================= -->
+  <!-- EXPORT -->
   <section class="section" id="export">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1645,74 +1582,47 @@ body.lite-fx .report-card::after{display:none}
       </div>
 
       <div class="grid grid-2">
-
         <div class="format-card reveal d1">
           <span class="format-badge">PDF</span>
-          <div>
-            <h3>PDF <span class="tag">Priority</span></h3>
-            <p>Print-ready report with consistent pagination, headings and cover page.</p>
-          </div>
+          <div><h3>PDF <span class="tag">Priority</span></h3><p>Print-ready report with consistent pagination, headings and cover page.</p></div>
         </div>
-
         <div class="format-card reveal d2">
           <span class="format-badge">DOCX</span>
-          <div>
-            <h3>DOCX <span class="tag">Priority</span></h3>
-            <p>Editable Microsoft Word document for further refinement before submission.</p>
-          </div>
+          <div><h3>DOCX <span class="tag">Priority</span></h3><p>Editable Microsoft Word document for further refinement before submission.</p></div>
         </div>
-
         <div class="format-card reveal d1">
           <span class="format-badge gold">PNG</span>
-          <div>
-            <h3>PNG <span class="tag soon">Planned</span></h3>
-            <p>Export individual report pages or cover designs as images.</p>
-          </div>
+          <div><h3>PNG <span class="tag soon">Planned</span></h3><p>Export individual report pages or cover designs as images.</p></div>
         </div>
-
         <div class="format-card reveal d2">
           <span class="format-badge green">HTML</span>
-          <div>
-            <h3>HTML <span class="tag soon">Planned</span></h3>
-            <p>Online report preview accessible from your account.</p>
-          </div>
+          <div><h3>HTML <span class="tag soon">Planned</span></h3><p>Online report preview accessible from your account.</p></div>
         </div>
-
         <div class="format-card reveal d1" style="grid-column:1/-1">
           <span class="format-badge gray">ZIP</span>
-          <div>
-            <h3>ZIP <span class="tag soon">Planned</span></h3>
-            <p>Optional package containing the report and the supporting materials you select.</p>
-          </div>
+          <div><h3>ZIP <span class="tag soon">Planned</span></h3><p>Optional package containing the report and the supporting materials you select.</p></div>
         </div>
-
       </div>
 
       <div class="notice reveal" style="margin-top:24px">
-        <span>
-          <strong>No false promises:</strong> a format is only listed as available once its generator has actually
-          been implemented and deployed. Formats marked “Planned” are not yet operational.
-        </span>
+        <span><strong>No false promises:</strong> a format is only listed as available once its generator has actually been implemented and deployed. Formats marked “Planned” are not yet operational.</span>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 9 — MANUAL PAYMENT AND ACCESS MODEL
-       ========================================================= -->
+  <!-- PAYMENT -->
   <section class="section" id="payment">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow" data-i18n="pay.eyebrow">Access model</span>
         <h2 class="section-title" data-i18n="pay.title">Simple, Transparent Report Access</h2>
         <p class="section-sub" data-i18n="pay.sub">
-          REPORA uses manual payment verification. An administrator confirms your payment independently, then a
-          unique access code is issued and verified by a trusted backend.
+          REPORTX.COM uses manual payment verification. An administrator confirms your payment independently,
+          then a unique access code is issued and verified by a trusted backend.
         </p>
       </div>
 
       <div class="grid grid-2" style="align-items:start">
-
         <div class="card reveal d1">
           <h3>How access works</h3>
           <ol style="counter-reset:pay;list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.7rem">
@@ -1727,9 +1637,7 @@ body.lite-fx .report-card::after{display:none}
             <li style="display:flex;gap:.7rem"><span class="step-num" style="width:26px;height:26px;font-size:.72rem;border-radius:8px;margin:0">9</span><span style="font-size:.9rem;color:var(--text-muted)">Unlock authorised report generation.</span></li>
           </ol>
 
-          <a class="btn btn-ghost btn-block" href="payment-verification.html" style="margin-top:1.4rem">
-            Go to Payment Verification
-          </a>
+          <a class="btn btn-ghost btn-block" href="payment-verification.html" style="margin-top:1.4rem">Go to Payment Verification</a>
         </div>
 
         <div style="display:grid;gap:16px">
@@ -1738,20 +1646,11 @@ body.lite-fx .report-card::after{display:none}
               <rect x="4" y="10" width="16" height="11" rx="2" stroke="#FAD201" stroke-width="1.6"/>
               <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#FAD201" stroke-width="1.6" stroke-linecap="round"/>
             </svg>
-            <span>
-              <strong>Security notice.</strong> Access codes are never stored or checked in page source code.
-              Verification is performed server-side against the authenticated user, the approved payment request
-              and the report ownership. Codes are single-use and expire.
-            </span>
+            <span><strong>Security notice.</strong> Access codes are never stored or checked in page source code. Verification is performed server-side against the authenticated user, the approved payment request and the report ownership. Codes are single-use and expire.</span>
           </div>
 
           <div class="notice reveal d3">
-            <span>
-              <strong>Backend requirement.</strong> Payment verification and access-code issuance require a
-              deployed trusted backend — Firebase Cloud Functions or an equivalent server. Until that backend is
-              deployed and configured, this workflow is documented but not operational. The platform will display
-              that state honestly rather than simulate an approval.
-            </span>
+            <span><strong>Backend requirement.</strong> Payment verification and access-code issuance require a deployed trusted backend — Firebase Cloud Functions or an equivalent server. Until that backend is deployed and configured, this workflow is documented but not operational.</span>
           </div>
 
           <div class="card reveal d4">
@@ -1764,14 +1663,11 @@ body.lite-fx .report-card::after{display:none}
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 10 — PRICING
-       ========================================================= -->
+  <!-- PRICING -->
   <section class="section" id="pricing">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1814,9 +1710,7 @@ body.lite-fx .report-card::after{display:none}
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 11 — PRIVACY AND SECURITY
-       ========================================================= -->
+  <!-- PRIVACY -->
   <section class="section" id="privacy">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1836,7 +1730,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Secure authentication</h3>
           <p>Account access is handled by Firebase Authentication with email/password and Google sign-in.</p>
         </article>
-
         <article class="card reveal d2">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 6v6c0 5 3.4 8.4 8 9 4.6-.6 8-4 8-9V6l-8-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1844,7 +1737,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Owner-based access</h3>
           <p>Firestore and Storage security rules restrict every document and file to its owning account.</p>
         </article>
-
         <article class="card reveal d3">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -1852,7 +1744,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>User-controlled access</h3>
           <p>You decide what to save, what to export and what to attach as supporting evidence.</p>
         </article>
-
         <article class="card reveal d1">
           <span class="card-icon gold" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -1860,7 +1751,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Protected payment verification</h3>
           <p>Payment approval and access-code validation are performed by a trusted backend, never in the browser.</p>
         </article>
-
         <article class="card reveal d2">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v16l-7-4-7 4V4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
@@ -1868,7 +1758,6 @@ body.lite-fx .report-card::after{display:none}
           <h3>Account-based documents</h3>
           <p>Generated files are stored under private paths and served through short-lived, authorised links.</p>
         </article>
-
         <article class="card reveal d3">
           <span class="card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none"><path d="M12 20a8 8 0 1 0-8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M4 12H2m2 0 3-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1879,19 +1768,12 @@ body.lite-fx .report-card::after{display:none}
       </div>
 
       <div class="notice reveal" style="margin-top:26px">
-        <span>
-          <strong>Honest limitation:</strong> no web platform can prevent screenshots, screen recording or browser
-          developer tools. REPORA protects paid reports through backend authorisation and private storage paths —
-          not through cosmetic restrictions. Accessibility, keyboard navigation and browser functions are never
-          disabled.
-        </span>
+        <span><strong>Honest limitation:</strong> no web platform can prevent screenshots, screen recording or browser developer tools. REPORTX.COM protects paid reports through backend authorisation and private storage paths — not through cosmetic restrictions. Accessibility, keyboard navigation and browser functions are never disabled.</span>
       </div>
     </div>
   </section>
 
-  <!-- =========================================================
-       SECTION 12 — FAQ
-       ========================================================= -->
+  <!-- FAQ -->
   <section class="section" id="faq">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -1900,65 +1782,18 @@ body.lite-fx .report-card::after{display:none}
       </div>
 
       <div class="faq reveal">
-        <details>
-          <summary>1. What is REPORA?</summary>
-          <div class="faq-body"><p>REPORA is an intelligent internship report creation and professional portfolio platform. It helps student teachers and internship participants document real experience and organise it into a structured, academically formatted report.</p></div>
-        </details>
-
-        <details>
-          <summary>2. Who can use REPORA?</summary>
-          <div class="faq-body"><p>It is initially designed for student teachers, particularly TTC students in Rwanda. The architecture supports teacher-training institutions, universities, internship supervisors and other educational internship programmes.</p></div>
-        </details>
-
-        <details>
-          <summary>3. Can I save my work before paying?</summary>
-          <div class="faq-body"><p>Yes. Creating an account and saving drafts, internship details and records is free. Payment only unlocks authorised report generation and export.</p></div>
-        </details>
-
-        <details>
-          <summary>4. How do I generate my report?</summary>
-          <div class="faq-body"><p>Complete your internship information, save your draft, complete payment verification, then enter the access code issued to you. Generation runs on the trusted backend and produces your downloadable file.</p></div>
-        </details>
-
-        <details>
-          <summary>5. How does manual payment verification work?</summary>
-          <div class="faq-body"><p>You pay using the instructions published by the administrator, then submit your payment reference and report ID. An administrator checks the payment independently, marks it verified, and a unique single-use access code is issued to your account.</p></div>
-        </details>
-
-        <details>
-          <summary>6. Can I edit my report?</summary>
-          <div class="faq-body"><p>Yes. All information you enter remains editable in your account, and you can regenerate the report after making changes.</p></div>
-        </details>
-
-        <details>
-          <summary>7. Can I download PDF?</summary>
-          <div class="faq-body"><p>PDF is a priority export format. It becomes available once the corresponding generator has been implemented and deployed, and once your report generation access is authorised.</p></div>
-        </details>
-
-        <details>
-          <summary>8. Can I download Word?</summary>
-          <div class="faq-body"><p>DOCX is a priority export format for the initial release. As with PDF, availability depends on deployment of the generator and your access status.</p></div>
-        </details>
-
-        <details>
-          <summary>9. Can I upload photographs?</summary>
-          <div class="faq-body"><p>Supporting documents and images can be attached as evidence to your events and appendix sections, stored privately in your own account space.</p></div>
-        </details>
-
-        <details>
-          <summary>10. Can I use REPORA on mobile?</summary>
-          <div class="faq-body"><p>Yes. REPORA is built mobile-first and works on small smartphones, large smartphones, tablets, laptops and desktop monitors.</p></div>
-        </details>
-
-        <details>
-          <summary>11. Is REPORA officially endorsed by REB?</summary>
-          <div class="faq-body"><p>No. REPORA is an independent platform. No official endorsement by the Rwanda Education Board or any other authority is claimed, and none should be assumed unless it has been formally obtained and published.</p></div>
-        </details>
-
-        <details>
-          <summary>12. Can my institution require a different report format?</summary>
-          <div class="faq-body"><p>Yes. The structure shown on this page is a configurable proposal. Institutions can define their own templates, headings and ordering. Final requirements and acceptance always remain subject to the relevant institution.</p></div>
-        </details>
+        <details><summary>1. What is REPORTX.COM?</summary><div class="faq-body"><p>REPORTX.COM is an intelligent internship report creation and professional portfolio platform. It helps student teachers and internship participants document real experience and organise it into a structured, academically formatted report.</p></div></details>
+        <details><summary>2. Who can use REPORTX.COM?</summary><div class="faq-body"><p>It is initially designed for student teachers, particularly TTC students in Rwanda. The architecture supports teacher-training institutions, universities, internship supervisors and other educational internship programmes.</p></div></details>
+        <details><summary>3. Can I save my work before paying?</summary><div class="faq-body"><p>Yes. Creating an account and saving drafts, internship details and records is free. Payment only unlocks authorised report generation and export.</p></div></details>
+        <details><summary>4. How do I generate my report?</summary><div class="faq-body"><p>Complete your internship information, save your draft, complete payment verification, then enter the access code issued to you. Generation runs on the trusted backend and produces your downloadable file.</p></div></details>
+        <details><summary>5. How does manual payment verification work?</summary><div class="faq-body"><p>You pay using the instructions published by the administrator, then submit your payment reference and report ID. An administrator checks the payment independently, marks it verified, and a unique single-use access code is issued to your account.</p></div></details>
+        <details><summary>6. Can I edit my report?</summary><div class="faq-body"><p>Yes. All information you enter remains editable in your account, and you can regenerate the report after making changes.</p></div></details>
+        <details><summary>7. Can I download PDF?</summary><div class="faq-body"><p>PDF is a priority export format. It becomes available once the corresponding generator has been implemented and deployed, and once your report generation access is authorised.</p></div></details>
+        <details><summary>8. Can I download Word?</summary><div class="faq-body"><p>DOCX is a priority export format for the initial release. As with PDF, availability depends on deployment of the generator and your access status.</p></div></details>
+        <details><summary>9. Can I upload photographs?</summary><div class="faq-body"><p>Supporting documents and images can be attached as evidence to your events and appendix sections, stored privately in your own account space.</p></div></details>
+        <details><summary>10. Can I use REPORTX.COM on mobile?</summary><div class="faq-body"><p>Yes. REPORTX.COM is built mobile-first and works on small smartphones, large smartphones, tablets, laptops and desktop monitors.</p></div></details>
+        <details><summary>11. Is REPORTX.COM officially endorsed by REB?</summary><div class="faq-body"><p>No. REPORTX.COM is an independent platform. No official endorsement by the Rwanda Education Board or any other authority is claimed, and none should be assumed unless it has been formally obtained and published.</p></div></details>
+        <details><summary>12. Can my institution require a different report format?</summary><div class="faq-body"><p>Yes. The structure shown on this page is a configurable proposal. Institutions can define their own templates, headings and ordering. Final requirements and acceptance always remain subject to the relevant institution.</p></div></details>
       </div>
     </div>
   </section>
@@ -1969,20 +1804,18 @@ body.lite-fx .report-card::after{display:none}
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-
       <div class="footer-brand">
-        <a class="brand" href="#home" aria-label="REPORA home">
+        <a class="brand" href="#home" aria-label="REPORTX.COM home">
           <span class="brand-mark" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
               <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
               <path d="M12 55h40" stroke="#FAD201" stroke-width="3.2" stroke-linecap="round"/>
             </svg>
           </span>
-          <span class="brand-word">REP<span>O</span>RA</span>
+          <span class="brand-word">REPORT<span>X</span>.COM</span>
         </a>
         <p><strong>Your Experience. Your Growth. Your Professional Story.</strong></p>
         <p>From Classroom Experience to Professional Achievement.</p>
-        <!-- Social links are rendered only from administrator-configured settings -->
         <div class="footer-social" id="footerSocial" hidden></div>
       </div>
 
@@ -2020,11 +1853,10 @@ body.lite-fx .report-card::after{display:none}
           <a href="terms.html">Terms of Service</a>
         </nav>
       </div>
-
     </div>
 
     <div class="footer-bottom">
-      <span>© <span id="year">2025</span> REPORA. All rights reserved.</span>
+      <span>© <span id="year">2025</span> REPORTX.COM. All rights reserved.</span>
       <nav aria-label="Footer legal">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
@@ -2093,7 +1925,7 @@ body.lite-fx .report-card::after{display:none}
   <div class="modal-panel">
     <button type="button" class="modal-close" data-close-modal aria-label="Close registration dialog">✕</button>
 
-    <h2 id="registerTitle">Create your REPORA account</h2>
+    <h2 id="registerTitle">Create your REPORTX.COM account</h2>
     <p class="modal-sub">Free to create. Your drafts and internship details are saved to your account.</p>
 
     <div class="form-alert" id="registerAlert" role="alert" aria-live="assertive"></div>
@@ -2136,7 +1968,7 @@ body.lite-fx .report-card::after{display:none}
         <input type="checkbox" id="regTerms" name="terms" required />
         <label for="regTerms">
           I accept the <a href="terms.html">Terms of Service</a> and the
-          <a href="privacy.html">Privacy Policy</a>. I understand that REPORA is an independent report
+          <a href="privacy.html">Privacy Policy</a>. I understand that REPORTX.COM is an independent report
           preparation platform and that final report requirements remain subject to my institution.
         </label>
       </div>
@@ -2171,33 +2003,11 @@ body.lite-fx .report-card::after{display:none}
 
 <script type="module">
 /* =============================================================================
-   REPORA — index.html application script
-   -----------------------------------------------------------------------------
-   Structure:
-     1. Firebase configuration (REPLACE WITH YOUR OWN VALUES)
-     2. i18n system
-     3. UI utilities (toast, modals, drawer, nav)
-     4. Background animation (canvas)
-     5. Reveal + tilt interactions
-     6. Firebase initialisation & authentication
-     7. Public platform settings (pricing, social links)
+   REPORTX.COM — index.html application script
    ============================================================================= */
 
 /* =============================================================================
-   1. FIREBASE CONFIGURATION
-   -----------------------------------------------------------------------------
-   IMPORTANT
-   - Replace every placeholder below with the Web App configuration from your own
-     Firebase project:  Firebase Console → Project settings → Your apps → Web app.
-   - Firebase Web API keys are NOT administrator secrets. They are expected to be
-     present in client code. Real security comes from:
-        • Firebase Security Rules (Firestore + Storage)
-        • Authorized domains
-        • API key restrictions
-        • Server-side verification for payments and access codes
-   - NEVER place Firebase Admin SDK service-account keys in frontend code.
-   - NEVER place administrator passwords, secret access codes or payment
-     credentials in this file.
+   1. FIREBASE CONFIGURATION  (your live project — kept as provided)
    ============================================================================= */
 const firebaseConfig = {
   apiKey:            "AIzaSyCHKjRQwalZSoV9sOQR5ZiPM9btBXxD9yo",
@@ -2206,251 +2016,76 @@ const firebaseConfig = {
   storageBucket:     "repora-2a29c.firebasestorage.app",
   messagingSenderId: "41097966352",
   appId:             "1:41097966352:web:c60e0827727c80fa332b95"
-  // measurementId:  "G-S0BJYBVPHD"   // optional, only if Analytics is used
 };
 
 const FIREBASE_CONFIGURED = !JSON.stringify(firebaseConfig).includes("YOUR_");
 
 /* =============================================================================
    2. i18n SYSTEM
-   -----------------------------------------------------------------------------
-   ARCHITECTURE NOTE (honest scope)
-   The translation system below is fully functional: every marked element is
-   re-rendered from the active dictionary, and any missing key falls back to
-   English. The English dictionary covers the primary interface strings.
-   The Kinyarwanda, French and Swahili dictionaries currently cover the
-   navigation, hero, section headings, call-to-action labels and key notices.
-   Remaining section bodies fall back to English until a professional
-   translation pass is completed — the selector does not merely relabel the
-   interface.
    ============================================================================= */
 const I18N = {
   en: {
     "nav.home":"Home","nav.how":"How It Works","nav.features":"Features",
     "nav.structure":"Report Structure","nav.pricing":"Pricing","nav.about":"About",
     "nav.login":"Log In","nav.create":"Create Account","nav.dashboard":"Dashboard","nav.logout":"Log Out",
-
     "hero.eyebrow":"Internship report platform",
     "hero.title":"Your Internship Journey Deserves a Professional Report.",
-    "hero.sub":"Transform your real teaching experiences, classroom activities, reflections, achievements and professional growth into a structured internship report with REPORA.",
-    "hero.extra":"From your first day of school attachment to your final reflection, REPORA helps you document your journey and prepare a professional report ready for review and submission.",
+    "hero.sub":"Transform your real teaching experiences, classroom activities, reflections, achievements and professional growth into a structured internship report with REPORTX.COM.",
+    "hero.extra":"From your first day of school attachment to your final reflection, REPORTX.COM helps you document your journey and prepare a professional report ready for review and submission.",
     "hero.cta1":"Start My Report","hero.cta2":"Explore How It Works",
     "hero.cta3a":"Already have an account?","hero.cta3b":"Log In",
-    "hero.badge1":"Free account & free drafts",
-    "hero.badge2":"PDF & DOCX export",
-    "hero.badge3":"Private, account-based storage",
-
+    "hero.badge1":"Free account & free drafts","hero.badge2":"PDF & DOCX export","hero.badge3":"Private, account-based storage",
     "trust.eyebrow":"Purpose",
     "trust.title":"Designed for Real Academic and Professional Experiences",
-    "trust.sub":"REPORA is built around genuine, documented internship activity — not generated fiction. It gives student teachers and internship participants a structured way to record what actually happened and present it professionally.",
-    "trust.c1":"Student teachers","trust.c1p":"Document attachment periods, lessons taught, classroom observations and personal growth.",
-    "trust.c2":"Teacher training colleges","trust.c2p":"Support cohorts with a consistent, configurable structure for internship documentation.",
-    "trust.c3":"Internship supervisors","trust.c3p":"Review structured records of activities, mentor feedback and documented outcomes.",
-    "trust.c4":"Educational institutions","trust.c4p":"Adopt institution-specific report templates and academic portfolio requirements.",
-    "trust.notice":"<strong>Honest notice:</strong> REPORA is an independent report preparation platform. Final report requirements and acceptance remain subject to the relevant institution. REPORA does not issue, replace or guarantee institutional approval, certification or endorsement.",
-
-    "how.eyebrow":"Process","how.title":"How REPORA Works",
+    "trust.sub":"REPORTX.COM is built around genuine, documented internship activity — not generated fiction. It gives student teachers and internship participants a structured way to record what actually happened and present it professionally.",
+    "trust.c1":"Student teachers","trust.c2":"Teacher training colleges","trust.c3":"Internship supervisors","trust.c4":"Educational institutions",
+    "how.eyebrow":"Process","how.title":"How REPORTX.COM Works",
     "how.sub":"Six clear stages take you from creating an account to downloading a finished, structured report.",
-    "how.s1":"Create Your Account","how.s1p":"Register securely using email and password, or continue with Google.",
-    "how.s2":"Complete Your Internship Profile","how.s2p":"Enter your academic details, college, host school, teaching subjects, classes, academic year, term and internship dates.",
-    "how.s3":"Document Your Experience","how.s3p":"Record daily activities, lesson plans, school events, challenges, achievements, testimonies and reflections.",
-    "how.s4":"Build Your Report","how.s4p":"Organise your information into professional academic chapters using a configurable template.",
-    "how.s5":"Verify Your Payment","how.s5p":"Submit your payment reference and enter the access code issued after administrator verification.",
-    "how.s6":"Generate and Download","how.s6p":"Unlock authorised report generation and download in the supported formats.",
-
-    "feat.eyebrow":"Information groups",
-    "feat.title":"Everything You Need to Document Your Internship",
-    "feat.sub":"Every field is editable and saved to your own authenticated account. You can return, update and complete your record at any time.",
-
-    "struct.eyebrow":"Document architecture",
-    "struct.title":"Your Report, Organised Professionally",
-    "struct.sub":"A configurable proposed structure, based on common school-attachment report conventions. Institutions can define their own templates and required headings.",
-
-    "ai.eyebrow":"Writing assistance",
-    "ai.title":"Your Intelligent Academic Writing Companion",
-    "ai.sub":"The assistant works only with the information you provide. It organises, improves and structures — it does not fabricate experience.",
-
+    "how.s1":"Create Your Account","how.s2":"Complete Your Internship Profile","how.s3":"Document Your Experience","how.s4":"Build Your Report","how.s5":"Verify Your Payment","how.s6":"Generate and Download",
+    "feat.eyebrow":"Information groups","feat.title":"Everything You Need to Document Your Internship",
+    "struct.eyebrow":"Document architecture","struct.title":"Your Report, Organised Professionally",
+    "ai.eyebrow":"Writing assistance","ai.title":"Your Intelligent Academic Writing Companion",
     "export.eyebrow":"Output","export.title":"Your Work. Your Format.",
-    "export.sub":"Export availability depends on your selected package and on the generators that are deployed. PDF and DOCX are the priority formats for the initial release.",
-
     "pay.eyebrow":"Access model","pay.title":"Simple, Transparent Report Access",
-    "pay.sub":"REPORA uses manual payment verification. An administrator confirms your payment independently, then a unique access code is issued and verified by a trusted backend.",
-
     "price.eyebrow":"Pricing","price.title":"Affordable access. Professional results.",
-    "price.sub":"Pricing is configured by an authorised administrator in Firestore and may change. No amount is hard-coded on this page.",
-
     "priv.eyebrow":"Privacy & security","priv.title":"Your Academic Work Belongs to You",
-    "priv.sub":"Report content is private to your account. No other user can read, list or download your internship report.",
-
     "faq.eyebrow":"Questions","faq.title":"Frequently Asked Questions"
   },
-
   rw: {
-    "nav.home":"Ahabanza","nav.how":"Bikorwa gute","nav.features":"Ibirimo",
-    "nav.structure":"Imiterere y'ubwubatsi bw'iriporo","nav.pricing":"Ibiciro","nav.about":"Ibitwerekeyeho",
+    "nav.home":"Ahabanza","nav.how":"Bikorwa gute","nav.features":"Ibirimo","nav.structure":"Imiterere","nav.pricing":"Ibiciro","nav.about":"Ibitwerekeyeho",
     "nav.login":"Injira","nav.create":"Fungura konti","nav.dashboard":"Imbonerahamwe","nav.logout":"Sohoka",
-
-    "hero.eyebrow":"Urubuga rw'iriporo y'imyitozo",
-    "hero.title":"Urugendo rwawe rw'imyitozo rukwiye iriporo y'umwuga.",
-    "hero.sub":"Hindura uburambe bwawe nyakuri bwo kwigisha, ibikorwa byo mu ishuri, ibitekerezo, ibyagezweho n'iterambere ry'umwuga bibe iriporo y'imyitozo iteguwe neza ukoresheje REPORA.",
-    "hero.extra":"Kuva ku munsi wa mbere w'imyitozo kugeza ku gitekerezo cya nyuma, REPORA ifasha kwandika urugendo rwawe no gutegura iriporo y'umwuga yiteguye kwemezwa no gutangwa.",
-    "hero.cta1":"Tangira iriporo yanjye","hero.cta2":"Reba uko bikorwa",
-    "hero.cta3a":"Usanzwe ufite konti?","hero.cta3b":"Injira",
-    "hero.badge1":"Konti y'ubuntu n'imyandikire y'agateganyo",
-    "hero.badge2":"Gusohora PDF na DOCX",
-    "hero.badge3":"Ububiko bw'ibanga ku konti yawe",
-
-    "trust.eyebrow":"Intego",
-    "trust.title":"Yakorewe uburambe nyakuri bw'amashuri n'umwuga",
-    "trust.sub":"REPORA yubakiye ku bikorwa nyakuri byanditswe mu myitozo — ntabwo ari inkuru zihimbiwe. Iha abanyeshuri n'abigisha uburyo bwo kwandika ibyakorwa nyakuri no kubitangaza mu buryo bw'umwuga.",
-    "trust.c1":"Abarimu b'imikoro","trust.c2":"Amashuri y'ubumenyi bw'abarimu",
-    "trust.c3":"Abagenzuzi b'imyitozo","trust.c4":"Ibigo by'amashuri",
-
-    "how.eyebrow":"Uko bikorwa","how.title":"REPORA ikora gute",
-    "how.sub":"Intambwe esheshatu zikugeza ku gufungura konti no kumanura iriporo yuzuye kandi iteguwe neza.",
-    "how.s1":"Fungura konti yawe","how.s2":"Uzuza umwirondoro w'imyitozo yawe",
-    "how.s3":"Andika uburambe bwawe","how.s4":"Kubaka iriporo yawe",
-    "how.s5":"Emeza ubwishyu bwawe","how.s6":"Kora no kumanura",
-
-    "feat.eyebrow":"Itsinda ry'amakuru","feat.title":"Ibikenewe byose mu kwandika imyitozo yawe",
-    "feat.sub":"Amakuru yose arashobora guhindurwa kandi abikwa kuri konti yawe yemejwe.",
-
-    "struct.eyebrow":"Imiterere y'innyandiko","struct.title":"Iriporo yawe iteguwe mu buryo bw'umwuga",
-    "struct.sub":"Imiterere ishobora guhindurwa, ishingiye ku bikunze gukoreshwa mu myitozo y'ishuri.",
-
-    "ai.eyebrow":"Ubufasha bwo kwandika","ai.title":"Umufasha wawe w'ubwenge mu kwandika amashuri",
-    "ai.sub":"Umufasha akoresha gusa amakuru utanga. Atunganya, aranatsindagiriza — ntabwo ahimba uburambe.",
-
-    "export.eyebrow":"Ibisohoka","export.title":"Akazi kawe. Imiterere ushaka.",
-    "export.sub":"PDF na DOCX ni zo miterere y'ibanze.",
-
-    "pay.eyebrow":"Uburyo bwo kubona","pay.title":"Kubona iriporo mu buryo bworoshye kandi bugaragara",
-    "pay.sub":"REPORA ikoresha igenzura ry'ubwishyu rikorwa n'umuyobozi, hanyuma hatangwe kode yihariye yemezwa na seriveri yizewe.",
-
-    "price.eyebrow":"Ibiciro","price.title":"Ibiciro bihendutse. Ibisubizo by'umwuga.",
-    "price.sub":"Ibiciro bishyirwaho n'umuyobozi wemewe muri Firestore.",
-
-    "priv.eyebrow":"Ibanga n'umutekano","priv.title":"Akazi kawe k'amasomo ni akawe",
-    "priv.sub":"Ibirimo by'iriporo ni ibanga kuri konti yawe gusa.",
-
-    "faq.eyebrow":"Ibibazo","faq.title":"Ibibazo bikunze kubazwa"
+    "hero.eyebrow":"Urubuga rw'iriporo","hero.title":"Urugendo rwawe rw'imyitozo rukwiye iriporo y'umwuga.",
+    "hero.sub":"Hindura uburambe bwawe nyakuri bibe iriporo y'imyitozo iteguwe neza ukoresheje REPORTX.COM.",
+    "hero.cta1":"Tangira iriporo yanjye","hero.cta2":"Reba uko bikorwa","hero.cta3a":"Usanzwe ufite konti?","hero.cta3b":"Injira"
   },
-
   fr: {
-    "nav.home":"Accueil","nav.how":"Comment ça marche","nav.features":"Fonctionnalités",
-    "nav.structure":"Structure du rapport","nav.pricing":"Tarifs","nav.about":"À propos",
+    "nav.home":"Accueil","nav.how":"Comment ça marche","nav.features":"Fonctionnalités","nav.structure":"Structure du rapport","nav.pricing":"Tarifs","nav.about":"À propos",
     "nav.login":"Connexion","nav.create":"Créer un compte","nav.dashboard":"Tableau de bord","nav.logout":"Déconnexion",
-
-    "hero.eyebrow":"Plateforme de rapport de stage",
-    "hero.title":"Votre parcours de stage mérite un rapport professionnel.",
-    "hero.sub":"Transformez vos expériences réelles d'enseignement, vos activités de classe, vos réflexions, vos réalisations et votre croissance professionnelle en un rapport de stage structuré avec REPORA.",
-    "hero.extra":"De votre premier jour d'attachement scolaire à votre réflexion finale, REPORA vous aide à documenter votre parcours et à préparer un rapport professionnel prêt à être examiné et soumis.",
-    "hero.cta1":"Commencer mon rapport","hero.cta2":"Découvrir le fonctionnement",
-    "hero.cta3a":"Vous avez déjà un compte ?","hero.cta3b":"Connexion",
-    "hero.badge1":"Compte gratuit et brouillons gratuits",
-    "hero.badge2":"Export PDF et DOCX",
-    "hero.badge3":"Stockage privé lié au compte",
-
-    "trust.eyebrow":"Objectif",
-    "trust.title":"Conçu pour de véritables expériences académiques et professionnelles",
-    "trust.sub":"REPORA s'appuie sur des activités de stage réellement documentées — et non sur des récits inventés.",
-    "trust.c1":"Étudiants enseignants","trust.c2":"Écoles normales",
-    "trust.c3":"Superviseurs de stage","trust.c4":"Établissements d'enseignement",
-
-    "how.eyebrow":"Processus","how.title":"Comment fonctionne REPORA",
-    "how.sub":"Six étapes claires, de la création du compte au téléchargement d'un rapport structuré.",
-    "how.s1":"Créez votre compte","how.s2":"Complétez votre profil de stage",
-    "how.s3":"Documentez votre expérience","how.s4":"Construisez votre rapport",
-    "how.s5":"Vérifiez votre paiement","how.s6":"Générez et téléchargez",
-
-    "feat.eyebrow":"Groupes d'informations","feat.title":"Tout ce qu'il faut pour documenter votre stage",
-    "feat.sub":"Chaque champ est modifiable et enregistré dans votre propre compte authentifié.",
-
-    "struct.eyebrow":"Architecture du document","struct.title":"Votre rapport, organisé professionnellement",
-    "struct.sub":"Une structure proposée et configurable, fondée sur les conventions courantes des rapports de stage.",
-
-    "ai.eyebrow":"Assistance rédactionnelle","ai.title":"Votre compagnon de rédaction académique intelligent",
-    "ai.sub":"L'assistant travaille uniquement avec les informations que vous fournissez. Il organise et améliore — il n'invente pas d'expérience.",
-
-    "export.eyebrow":"Sortie","export.title":"Votre travail. Votre format.",
-    "export.sub":"Le PDF et le DOCX sont les formats prioritaires.",
-
-    "pay.eyebrow":"Modèle d'accès","pay.title":"Un accès au rapport simple et transparent",
-    "pay.sub":"REPORA utilise une vérification manuelle du paiement, suivie d'un code d'accès unique vérifié côté serveur.",
-
-    "price.eyebrow":"Tarifs","price.title":"Un accès abordable. Des résultats professionnels.",
-    "price.sub":"Les tarifs sont configurés par un administrateur autorisé dans Firestore.",
-
-    "priv.eyebrow":"Confidentialité et sécurité","priv.title":"Votre travail académique vous appartient",
-    "priv.sub":"Le contenu du rapport est privé et lié à votre compte.",
-
-    "faq.eyebrow":"Questions","faq.title":"Questions fréquentes"
+    "hero.eyebrow":"Plateforme de rapport de stage","hero.title":"Votre parcours de stage mérite un rapport professionnel.",
+    "hero.sub":"Transformez vos expériences réelles d'enseignement en un rapport de stage structuré avec REPORTX.COM.",
+    "hero.cta1":"Commencer mon rapport","hero.cta2":"Découvrir le fonctionnement","hero.cta3a":"Vous avez déjà un compte ?","hero.cta3b":"Connexion"
   },
-
   sw: {
-    "nav.home":"Nyumbani","nav.how":"Inafanyaje kazi","nav.features":"Vipengele",
-    "nav.structure":"Muundo wa ripoti","nav.pricing":"Bei","nav.about":"Kutuhusu",
+    "nav.home":"Nyumbani","nav.how":"Inafanyaje kazi","nav.features":"Vipengele","nav.structure":"Muundo","nav.pricing":"Bei","nav.about":"Kutuhusu",
     "nav.login":"Ingia","nav.create":"Fungua akaunti","nav.dashboard":"Dashibodi","nav.logout":"Toka",
-
-    "hero.eyebrow":"Jukwaa la ripoti ya mafunzo",
-    "hero.title":"Safari yako ya mafunzo inastahili ripoti ya kitaalamu.",
-    "hero.sub":"Badilisha uzoefu wako halisi wa kufundisha, shughuli za darasani, tafakari, mafanikio na ukuaji wako wa kitaalamu kuwa ripoti ya mafunzo iliyopangwa vyema kwa kutumia REPORA.",
-    "hero.extra":"Kutoka siku yako ya kwanza ya mafunzo hadi tafakari yako ya mwisho, REPORA inakusaidia kuandika safari yako na kuandaa ripoti ya kitaalamu tayari kwa mapitio na kuwasilishwa.",
-    "hero.cta1":"Anza ripoti yangu","hero.cta2":"Gundua inavyofanya kazi",
-    "hero.cta3a":"Tayari una akaunti?","hero.cta3b":"Ingia",
-    "hero.badge1":"Akaunti ya bure na rasimu za bure",
-    "hero.badge2":"Hamisha kama PDF na DOCX",
-    "hero.badge3":"Hifadhi ya faragha inayohusiana na akaunti",
-
-    "trust.eyebrow":"Lengo",
-    "trust.title":"Imeundwa kwa uzoefu halisi wa kitaaluma na kitaalamu",
-    "trust.sub":"REPORA inajengwa juu ya shughuli halisi za mafunzo zilizoandikwa — sio hadithi za kubuni.",
-
-    "how.eyebrow":"Mchakato","how.title":"REPORA inafanyaje kazi",
-    "how.sub":"Hatua sita wazi kutoka kufungua akaunti hadi kupakua ripoti iliyopangwa.",
-    "how.s1":"Fungua akaunti yako","how.s2":"Kamilisha wasifu wa mafunzo yako",
-    "how.s3":"Andika uzoefu wako","how.s4":"Jenga ripoti yako",
-    "how.s5":"Thibitisha malipo yako","how.s6":"Tengeneza na pakua",
-
-    "feat.eyebrow":"Vikundi vya taarifa","feat.title":"Kila unachohitaji kuandika mafunzo yako",
-    "feat.sub":"Kila sehemu inaweza kuhaririwa na kuhifadhiwa kwenye akaunti yako mwenyewe.",
-
-    "struct.eyebrow":"Muundo wa hati","struct.title":"Ripoti yako, iliyopangwa kitaalamu",
-    "struct.sub":"Muundo unaopendekezwa na unaoweza kubadilishwa, kulingana na desturi za kawaida za ripoti za mafunzo.",
-
-    "ai.eyebrow":"Msaada wa uandishi","ai.title":"Msaidizi wako mahiri wa uandishi wa kitaaluma",
-    "ai.sub":"Msaidizi hufanya kazi na taarifa unazotoa pekee. Hupanga na kuboresha — hazibuni uzoefu.",
-
-    "export.eyebrow":"Matokeo","export.title":"Kazi yako. Muundo wako.",
-    "export.sub":"PDF na DOCX ni miundo ya kipaumbele.",
-
-    "pay.eyebrow":"Mfumo wa ufikiaji","pay.title":"Ufikiaji wa ripoti rahisi na wazi",
-    "pay.sub":"REPORA hutumia uthibitisho wa malipo kwa mkono, kisha msimbo wa kipekee unaothibitishwa na seva.",
-
-    "price.eyebrow":"Bei","price.title":"Ufikiaji wa bei nafuu. Matokeo ya kitaalamu.",
-    "price.sub":"Bei hupangwa na msimamizi aliyeidhinishwa katika Firestore.",
-
-    "priv.eyebrow":"Faragha na usalama","priv.title":"Kazi yako ya kitaaluma ni yako",
-    "priv.sub":"Maudhui ya ripoti ni ya faragha kwa akaunti yako.",
-
-    "faq.eyebrow":"Maswali","faq.title":"Maswali yanayoulizwa mara kwa mara"
+    "hero.eyebrow":"Jukwaa la ripoti","hero.title":"Safari yako ya mafunzo inastahili ripoti ya kitaalamu.",
+    "hero.sub":"Badilisha uzoefu wako halisi wa kufundisha kuwa ripoti ya mafunzo iliyopangwa vyema kwa REPORTX.COM.",
+    "hero.cta1":"Anza ripoti yangu","hero.cta2":"Gundua inavyofanya kazi","hero.cta3a":"Tayari una akaunti?","hero.cta3b":"Ingia"
   }
 };
 
-const LANG_KEY = "repora.lang";
+const LANG_KEY = "reportx.lang";
 
 function applyLanguage(lang) {
-  const dict  = I18N[lang] || I18N.en;
+  const dict = I18N[lang] || I18N.en;
   const fallback = I18N.en;
-
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     const value = dict[key] ?? fallback[key];
     if (typeof value === "string") el.innerHTML = value;
   });
-
   document.documentElement.lang = lang;
-  try { localStorage.setItem(LANG_KEY, lang); } catch (_) { /* storage unavailable */ }
+  try { localStorage.setItem(LANG_KEY, lang); } catch (_) {}
 }
 
 /* =============================================================================
@@ -2459,7 +2094,6 @@ function applyLanguage(lang) {
 const $  = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-/* ---------- Toast notifications ---------- */
 const toastStack = $("#toastStack");
 function toast(message, type = "info", duration = 5200) {
   if (!toastStack) return;
@@ -2468,102 +2102,58 @@ function toast(message, type = "info", duration = 5200) {
   el.setAttribute("role", type === "error" ? "alert" : "status");
   el.textContent = message;
   toastStack.appendChild(el);
-
-  const remove = () => {
-    el.classList.add("leaving");
-    setTimeout(() => el.remove(), 260);
-  };
+  const remove = () => { el.classList.add("leaving"); setTimeout(() => el.remove(), 260); };
   const timer = setTimeout(remove, duration);
   el.addEventListener("click", () => { clearTimeout(timer); remove(); });
 }
 
-/* ---------- Modal management ---------- */
 let lastFocused = null;
-
 function openModal(id) {
   const modal = document.getElementById(id);
   if (!modal) return;
   lastFocused = document.activeElement;
-
   $$(".modal.open").forEach((m) => m.classList.remove("open"));
   modal.classList.add("open");
   document.body.classList.add("no-scroll");
-
   const focusable = modal.querySelector("input, button, select, textarea, a[href]");
   if (focusable) setTimeout(() => focusable.focus(), 60);
 }
-
 function closeModal(modal) {
   if (!modal) return;
   modal.classList.remove("open");
   if (!$(".modal.open")) document.body.classList.remove("no-scroll");
   if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
 }
+function closeAllModals(){ $$(".modal.open").forEach(closeModal); }
 
-function closeAllModals() {
-  $$(".modal.open").forEach(closeModal);
-}
-
-/* Focus trap + Escape handling for open modals */
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeAllModals();
-    closeDrawer();
-    return;
-  }
+  if (event.key === "Escape") { closeAllModals(); closeDrawer(); return; }
   if (event.key !== "Tab") return;
-
   const modal = $(".modal.open");
   if (!modal) return;
-
-  const focusables = $$(
-    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-    modal
-  ).filter((el) => el.offsetParent !== null);
-
-  if (focusables.length === 0) return;
-
-  const first = focusables[0];
-  const last  = focusables[focusables.length - 1];
-
-  if (event.shiftKey && document.activeElement === first) {
-    event.preventDefault();
-    last.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
-    event.preventDefault();
-    first.focus();
-  }
+  const focusables = $$('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])', modal).filter((el) => el.offsetParent !== null);
+  if (!focusables.length) return;
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
 });
 
-/* Modal triggers */
 document.addEventListener("click", (event) => {
   const openTrigger = event.target.closest("[data-open-modal]");
   if (openTrigger) {
     event.preventDefault();
-    const id = openTrigger.getAttribute("data-open-modal");
     closeDrawer();
-    openModal(id);
+    openModal(openTrigger.getAttribute("data-open-modal"));
     return;
   }
-
   const closeTrigger = event.target.closest("[data-close-modal]");
-  if (closeTrigger) {
-    event.preventDefault();
-    closeModal(closeTrigger.closest(".modal"));
-    return;
-  }
-
+  if (closeTrigger) { event.preventDefault(); closeModal(closeTrigger.closest(".modal")); return; }
   const switchTrigger = event.target.closest("[data-switch-modal]");
-  if (switchTrigger) {
-    event.preventDefault();
-    openModal(switchTrigger.getAttribute("data-switch-modal"));
-  }
+  if (switchTrigger) { event.preventDefault(); openModal(switchTrigger.getAttribute("data-switch-modal")); }
 });
 
-/* ---------- Drawer (mobile navigation) ---------- */
 const drawer = $("#drawer");
 const hamburger = $("#hamburger");
-
 function openDrawer() {
   if (!drawer) return;
   drawer.classList.add("open");
@@ -2571,197 +2161,303 @@ function openDrawer() {
   hamburger?.setAttribute("aria-expanded", "true");
   setTimeout(() => $("#drawerClose")?.focus(), 80);
 }
-
 function closeDrawer() {
   if (!drawer || !drawer.classList.contains("open")) return;
   drawer.classList.remove("open");
   document.body.classList.remove("no-scroll");
   hamburger?.setAttribute("aria-expanded", "false");
 }
-
-hamburger?.addEventListener("click", () => {
-  drawer?.classList.contains("open") ? closeDrawer() : openDrawer();
-});
+hamburger?.addEventListener("click", () => { drawer?.classList.contains("open") ? closeDrawer() : openDrawer(); });
 $("#drawerClose")?.addEventListener("click", closeDrawer);
-
-document.addEventListener("click", (event) => {
-  if (event.target.closest("[data-close-drawer]")) closeDrawer();
-});
-
-/* Close drawer when resizing to desktop */
+document.addEventListener("click", (event) => { if (event.target.closest("[data-close-drawer]")) closeDrawer(); });
 let resizeTimer;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    if (window.innerWidth >= 1024) closeDrawer();
-  }, 150);
+  resizeTimer = setTimeout(() => { if (window.innerWidth >= 1024) closeDrawer(); }, 150);
 });
 
-/* ---------- Sticky nav glass effect ---------- */
 const nav = $("#siteNav");
-function updateNav() {
-  if (!nav) return;
-  nav.classList.toggle("scrolled", window.scrollY > 16);
-}
+function updateNav() { if (nav) nav.classList.toggle("scrolled", window.scrollY > 16); }
 window.addEventListener("scroll", updateNav, { passive: true });
 updateNav();
 
-/* ---------- Dynamic copyright year ---------- */
 const yearEl = $("#year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 /* =============================================================================
-   4. BACKGROUND ANIMATION (lightweight canvas)
+   4. BACKGROUND — MOVING WATER + SUNRISE FROM EAST TO WEST
    -----------------------------------------------------------------------------
-   Deliberately implemented on a 2D canvas rather than WebGL so that the page
-   never depends on GPU/WebGL availability. Particle count scales with viewport
-   size, the loop pauses when the tab is hidden, and the whole layer is disabled
-   when the user prefers reduced motion.
+   A pure 2D canvas scene:
+     • Sun arcs across the sky from right (east) to left (west)
+     • Sky gradient shifts through dawn → noon → dusk → night
+     • Layered sine-wave water at the bottom with shimmering sun reflection
+     • Sun reflection column on the water
+   Pauses when the tab is hidden. Fully disabled under prefers-reduced-motion.
    ============================================================================= */
-(function backgroundAnimation() {
+(function skyWaterAnimation() {
   const canvas = document.getElementById("bgCanvas");
   if (!canvas) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduceMotion) { canvas.style.display = "none"; return; }
 
-  const ctx = canvas.getContext("2d", { alpha: true });
+  const ctx = canvas.getContext("2d", { alpha: false });
   if (!ctx) { canvas.style.display = "none"; return; }
 
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let width = 0, height = 0;
-  let particles = [];
+  let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  const isSmall = window.innerWidth < 768;
+  const lowPower = (navigator.hardwareConcurrency || 4) <= 4;
+
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width  = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    canvas.style.width  = W + "px";
+    canvas.style.height = H + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  /* Full day cycle: 90 seconds */
+  const CYCLE_MS = 90000;
+  let startTime = performance.now();
   let rafId = null;
   let running = true;
 
-  // Fewer particles on small / low-power devices
-  const isSmall = window.innerWidth < 768;
-  const isLowPower = (navigator.hardwareConcurrency || 4) <= 4;
-
-  function particleCount() {
-    if (isSmall) return isLowPower ? 26 : 38;
-    return isLowPower ? 46 : 68;
+  /* Colour helpers */
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function mix(c1, c2, t) {
+    return [
+      Math.round(lerp(c1[0], c2[0], t)),
+      Math.round(lerp(c1[1], c2[1], t)),
+      Math.round(lerp(c1[2], c2[2], t))
+    ];
   }
+  function rgba(c, a = 1) { return `rgba(${c[0]},${c[1]},${c[2]},${a})`; }
 
-  const SYMBOLS = ["∑", "π", "√", "∫", "A", "B", "1", "2", "§", "α", "β", "%"];
+  /* Sky palettes at key phase points (t: 0..1) */
+  // 0.00 = deep night, 0.15 = pre-dawn, 0.25 = sunrise, 0.5 = noon, 0.75 = sunset, 0.85 = dusk, 1.0 = night
+  const SKY_TOP = [
+    { t: 0.00, c: [ 6, 14, 32] },
+    { t: 0.15, c: [16, 28, 62] },
+    { t: 0.25, c: [186, 96, 74] },
+    { t: 0.35, c: [ 92,150,196] },
+    { t: 0.50, c: [ 88,172,224] },
+    { t: 0.65, c: [ 92,150,196] },
+    { t: 0.75, c: [212,110, 66] },
+    { t: 0.85, c: [ 68, 48, 92] },
+    { t: 1.00, c: [  6, 14, 32] }
+  ];
+  const SKY_BOT = [
+    { t: 0.00, c: [ 10, 22, 46] },
+    { t: 0.15, c: [ 34, 52, 96] },
+    { t: 0.25, c: [255,168,108] },
+    { t: 0.35, c: [232,208,168] },
+    { t: 0.50, c: [196,232,248] },
+    { t: 0.65, c: [232,208,168] },
+    { t: 0.75, c: [255,140, 84] },
+    { t: 0.85, c: [120, 84,124] },
+    { t: 1.00, c: [ 10, 22, 46] }
+  ];
 
-  function resize() {
-    width  = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width  = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    canvas.style.width  = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    buildParticles();
-  }
-
-  function buildParticles() {
-    const count = particleCount();
-    particles = new Array(count).fill(0).map(() => createParticle(true));
-  }
-
-  function createParticle(initial) {
-    const isSymbol = Math.random() < 0.16;
-    return {
-      x: Math.random() * width,
-      y: initial ? Math.random() * height : height + 24,
-      vx: (Math.random() - 0.5) * 0.22,
-      vy: -(0.10 + Math.random() * 0.32),
-      r: 0.7 + Math.random() * 1.9,
-      alpha: 0.18 + Math.random() * 0.42,
-      gold: Math.random() < 0.12,
-      isSymbol,
-      symbol: SYMBOLS[(Math.random() * SYMBOLS.length) | 0],
-      size: 10 + Math.random() * 8,
-      drift: Math.random() * Math.PI * 2
-    };
-  }
-
-  const LINK_DISTANCE = isSmall ? 92 : 128;
-
-  function draw() {
-    ctx.clearRect(0, 0, width, height);
-
-    // --- connecting lines between nearby nodes ---
-    ctx.lineWidth = 0.6;
-    for (let i = 0; i < particles.length; i++) {
-      const a = particles[i];
-      if (a.isSymbol) continue;
-      for (let j = i + 1; j < particles.length; j++) {
-        const b = particles[j];
-        if (b.isSymbol) continue;
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < LINK_DISTANCE) {
-          const opacity = (1 - dist / LINK_DISTANCE) * 0.16;
-          ctx.strokeStyle = `rgba(64,217,255,${opacity})`;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
+  function pickColor(stops, t) {
+    for (let i = 0; i < stops.length - 1; i++) {
+      const a = stops[i], b = stops[i + 1];
+      if (t >= a.t && t <= b.t) {
+        const local = (t - a.t) / (b.t - a.t);
+        return mix(a.c, b.c, local);
       }
     }
+    return stops[stops.length - 1].c;
+  }
 
-    // --- particles & academic symbols ---
-    for (const p of particles) {
-      // gentle horizontal drift
-      p.drift += 0.004;
-      p.x += p.vx + Math.sin(p.drift) * 0.16;
-      p.y += p.vy;
+  /* Sun colour as it warms and cools */
+  function sunColor(t) {
+    // Deep orange near horizon, bright white-yellow at noon
+    const horizonAmt = Math.min(1, Math.abs(t - 0.5) * 2); // 0 at noon, 1 at horizon
+    const low  = [255, 154, 84];
+    const high = [255, 246, 214];
+    return mix(high, low, horizonAmt);
+  }
 
-      // wrap around
-      if (p.y < -30) { p.y = height + 20; p.x = Math.random() * width; }
-      if (p.x < -30) p.x = width + 20;
-      if (p.x > width + 30) p.x = -20;
+  /* Water base colour varies with the sun's height */
+  function waterBase(t) {
+    const nightC = [ 6, 20, 40];
+    const dayC   = [ 26, 72,110];
+    const duskC  = [ 70, 34, 70];
+    if (t < 0.2 || t > 0.9) return mix(nightC, nightC, 0);
+    if (t < 0.35) return mix(nightC, dayC, (t - 0.2) / 0.15);
+    if (t > 0.65) return mix(dayC, duskC, Math.min(1, (t - 0.65) / 0.2));
+    return dayC;
+  }
 
-      if (p.isSymbol) {
-        ctx.font = `${p.size}px 'Poppins', sans-serif`;
-        ctx.fillStyle = p.gold
-          ? `rgba(250,210,1,${p.alpha * 0.55})`
-          : `rgba(64,217,255,${p.alpha * 0.5})`;
-        ctx.fillText(p.symbol, p.x, p.y);
-      } else {
+  /* Starfield for night time (pre-computed) */
+  const stars = [];
+  const STAR_COUNT = isSmall || lowPower ? 40 : 110;
+  for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push({
+      x: Math.random(),
+      y: Math.random() * 0.6,
+      r: Math.random() * 1.3 + 0.4,
+      tw: Math.random() * Math.PI * 2
+    });
+  }
+
+  /* Water wave layers */
+  const WAVE_LAYERS = isSmall ? 3 : 5;
+  const wavePhases = new Array(WAVE_LAYERS).fill(0).map(() => Math.random() * Math.PI * 2);
+
+  function draw(now) {
+    const elapsed = now - startTime;
+    const t = (elapsed % CYCLE_MS) / CYCLE_MS;   // 0..1
+
+    /* ---- Sky gradient ---- */
+    const skyTop = pickColor(SKY_TOP, t);
+    const skyBot = pickColor(SKY_BOT, t);
+    const grad = ctx.createLinearGradient(0, 0, 0, H * 0.68);
+    grad.addColorStop(0, rgba(skyTop));
+    grad.addColorStop(1, rgba(skyBot));
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H * 0.68);
+
+    /* ---- Stars (only visible at night) ---- */
+    const nightAmt = Math.max(0, 1 - Math.abs(t - 0.5) * 4); // 0 at noon-ish, 1 at midnight
+    if (nightAmt > 0.02) {
+      for (const s of stars) {
+        const tw = 0.55 + 0.45 * Math.sin(s.tw + elapsed * 0.002);
+        ctx.fillStyle = `rgba(255,255,255,${nightAmt * tw * 0.85})`;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.gold
-          ? `rgba(250,210,1,${p.alpha})`
-          : `rgba(180,225,255,${p.alpha})`;
+        ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
         ctx.fill();
-
-        if (!isSmall && !isLowPower) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 3.4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(0,161,222,${p.alpha * 0.05})`;
-          ctx.fill();
-        }
       }
     }
 
-    rafId = window.requestAnimationFrame(draw);
+    /* ---- Sun position: right (east) → left (west) via parabola ---- */
+    // t = 0    → sun at right horizon (rise)
+    // t = 0.5  → sun at peak (noon)
+    // t = 1    → sun at left horizon (set)
+    const sunX = W * (1 - t);                            // east→west
+    const arcT = (t - 0.5) * 2;                          // -1..1
+    const horizonY = H * 0.66;
+    const peakY    = H * 0.10;
+    const sunY = peakY + (horizonY - peakY) * (arcT * arcT);
+
+    /* Sun glow halo */
+    const sunCol = sunColor(t);
+    const sunR = isSmall ? 26 : 36;
+
+    const haloGrad = ctx.createRadialGradient(sunX, sunY, sunR * 0.2, sunX, sunY, sunR * 7);
+    haloGrad.addColorStop(0,   rgba(sunCol, 0.55));
+    haloGrad.addColorStop(0.35,rgba(sunCol, 0.14));
+    haloGrad.addColorStop(1,   rgba(sunCol, 0));
+    ctx.fillStyle = haloGrad;
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, sunR * 7, 0, Math.PI * 2);
+    ctx.fill();
+
+    /* Sun disc */
+    const discGrad = ctx.createRadialGradient(sunX, sunY, 0, sunX, sunY, sunR);
+    discGrad.addColorStop(0,   rgba(mix(sunCol, [255,255,255], 0.55)));
+    discGrad.addColorStop(0.7, rgba(sunCol));
+    discGrad.addColorStop(1,   rgba(sunCol, 0.35));
+    ctx.fillStyle = discGrad;
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, sunR, 0, Math.PI * 2);
+    ctx.fill();
+
+    /* ---- Water region ---- */
+    const waterTop = H * 0.66;
+    const waterBaseCol = waterBase(t);
+
+    /* Water base gradient */
+    const wGrad = ctx.createLinearGradient(0, waterTop, 0, H);
+    wGrad.addColorStop(0, rgba(mix(waterBaseCol, [255,255,255], 0.12)));
+    wGrad.addColorStop(0.5, rgba(waterBaseCol));
+    wGrad.addColorStop(1, rgba(mix(waterBaseCol, [0,0,0], 0.55)));
+    ctx.fillStyle = wGrad;
+    ctx.fillRect(0, waterTop, W, H - waterTop);
+
+    /* Sun reflection column — vertical shimmer */
+    const reflectBottom = H;
+    const columnWidth = sunR * 2.4;
+    const columnGrad = ctx.createLinearGradient(sunX, waterTop, sunX, reflectBottom);
+    columnGrad.addColorStop(0, rgba(sunCol, 0.55));
+    columnGrad.addColorStop(0.5, rgba(sunCol, 0.22));
+    columnGrad.addColorStop(1, rgba(sunCol, 0));
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(sunX - columnWidth * 0.25, waterTop);
+    ctx.lineTo(sunX + columnWidth * 0.25, waterTop);
+    ctx.lineTo(sunX + columnWidth * 1.6, reflectBottom);
+    ctx.lineTo(sunX - columnWidth * 1.6, reflectBottom);
+    ctx.closePath();
+    ctx.fillStyle = columnGrad;
+    ctx.fill();
+    ctx.restore();
+
+    /* Horizontal shimmer lines on the sun column */
+    for (let i = 0; i < 26; i++) {
+      const p = i / 26;
+      const y = waterTop + p * (H - waterTop);
+      const spread = columnWidth * (0.3 + p * 1.6);
+      const wobble = Math.sin(elapsed * 0.002 + i * 0.7) * spread * 0.4;
+      const alpha = (1 - p) * 0.35 * (0.6 + 0.4 * Math.sin(elapsed * 0.003 + i));
+      ctx.strokeStyle = rgba(sunCol, alpha);
+      ctx.lineWidth = 1 + (1 - p) * 1.4;
+      ctx.beginPath();
+      ctx.moveTo(sunX - spread * 0.6 + wobble, y);
+      ctx.lineTo(sunX + spread * 0.6 + wobble, y);
+      ctx.stroke();
+    }
+
+    /* Wave layers */
+    for (let L = 0; L < WAVE_LAYERS; L++) {
+      const depth   = L / (WAVE_LAYERS - 1 || 1);       // 0 top → 1 bottom
+      const amp     = lerp(5, 20, depth) * (isSmall ? 0.7 : 1);
+      const baseY   = waterTop + (depth * (H - waterTop) * 0.85);
+      const freq    = lerp(0.012, 0.004, depth);
+      const speed   = lerp(0.00045, 0.00022, depth) * (lowPower ? 0.7 : 1);
+      const phase   = wavePhases[L];
+      const shading = lerp(0.30, 0.05, depth);
+
+      ctx.beginPath();
+      ctx.moveTo(0, baseY);
+      for (let x = 0; x <= W; x += 6) {
+        const y =
+          baseY +
+          Math.sin(x * freq + elapsed * speed + phase) * amp +
+          Math.sin(x * freq * 2.3 + elapsed * speed * 1.7) * amp * 0.4 +
+          Math.sin(x * freq * 0.6 + elapsed * speed * 0.5) * amp * 0.6;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+
+      const layerCol = mix(waterBaseCol, [255,255,255], shading * 0.35);
+      ctx.fillStyle = rgba(layerCol, 0.85 - depth * 0.35);
+      ctx.fill();
+    }
+
+    /* Subtle dark vignette at the bottom */
+    const bottomGrad = ctx.createLinearGradient(0, H * 0.78, 0, H);
+    bottomGrad.addColorStop(0, "rgba(0,0,0,0)");
+    bottomGrad.addColorStop(1, "rgba(0,0,0,0.5)");
+    ctx.fillStyle = bottomGrad;
+    ctx.fillRect(0, H * 0.78, W, H * 0.22);
+
+    rafId = requestAnimationFrame(draw);
   }
 
-  function start() {
-    if (running) return;
-    running = true;
-    rafId = window.requestAnimationFrame(draw);
-  }
+  function start() { if (running) return; running = true; rafId = requestAnimationFrame(draw); }
+  function stop()  { running = false; if (rafId) cancelAnimationFrame(rafId); rafId = null; }
 
-  function stop() {
-    running = false;
-    if (rafId) window.cancelAnimationFrame(rafId);
-    rafId = null;
-  }
+  document.addEventListener("visibilitychange", () => { document.hidden ? stop() : start(); });
 
-  document.addEventListener("visibilitychange", () => {
-    document.hidden ? stop() : start();
-  });
-
-  let resizeRaf;
+  let rr;
   window.addEventListener("resize", () => {
-    cancelAnimationFrame(resizeRaf);
-    resizeRaf = window.requestAnimationFrame(resize);
+    cancelAnimationFrame(rr);
+    rr = requestAnimationFrame(resize);
   }, { passive: true });
 
   resize();
@@ -2773,61 +2469,41 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
    ============================================================================= */
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Lightweight mode for small / low-power devices */
-if (window.innerWidth < 768 || (navigator.hardwareConcurrency || 4) <= 4) {
-  document.body.classList.add("lite-fx");
-}
-
-/* ---------- Intersection Observer reveals ---------- */
 const revealTargets = $$(".reveal");
 if ("IntersectionObserver" in window && !reduceMotion) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in");
-        observer.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) { entry.target.classList.add("in"); observer.unobserve(entry.target); }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
-
   revealTargets.forEach((el) => observer.observe(el));
 } else {
   revealTargets.forEach((el) => el.classList.add("in"));
 }
 
-/* ---------- Pointer-driven card glow & subtle tilt (desktop only) ---------- */
 const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
 if (supportsHover && !reduceMotion) {
   $$(".card").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       const px = (event.clientX - rect.left) / rect.width;
       const py = (event.clientY - rect.top) / rect.height;
-
       card.style.setProperty("--mx", `${px * 100}%`);
       card.style.setProperty("--my", `${py * 100}%`);
-
       const tiltX = (0.5 - py) * 4;
       const tiltY = (px - 0.5) * 4;
-      card.style.transform =
-        `translateY(-4px) perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      card.style.transform = `translateY(-4px) perspective(900px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
     });
-
-    card.addEventListener("pointerleave", () => {
-      card.style.transform = "";
-    });
+    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
   });
 
-  /* ---------- Hero scene parallax ---------- */
   const scene = $("#scene");
   const hero  = $("#home");
-
   if (scene && hero) {
     let parallaxRaf = null;
     hero.addEventListener("pointermove", (event) => {
       if (parallaxRaf) return;
-      parallaxRaf = window.requestAnimationFrame(() => {
+      parallaxRaf = requestAnimationFrame(() => {
         const rect = hero.getBoundingClientRect();
         const nx = (event.clientX - rect.left) / rect.width  - 0.5;
         const ny = (event.clientY - rect.top)  / rect.height - 0.5;
@@ -2836,7 +2512,6 @@ if (supportsHover && !reduceMotion) {
         parallaxRaf = null;
       });
     });
-
     hero.addEventListener("pointerleave", () => {
       scene.style.setProperty("--rx", "0");
       scene.style.setProperty("--ry", "0");
@@ -2845,37 +2520,39 @@ if (supportsHover && !reduceMotion) {
 }
 
 /* =============================================================================
-   6. FIREBASE INITIALISATION & AUTHENTICATION
-   -----------------------------------------------------------------------------
-   Uses the modular Firebase JavaScript SDK, loaded as ES modules from the
-   official CDN. If the configuration placeholders have not been replaced, the
-   authentication interface is disabled and an honest notice is displayed —
-   no simulated sign-in, no fake success messages.
+   6. 3D ADMIN APPLE → admin.html
    ============================================================================= */
+const adminApple = $("#adminApple");
+adminApple?.addEventListener("click", () => {
+  // Simple visual confirmation before navigation
+  adminApple.style.transform = "scale(0.92)";
+  setTimeout(() => { window.location.href = "admin.html"; }, 120);
+});
 
-/* Firebase SDK bindings (populated after successful initialisation) */
-let fb = null; // { app, auth, db, api }
+/* =============================================================================
+   7. FIREBASE INITIALISATION & AUTHENTICATION
+   ============================================================================= */
+let fb = null;
 
-/* Friendly mapping of Firebase error codes to user-facing messages. */
 const AUTH_ERROR_MESSAGES = {
-  "auth/email-already-in-use":      "That email address is already registered. Try logging in instead.",
-  "auth/invalid-email":             "Please enter a valid email address.",
-  "auth/weak-password":             "Your password is too weak. Use at least 8 characters.",
-  "auth/missing-password":          "Please enter your password.",
-  "auth/invalid-credential":        "Incorrect email address or password.",
-  "auth/wrong-password":            "Incorrect email address or password.",
-  "auth/user-not-found":            "No account was found with that email address.",
-  "auth/user-disabled":             "This account has been disabled. Please contact support.",
-  "auth/too-many-requests":         "Too many attempts. Please wait a moment and try again.",
-  "auth/network-request-failed":    "Network error. Check your internet connection and try again.",
-  "auth/popup-blocked":             "Your browser blocked the sign-in popup. Allow popups for this site and retry.",
-  "auth/popup-closed-by-user":      "Google sign-in was cancelled.",
-  "auth/cancelled-popup-request":   "Google sign-in was cancelled.",
-  "auth/operation-not-allowed":     "This sign-in method is not enabled in your Firebase project.",
-  "auth/unauthorized-domain":       "This domain is not authorised in your Firebase project settings.",
-  "auth/internal-error":            "An internal authentication error occurred. Please try again.",
-  "permission-denied":              "Permission denied. Your Firestore security rules may need configuration.",
-  "unavailable":                    "The service is temporarily unavailable. Please try again shortly."
+  "auth/email-already-in-use":    "That email address is already registered. Try logging in instead.",
+  "auth/invalid-email":           "Please enter a valid email address.",
+  "auth/weak-password":           "Your password is too weak. Use at least 8 characters.",
+  "auth/missing-password":        "Please enter your password.",
+  "auth/invalid-credential":      "Incorrect email address or password.",
+  "auth/wrong-password":          "Incorrect email address or password.",
+  "auth/user-not-found":          "No account was found with that email address.",
+  "auth/user-disabled":           "This account has been disabled. Please contact support.",
+  "auth/too-many-requests":       "Too many attempts. Please wait a moment and try again.",
+  "auth/network-request-failed":  "Network error. Check your internet connection and try again.",
+  "auth/popup-blocked":           "Your browser blocked the sign-in popup. Allow popups for this site and retry.",
+  "auth/popup-closed-by-user":    "Google sign-in was cancelled.",
+  "auth/cancelled-popup-request": "Google sign-in was cancelled.",
+  "auth/operation-not-allowed":   "This sign-in method is not enabled in your Firebase project. Enable it in Firebase Console → Authentication → Sign-in method.",
+  "auth/unauthorized-domain":     "This domain is not authorised in your Firebase project. Add it in Firebase Console → Authentication → Settings → Authorised domains.",
+  "auth/internal-error":          "An internal authentication error occurred. Please try again.",
+  "permission-denied":            "Permission denied. Your Firestore security rules may need configuration.",
+  "unavailable":                  "The service is temporarily unavailable. Please try again shortly."
 };
 
 function friendlyError(error) {
@@ -2884,7 +2561,6 @@ function friendlyError(error) {
   return AUTH_ERROR_MESSAGES[code] || error.message || "An unexpected error occurred.";
 }
 
-/* ---------- Form alert helpers ---------- */
 function showAlert(element, message, type = "error") {
   if (!element) return;
   element.className = `form-alert show ${type}`;
@@ -2895,19 +2571,16 @@ function hideAlert(element) {
   element.className = "form-alert";
   element.textContent = "";
 }
-
-/* ---------- Button loading state ---------- */
 function setLoading(button, isLoading) {
   if (!button) return;
   button.classList.toggle("loading", isLoading);
   button.disabled = isLoading;
 }
 
-/* ---------- Auth UI state ---------- */
-const authButtons      = $("#authButtons");
-const navUser          = $("#navUser");
-const navUserName      = $("#navUserName");
-const navAvatar        = $("#navAvatar");
+const authButtons       = $("#authButtons");
+const navUser           = $("#navUser");
+const navUserName       = $("#navUserName");
+const navAvatar         = $("#navAvatar");
 const drawerAuthButtons = $("#drawerAuthButtons");
 const drawerUserActions = $("#drawerUserActions");
 
@@ -2930,7 +2603,6 @@ function renderSignedIn(user, profile) {
     (user.email ? user.email.split("@")[0] : "Account");
 
   if (navUserName) navUserName.textContent = displayName;
-
   if (navAvatar) {
     const initial = displayName.trim().charAt(0).toUpperCase() || "R";
     if (user.photoURL) {
@@ -2946,34 +2618,20 @@ function renderSignedIn(user, profile) {
   }
 }
 
-/* ---------- Firestore user profile ---------- */
-/**
- * Creates or retrieves the Firestore user profile document.
- *
- * Collection: users
- * Document ID: the authenticated Firebase UID
- *
- * The `role` field is always written as "student". Administrator privileges
- * must be granted server-side (custom claims or an admin-only collection) and
- * must never be assignable by the client.
- */
 async function ensureUserProfile(user, extra = {}) {
   if (!fb) throw new Error("Firebase is not initialised.");
-
   const { doc, getDoc, setDoc, serverTimestamp } = fb.api.firestore;
   const userRef = doc(fb.db, "users", user.uid);
 
   const snapshot = await getDoc(userRef);
 
   if (snapshot.exists()) {
-    // Update only lightweight, client-safe fields.
     await setDoc(userRef, {
       fullName: extra.fullName || snapshot.data().fullName || user.displayName || "",
       phone:    extra.phone    ?? snapshot.data().phone    ?? "",
       country:  extra.country  ?? snapshot.data().country  ?? "",
       updatedAt: serverTimestamp()
     }, { merge: true });
-
     return snapshot.data();
   }
 
@@ -2990,40 +2648,25 @@ async function ensureUserProfile(user, extra = {}) {
     updatedAt: serverTimestamp(),
     accountStatus: "active"
   };
-
   await setDoc(userRef, profile);
   return profile;
 }
 
-/* ---------- Initialise Firebase ---------- */
 async function initFirebase() {
   if (!FIREBASE_CONFIGURED) {
     const banner = $("#configBanner");
     if (banner) banner.hidden = false;
-
-    // Disable the authentication controls honestly rather than faking them.
     ["#googleLoginBtn", "#googleRegisterBtn", "#forgotBtn"].forEach((sel) => {
       const el = $(sel);
-      if (el) {
-        el.disabled = true;
-        el.setAttribute("aria-disabled", "true");
-        el.title = "Firebase configuration required.";
-      }
+      if (el) { el.disabled = true; el.setAttribute("aria-disabled", "true"); el.title = "Firebase configuration required."; }
     });
-
     ["#loginForm", "#registerForm"].forEach((sel) => {
       const form = $(sel);
       if (!form) return;
       const submit = form.querySelector('button[type="submit"]');
-      if (submit) {
-        submit.disabled = true;
-        submit.setAttribute("aria-disabled", "true");
-      }
+      if (submit) { submit.disabled = true; submit.setAttribute("aria-disabled", "true"); }
     });
-
-    console.info(
-      "[REPORA] Firebase is not configured. Replace the `firebaseConfig` object in index.html with your own Firebase Web App credentials to enable authentication."
-    );
+    console.info("[REPORTX.COM] Firebase is not configured. Replace the firebaseConfig object with your own credentials to enable authentication.");
     return;
   }
 
@@ -3036,8 +2679,6 @@ async function initFirebase() {
       import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
       import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
       import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
-      // Firebase Storage can be added the same way when uploads are enabled:
-      // import("https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js")
     ]);
 
     const app  = initializeApp(firebaseConfig);
@@ -3048,31 +2689,20 @@ async function initFirebase() {
 
     /* ---------- Auth state listener ---------- */
     authModule.onAuthStateChanged(auth, async (user) => {
-      if (!user) {
-        renderSignedOut();
-        return;
-      }
-
+      if (!user) { renderSignedOut(); return; }
       let profile = null;
-      try {
-        profile = await ensureUserProfile(user);
-      } catch (error) {
-        console.warn("[REPORA] Could not load the Firestore profile:", friendlyError(error));
-      }
-
+      try { profile = await ensureUserProfile(user); }
+      catch (error) { console.warn("[REPORTX.COM] Could not load the Firestore profile:", friendlyError(error)); }
       renderSignedIn(user, profile);
     });
 
     /* ---------- Registration ---------- */
     const registerForm  = $("#registerForm");
     const registerAlert = $("#registerAlert");
-
     registerForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       hideAlert(registerAlert);
-
       const submitBtn = registerForm.querySelector('button[type="submit"]');
-
       const fullName = $("#regName").value.trim();
       const email    = $("#regEmail").value.trim();
       const phone    = $("#regPhone").value.trim();
@@ -3081,46 +2711,29 @@ async function initFirebase() {
       const confirm  = $("#regConfirm").value;
       const terms    = $("#regTerms").checked;
 
-      /* Client-side validation */
-      if (!fullName)                     return showAlert(registerAlert, "Please enter your full name.");
-      if (!email)                        return showAlert(registerAlert, "Please enter your email address.");
-      if (password.length < 8)           return showAlert(registerAlert, "Your password must be at least 8 characters long.");
-      if (password !== confirm)          return showAlert(registerAlert, "The two passwords do not match.");
-      if (!terms)                        return showAlert(registerAlert, "Please accept the Terms of Service and Privacy Policy to continue.");
+      if (!fullName)            return showAlert(registerAlert, "Please enter your full name.");
+      if (!email)               return showAlert(registerAlert, "Please enter your email address.");
+      if (password.length < 8)  return showAlert(registerAlert, "Your password must be at least 8 characters long.");
+      if (password !== confirm) return showAlert(registerAlert, "The two passwords do not match.");
+      if (!terms)               return showAlert(registerAlert, "Please accept the Terms of Service and Privacy Policy to continue.");
 
       setLoading(submitBtn, true);
-
       try {
         const { createUserWithEmailAndPassword, updateProfile } = fb.api.auth;
-
         const credential = await createUserWithEmailAndPassword(fb.auth, email, password);
-
-        // Keep the Auth display name in sync with the profile.
-        try {
-          await updateProfile(credential.user, { displayName: fullName });
-        } catch (_) { /* non-fatal */ }
-
-        // Create the matching Firestore user profile document.
-        try {
-          await ensureUserProfile(credential.user, { fullName, phone, country });
-        } catch (profileError) {
-          // The account exists but the profile could not be created.
-          showAlert(
-            registerAlert,
-            "Your account was created, but your profile could not be saved: " +
-            friendlyError(profileError) +
-            " Please check your Firestore security rules, then sign in and complete your profile.",
-            "error"
-          );
+        try { await updateProfile(credential.user, { displayName: fullName }); } catch (_) {}
+        try { await ensureUserProfile(credential.user, { fullName, phone, country }); }
+        catch (profileError) {
+          showAlert(registerAlert,
+            "Your account was created, but your profile could not be saved: " + friendlyError(profileError) +
+            " Please check your Firestore security rules, then sign in and complete your profile.", "error");
           setLoading(submitBtn, false);
           return;
         }
-
         registerForm.reset();
         closeAllModals();
         toast("Account created successfully. Redirecting to your dashboard…", "success");
         window.location.href = "dashboard.html";
-
       } catch (error) {
         showAlert(registerAlert, friendlyError(error));
         setLoading(submitBtn, false);
@@ -3130,64 +2743,55 @@ async function initFirebase() {
     /* ---------- Login ---------- */
     const loginForm  = $("#loginForm");
     const loginAlert = $("#loginAlert");
-
     loginForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       hideAlert(loginAlert);
-
       const submitBtn = loginForm.querySelector('button[type="submit"]');
       const email    = $("#loginEmail").value.trim();
       const password = $("#loginPassword").value;
-
       if (!email)    return showAlert(loginAlert, "Please enter your email address.");
       if (!password) return showAlert(loginAlert, "Please enter your password.");
 
       setLoading(submitBtn, true);
-
       try {
         const { signInWithEmailAndPassword } = fb.api.auth;
         await signInWithEmailAndPassword(fb.auth, email, password);
-
         loginForm.reset();
         closeAllModals();
         toast("Signed in successfully. Redirecting to your dashboard…", "success");
         window.location.href = "dashboard.html";
-
       } catch (error) {
         showAlert(loginAlert, friendlyError(error));
         setLoading(submitBtn, false);
       }
     });
 
-    /* ---------- Google authentication ---------- */
+    /* ---------- Google Authentication ----------
+       Enabled and functional. Requires:
+         • Google provider enabled in Firebase Console → Authentication → Sign-in method.
+         • This domain listed in Authentication → Settings → Authorised domains.
+         • Google account signed in to the browser to allow the popup flow.
+    */
     async function signInWithGoogle(alertElement) {
       hideAlert(alertElement);
       try {
         const { GoogleAuthProvider, signInWithPopup } = fb.api.auth;
-
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({ prompt: "select_account" });
 
         const result = await signInWithPopup(fb.auth, provider);
 
-        // Ensure the Firestore profile exists for Google sign-ins.
         try {
-          await ensureUserProfile(result.user, {
-            fullName: result.user.displayName || ""
-          });
+          await ensureUserProfile(result.user, { fullName: result.user.displayName || "" });
         } catch (profileError) {
-          showAlert(
-            alertElement,
-            "Signed in, but your profile could not be saved: " + friendlyError(profileError),
-            "error"
-          );
+          showAlert(alertElement,
+            "Signed in, but your profile could not be saved: " + friendlyError(profileError), "error");
           return;
         }
 
         closeAllModals();
         toast("Signed in with Google. Redirecting to your dashboard…", "success");
         window.location.href = "dashboard.html";
-
       } catch (error) {
         showAlert(alertElement, friendlyError(error));
       }
@@ -3199,10 +2803,7 @@ async function initFirebase() {
     /* ---------- Password reset ---------- */
     $("#forgotBtn")?.addEventListener("click", async () => {
       const email = $("#loginEmail").value.trim();
-      if (!email) {
-        showAlert(loginAlert, "Enter your email address first, then request a reset link.", "info");
-        return;
-      }
+      if (!email) { showAlert(loginAlert, "Enter your email address first, then request a reset link.", "info"); return; }
       try {
         const { sendPasswordResetEmail } = fb.api.auth;
         await sendPasswordResetEmail(fb.auth, email);
@@ -3220,7 +2821,6 @@ async function initFirebase() {
         closeDrawer();
         toast("You have been signed out.", "info");
         renderSignedOut();
-        // Return the visitor to the homepage root.
         if (!window.location.pathname.endsWith("index.html") && window.location.pathname !== "/") {
           window.location.href = "index.html";
         }
@@ -3228,15 +2828,14 @@ async function initFirebase() {
         toast(friendlyError(error), "error");
       }
     }
-
     $("#logoutBtn")?.addEventListener("click", handleLogout);
     $("#drawerLogout")?.addEventListener("click", handleLogout);
 
-    /* ---------- Public platform settings (pricing, contact, social) ---------- */
+    /* ---------- Platform settings (pricing / social) ---------- */
     loadPlatformSettings();
 
   } catch (error) {
-    console.error("[REPORA] Firebase failed to initialise:", error);
+    console.error("[REPORTX.COM] Firebase failed to initialise:", error);
     const banner = $("#configBanner");
     if (banner) {
       banner.hidden = false;
@@ -3248,42 +2847,25 @@ async function initFirebase() {
   }
 }
 
-/* ---------- Public platform settings ----------
- * Reads the administrator-configured `platform_settings/public` document.
- * If Firestore rules do not permit public reads, this fails silently and the
- * page keeps its neutral, amount-free pricing message.
- */
 async function loadPlatformSettings() {
   if (!fb) return;
-
   const pricingAmount = $("#pricingAmount");
   const pricingNote   = $("#pricingNote");
   const socialHost    = $("#footerSocial");
-
   try {
     const { doc, getDoc } = fb.api.firestore;
     const snap = await getDoc(doc(fb.db, "platform_settings", "public"));
-
     if (snap.exists()) {
       const data = snap.data() || {};
-
-      /* ---- Pricing ---- */
       const pricing = data.pricing;
       if (pricing && (pricing.amount || pricing.display)) {
-        const display = pricing.display ||
-          `${pricing.amount} ${pricing.currency || ""}`.trim();
-        if (pricingAmount) {
-          pricingAmount.firstChild.nodeValue = display;
-        }
-        if (pricingNote) {
-          pricingNote.textContent = pricing.note || "Configured by the platform administrator.";
-        }
+        const display = pricing.display || `${pricing.amount} ${pricing.currency || ""}`.trim();
+        if (pricingAmount) pricingAmount.firstChild.nodeValue = display;
+        if (pricingNote) pricingNote.textContent = pricing.note || "Configured by the platform administrator.";
       } else {
         if (pricingAmount) pricingAmount.firstChild.nodeValue = "Pricing is configured by the platform administrator.";
         if (pricingNote) pricingNote.textContent = "No amount is hard-coded on this page.";
       }
-
-      /* ---- Social links (only rendered when genuinely configured) ---- */
       const social = data.contactInformation && data.contactInformation.social;
       if (socialHost && social && typeof social === "object") {
         const entries = Object.entries(social).filter(([, url]) => typeof url === "string" && url.startsWith("http"));
@@ -3306,50 +2888,65 @@ async function loadPlatformSettings() {
       if (pricingNote) pricingNote.textContent = "No amount is hard-coded on this page.";
     }
   } catch (error) {
-    // Public reads may be restricted by Firestore security rules — that is acceptable.
     if (pricingAmount) pricingAmount.firstChild.nodeValue = "Pricing is configured by the platform administrator.";
     if (pricingNote) pricingNote.textContent = "Sign in or contact support for current pricing.";
-    console.info("[REPORA] Platform settings are not publicly readable:", friendlyError(error));
+    console.info("[REPORTX.COM] Platform settings are not publicly readable:", friendlyError(error));
   }
 }
 
 /* =============================================================================
-   7. HOMEPAGE CALL-TO-ACTION BEHAVIOUR
-   -----------------------------------------------------------------------------
-   "Start My Report" is auth-aware:
-     • Signed out → opens the registration dialog.
-     • Signed in  → navigates to the report builder entry point.
+   8. HOMEPAGE CALL-TO-ACTION
    ============================================================================= */
 $("#ctaStart")?.addEventListener("click", () => {
   const isSignedIn = navUser?.classList.contains("show");
-
-  if (isSignedIn) {
-    window.location.href = "report-builder.html";
-  } else {
-    openModal("registerModal");
-  }
+  if (isSignedIn) window.location.href = "report-builder.html";
+  else openModal("registerModal");
 });
 
 /* =============================================================================
-   8. LANGUAGE SELECTOR WIRING
+   9. LANGUAGE SELECTOR
    ============================================================================= */
 const langSelect = $("#langSelect");
 let savedLang = "en";
-try { savedLang = localStorage.getItem(LANG_KEY) || "en"; } catch (_) { /* ignore */ }
-
+try { savedLang = localStorage.getItem(LANG_KEY) || "en"; } catch (_) {}
 if (langSelect) {
   langSelect.value = savedLang;
   applyLanguage(savedLang);
-
-  langSelect.addEventListener("change", (event) => {
-    applyLanguage(event.target.value);
-  });
+  langSelect.addEventListener("change", (event) => applyLanguage(event.target.value));
 } else {
   applyLanguage(savedLang);
 }
 
 /* =============================================================================
-   9. BOOTSTRAP
+   10. LIGHT SOURCE PROTECTION (deterrent only — not real security)
+   -----------------------------------------------------------------------------
+   This blocks casual right-click, F12, Ctrl+Shift+I/J/C and Ctrl+U in most
+   desktop browsers. It does NOT and cannot prevent a determined user from
+   viewing source (browser menus, network tab, saved file, mobile dev tools,
+   view-source: URL, etc.). Client code is inherently visible. Real protection
+   must come from Firebase Security Rules, server-side authorisation, and short-
+   lived signed URLs for documents — never from obfuscation.
+   ============================================================================= */
+(function lightSourceDeterrent(){
+  const blockKeys = (e) => {
+    const k = e.key;
+    if (k === "F12") { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && (k === "I" || k === "i" || k === "J" || k === "j" || k === "C" || k === "c")) {
+      e.preventDefault(); return false;
+    }
+    if (e.ctrlKey && (k === "U" || k === "u")) { e.preventDefault(); return false; }
+  };
+  document.addEventListener("keydown", blockKeys, { capture: true });
+  document.addEventListener("contextmenu", (e) => {
+    const t = e.target;
+    // Allow the context menu on form fields so users can paste
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return;
+    e.preventDefault();
+  });
+})();
+
+/* =============================================================================
+   11. BOOTSTRAP
    ============================================================================= */
 renderSignedOut();
 initFirebase();
