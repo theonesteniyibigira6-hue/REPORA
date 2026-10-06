@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>Help Center — REPORTX.COM</title>
+<meta name="description" content="Help center for REPORTX.COM — guides, FAQs and support for building your internship report." />
+<meta name="robots" content="index, follow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121f'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================================
+   REPORTX.COM — help.html
+   ========================================================================= */
+:root{
+  --navy-900:#04121f;--navy-800:#0a2138;--blue:#00A1DE;--cyan:#40D9FF;
+  --gold:#FAD201;--green:#20603D;--text:#EAF0F7;--muted:#9DB2CC;--dim:#7C93B0;
+  --line:rgba(64,217,255,.16);--line-soft:rgba(234,240,247,.09);
+  --glass:rgba(9,26,48,.72);--radius:16px;--radius-pill:999px;
+  --shadow:0 18px 44px rgba(0,0,0,.42);
+  --font:'Inter',system-ui,sans-serif;--display:'Poppins',var(--font);
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 18px)}
+body{
+  margin:0;min-height:100vh;background:var(--navy-900);color:var(--text);
+  font-family:var(--font);line-height:1.65;font-size:16px;
+  background-image:
+    radial-gradient(1000px 600px at 80% -10%, rgba(0,161,222,.18), transparent 60%),
+    radial-gradient(800px 500px at 0% 20%, rgba(32,96,61,.18), transparent 60%);
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+img,svg{max-width:100%;display:block}
+[hidden]{display:none !important}
+
+/* ---- Nav ---- */
+.nav{
+  position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;
+  background:rgba(4,18,31,.78);backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-inner{
+  width:100%;max-width:1240px;margin:auto;padding:0 22px;
+  display:flex;align-items:center;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--text)}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(145deg,#0d2540,#04121f);
+  border:1px solid rgba(64,217,255,.35);
+  display:grid;place-items:center;
+}
+.brand-word{font-family:var(--display);font-weight:700;letter-spacing:.13em;font-size:1.18rem;color:#fff}
+.brand-word span{color:var(--cyan)}
+.nav-links{display:none;align-items:center;gap:.2rem;margin-inline:auto}
+.nav-links a{
+  color:var(--muted);font-size:.9rem;font-weight:500;
+  padding:.55rem .8rem;border-radius:10px;
+  transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:#fff;background:rgba(64,217,255,.08);text-decoration:none}
+.nav-links a.active{color:var(--cyan);background:rgba(64,217,255,.1)}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:.5rem}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(140deg,var(--blue),var(--green));
+  display:grid;place-items:center;font-weight:700;color:#04121f;overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);font-size:.85rem;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.user-name{font-size:.88rem;font-weight:600;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nav-user{display:none;align-items:center;gap:.55rem}
+.nav-user.show{display:flex}
+.auth-buttons{display:flex;align-items:center;gap:.5rem}
+.auth-buttons.hide{display:none}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.72rem 1.25rem;border-radius:var(--radius-pill);
+  border:1px solid transparent;font-weight:600;font-size:.92rem;
+  cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+  min-height:42px;text-decoration:none;white-space:nowrap;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn-primary{
+  background:linear-gradient(120deg,var(--blue),#0a86c9 55%,var(--cyan));
+  color:#03131f;font-weight:700;box-shadow:0 10px 26px rgba(0,161,222,.32);
+}
+.btn-ghost{
+  border-color:rgba(64,217,255,.35);color:var(--text);
+  background:rgba(64,217,255,.06);
+}
+.btn-ghost:hover{background:rgba(64,217,255,.13)}
+.btn-quiet{color:var(--muted);padding:.55rem .85rem}
+.btn-quiet:hover{color:var(--cyan);background:rgba(64,217,255,.08);text-decoration:none}
+.btn-sm{padding:.55rem .95rem;font-size:.85rem;min-height:38px}
+.hamburger{
+  display:inline-flex;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(64,217,255,.07);border:1px solid var(--line);
+  padding:0 11px;
+}
+.hamburger span{display:block;height:2px;border-radius:2px;background:var(--text);transition:transform .28s,opacity .2s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+@media(min-width:1024px){
+  .nav-links{display:flex}
+  .hamburger{display:none}
+}
+
+/* ---- Mobile drawer ---- */
+.drawer{position:fixed;inset:0;z-index:950;visibility:hidden;pointer-events:none}
+.drawer.open{visibility:visible;pointer-events:auto}
+.drawer-scrim{
+  position:absolute;inset:0;background:rgba(3,10,20,.66);
+  backdrop-filter:blur(3px);opacity:0;transition:opacity .3s;
+}
+.drawer.open .drawer-scrim{opacity:1}
+.drawer-panel{
+  position:absolute;top:0;right:0;height:100%;width:min(340px,86vw);
+  background:linear-gradient(180deg,#0a1c33,#04121f);
+  border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(0,0,0,.55);
+  transform:translateX(102%);transition:transform .34s ease;
+  padding:1.1rem 1.15rem 1.6rem;overflow-y:auto;
+}
+.drawer.open .drawer-panel{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.drawer-close{
+  width:42px;height:42px;border-radius:12px;border:1px solid var(--line);
+  background:rgba(64,217,255,.07);color:var(--text);display:grid;place-items:center;font-size:1.1rem;
+}
+.drawer-nav{display:flex;flex-direction:column;gap:.15rem}
+.drawer-nav a{
+  color:var(--text);font-size:1rem;font-weight:500;
+  padding:.85rem .9rem;border-radius:12px;
+}
+.drawer-nav a:hover{background:rgba(64,217,255,.10);color:var(--cyan);text-decoration:none}
+
+/* ---- Apple admin ---- */
+.apple-admin{
+  position:fixed;right:22px;bottom:22px;z-index:850;
+  width:70px;height:70px;border:0;background:transparent;padding:0;
+  border-radius:50%;cursor:pointer;
+  filter:drop-shadow(0 12px 26px rgba(220,40,40,.45)) drop-shadow(0 4px 10px rgba(0,0,0,.55));
+  animation:appleFloat 5.5s ease-in-out infinite;
+  transition:transform .3s ease;
+}
+.apple-admin:hover{transform:scale(1.12)}
+.apple-admin:active{transform:scale(.96)}
+.apple-admin:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.apple-admin svg{
+  width:100%;height:100%;
+  animation:appleSpin 9s linear infinite;
+  transform-origin:50% 55%;
+}
+@keyframes appleSpin{
+  0%{transform:rotateY(0deg) rotateZ(-3deg)}
+  25%{transform:rotateY(90deg) rotateZ(2deg)}
+  50%{transform:rotateY(180deg) rotateZ(-3deg)}
+  75%{transform:rotateY(270deg) rotateZ(2deg)}
+  100%{transform:rotateY(360deg) rotateZ(-3deg)}
+}
+@keyframes appleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.apple-glow{
+  position:absolute;inset:-14px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,80,80,.38), transparent 68%);
+  filter:blur(8px);z-index:-1;
+  animation:appleGlowPulse 3.2s ease-in-out infinite;
+}
+@keyframes appleGlowPulse{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:.95;transform:scale(1.06)}}
+.apple-tip{
+  position:absolute;right:76px;bottom:24px;
+  background:rgba(4,18,31,.92);border:1px solid rgba(250,210,1,.35);
+  color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  padding:.4rem .75rem;border-radius:99px;white-space:nowrap;
+  opacity:0;transform:translateX(8px);pointer-events:none;
+  transition:opacity .25s,transform .25s;
+}
+.apple-admin:hover + .apple-tip,
+.apple-admin:focus-visible + .apple-tip{opacity:1;transform:translateX(0)}
+@media (max-width:520px){
+  .apple-admin{width:58px;height:58px;right:14px;bottom:14px}
+  .apple-tip{right:62px;bottom:16px;font-size:.66rem}
+}
+
+/* ---- Layout ---- */
+.wrap{max-width:1240px;margin:auto;padding:0 22px}
+
+/* ---- Hero ---- */
+.hero{
+  padding:60px 0 40px;
+  position:relative;
+}
+.hero h1{
+  font-family:var(--display);font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(1.9rem,4.4vw,2.8rem);
+  margin:0 0 .8rem;line-height:1.15;
+  background:linear-gradient(120deg,#fff 10%, #CFE9FB 46%, var(--cyan) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);font-size:1.02rem;max-width:64ch;margin:0 0 1.6rem}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cyan);background:rgba(64,217,255,.08);
+  border:1px solid var(--line);border-radius:var(--radius-pill);
+  padding:.35rem .85rem;margin-bottom:1rem;
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+/* ---- Search bar ---- */
+.search-shell{
+  position:relative;max-width:640px;margin-bottom:2rem;
+}
+.search-shell svg{
+  position:absolute;left:1.1rem;top:50%;transform:translateY(-50%);
+  color:var(--dim);pointer-events:none;
+}
+.search-shell input{
+  width:100%;padding:1rem 3.2rem 1rem 3.1rem;
+  background:rgba(4,14,26,.7);border:1px solid var(--line);
+  border-radius:999px;color:var(--text);font-size:1rem;
+  font-family:inherit;min-height:56px;
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+  transition:border-color .2s,box-shadow .2s;
+}
+.search-shell input:focus{
+  outline:none;border-color:rgba(64,217,255,.6);
+  box-shadow:0 0 0 4px rgba(64,217,255,.12), 0 8px 30px rgba(0,0,0,.3);
+}
+.search-shell input::placeholder{color:#5b7793}
+.search-clear{
+  position:absolute;right:.9rem;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--line-soft);background:rgba(234,240,247,.05);
+  color:var(--dim);display:none;place-items:center;font-size:1rem;cursor:pointer;
+}
+.search-clear:hover{color:var(--text)}
+.search-shell.has-value .search-clear{display:grid}
+
+/* ---- Category chips ---- */
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2.4rem}
+.chip{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.84rem;font-weight:600;
+  padding:.55rem 1rem;border-radius:99px;
+  border:1px solid var(--line-soft);background:rgba(234,240,247,.03);
+  color:var(--muted);cursor:pointer;transition:all .2s;
+}
+.chip:hover{color:var(--text);border-color:rgba(64,217,255,.4)}
+.chip.active{
+  color:#03131f;background:linear-gradient(120deg,var(--cyan),var(--blue));
+  border-color:transparent;font-weight:700;
+}
+.chip .count{
+  font-size:.72rem;font-weight:700;padding:.1rem .45rem;border-radius:99px;
+  background:rgba(234,240,247,.08);
+}
+.chip.active .count{background:rgba(3,19,31,.2);color:#03131f}
+
+/* ---- Section headings ---- */
+.section-title{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(1.2rem,2.4vw,1.5rem);margin:0 0 .35rem;
+}
+.section-lead{color:var(--muted);font-size:.92rem;margin:0 0 1.4rem;max-width:70ch}
+
+/* ---- Category cards (top grid) ---- */
+.cat-grid{
+  display:grid;gap:16px;grid-template-columns:1fr;
+  margin-bottom:3rem;
+}
+@media(min-width:600px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+.cat-card{
+  position:relative;
+  background:linear-gradient(180deg,rgba(16,38,66,.72),rgba(9,26,48,.62));
+  border:1px solid var(--line-soft);border-radius:14px;
+  padding:1.4rem 1.35rem;
+  cursor:pointer;text-align:left;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.cat-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(64,217,255,.36);
+  box-shadow:0 0 0 1px rgba(64,217,255,.18),0 16px 40px rgba(0,161,222,.15);
+}
+.cat-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:grid;place-items:center;margin-bottom:.9rem;
+  background:linear-gradient(145deg,rgba(0,161,222,.2),rgba(64,217,255,.06));
+  border:1px solid rgba(64,217,255,.28);color:var(--cyan);
+}
+.cat-icon.gold{background:linear-gradient(145deg,rgba(250,210,1,.2),rgba(250,210,1,.05));border-color:rgba(250,210,1,.35);color:var(--gold)}
+.cat-icon.green{background:linear-gradient(145deg,rgba(32,96,61,.32),rgba(32,96,61,.08));border-color:rgba(32,96,61,.5);color:#6fd39c}
+.cat-icon svg{width:22px;height:22px}
+.cat-card h3{font-family:var(--display);font-size:1rem;font-weight:600;margin:0 0 .35rem}
+.cat-card p{color:var(--muted);font-size:.86rem;margin:0}
+.cat-card .cat-count{
+  position:absolute;top:1rem;right:1rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.06em;
+  color:var(--dim);background:rgba(234,240,247,.05);
+  border:1px solid var(--line-soft);border-radius:99px;
+  padding:.2rem .55rem;
+}
+
+/* ---- Article list ---- */
+.article-list{
+  display:grid;gap:10px;margin-bottom:3rem;
+}
+.article{
+  border:1px solid var(--line-soft);border-radius:14px;
+  background:linear-gradient(180deg,rgba(16,38,66,.58),rgba(9,26,48,.46));
+  overflow:hidden;transition:border-color .25s,background .25s;
+}
+.article[open]{
+  border-color:rgba(64,217,255,.32);
+  background:linear-gradient(180deg,rgba(16,38,66,.78),rgba(9,26,48,.6));
+}
+.article summary{
+  cursor:pointer;list-style:none;
+  padding:1.05rem 3rem 1.05rem 1.25rem;
+  position:relative;
+  font-weight:600;font-size:.95rem;color:var(--text);
+}
+.article summary::-webkit-details-marker{display:none}
+.article summary::after{
+  content:"";position:absolute;right:1.2rem;top:50%;
+  width:9px;height:9px;border-right:2px solid var(--cyan);border-bottom:2px solid var(--cyan);
+  transform:translateY(-70%) rotate(45deg);
+  transition:transform .28s ease;
+}
+.article[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.article .article-meta{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--dim);margin-right:.7rem;
+}
+.article-meta .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.article-body{
+  padding:0 1.25rem 1.15rem;
+  color:var(--muted);font-size:.92rem;line-height:1.75;
+  border-top:1px solid var(--line-soft);
+  padding-top:1rem;
+}
+.article-body p{margin:0 0 .8em}
+.article-body p:last-child{margin-bottom:0}
+.article-body ul,.article-body ol{margin:0 0 .8em;padding-left:1.4rem;display:grid;gap:.3rem}
+.article-body li{font-size:.9rem}
+.article-body strong{color:var(--text)}
+.article-body code{
+  background:rgba(64,217,255,.1);color:var(--cyan);
+  border:1px solid rgba(64,217,255,.2);border-radius:6px;
+  padding:.05rem .4rem;font-size:.82em;font-family:monospace;
+}
+.article-body a{color:var(--cyan);font-weight:600}
+.article-body .tip{
+  display:flex;gap:.7rem;align-items:flex-start;
+  border:1px solid var(--line);border-radius:10px;
+  padding:.75rem .9rem;margin:.8rem 0;
+  background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));
+  font-size:.86rem;
+}
+.article-body .tip.gold{
+  border-color:rgba(250,210,1,.32);
+  background:linear-gradient(180deg,rgba(250,210,1,.09),rgba(250,210,1,.02));
+}
+.article-body .tip svg{flex:0 0 auto;margin-top:2px}
+.article-body .tip strong{color:var(--text)}
+
+/* ---- No results ---- */
+.no-results{
+  text-align:center;padding:50px 20px;
+  border:1px dashed var(--line);border-radius:14px;
+  background:linear-gradient(180deg,rgba(64,217,255,.04),rgba(64,217,255,.01));
+  margin-bottom:3rem;
+}
+.no-results-icon{
+  width:56px;height:56px;border-radius:14px;margin:0 auto 1rem;
+  display:grid;place-items:center;
+  background:rgba(64,217,255,.08);border:1px solid var(--line);
+  color:var(--cyan);
+}
+.no-results-icon svg{width:24px;height:24px}
+.no-results h3{
+  font-family:var(--display);font-weight:600;font-size:1.05rem;margin:0 0 .4rem;
+}
+.no-results p{color:var(--muted);font-size:.9rem;margin:0}
+
+/* ---- Contact card ---- */
+.contact-card{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:2rem 1.8rem;
+  background:
+    radial-gradient(600px 200px at 100% 0%, rgba(0,161,222,.14), transparent 60%),
+    linear-gradient(180deg,rgba(16,38,66,.78),rgba(9,26,48,.66));
+  margin-bottom:3rem;
+  display:grid;gap:1.4rem;grid-template-columns:1fr;
+}
+@media(min-width:720px){.contact-card{grid-template-columns:1.4fr 1fr;align-items:center}}
+.contact-card h3{
+  font-family:var(--display);font-weight:600;font-size:1.15rem;margin:0 0 .5rem;
+}
+.contact-card p{color:var(--muted);font-size:.92rem;margin:0 0 1.1rem;max-width:52ch}
+.contact-card .contact-actions{display:flex;flex-wrap:wrap;gap:.6rem}
+.contact-info{
+  display:grid;gap:.7rem;
+  border-left:1px solid var(--line-soft);
+  padding-left:1.4rem;
+}
+@media(max-width:719px){.contact-info{border-left:0;border-top:1px solid var(--line-soft);padding:1.4rem 0 0}}
+.contact-info .row{
+  display:flex;align-items:center;gap:.7rem;
+  font-size:.88rem;color:var(--muted);
+}
+.contact-info .row svg{width:16px;height:16px;flex:0 0 auto;color:var(--cyan)}
+.contact-info .row b{display:block;color:var(--text);font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.1rem}
+.contact-info .row span{color:var(--muted)}
+.contact-info .row a{color:var(--cyan)}
+
+/* ---- Quick links ---- */
+.quick-links{
+  display:grid;gap:12px;grid-template-columns:1fr;
+  margin-bottom:3rem;
+}
+@media(min-width:640px){.quick-links{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.quick-links{grid-template-columns:repeat(4,1fr)}}
+.quick-link{
+  display:flex;align-items:center;gap:.9rem;
+  padding:1rem 1.1rem;border-radius:14px;
+  border:1px solid var(--line-soft);
+  background:linear-gradient(180deg,rgba(16,38,66,.55),rgba(9,26,48,.45));
+  color:var(--text);
+  transition:transform .2s,border-color .2s,background .2s;
+  text-decoration:none;
+}
+.quick-link:hover{
+  text-decoration:none;transform:translateY(-2px);
+  border-color:rgba(64,217,255,.4);background:rgba(64,217,255,.06);
+}
+.quick-link .ql-icon{
+  width:38px;height:38px;border-radius:10px;flex:0 0 auto;
+  display:grid;place-items:center;
+  background:rgba(64,217,255,.1);border:1px solid var(--line);
+  color:var(--cyan);
+}
+.quick-link .ql-icon.gold{background:rgba(250,210,1,.1);border-color:rgba(250,210,1,.3);color:var(--gold)}
+.quick-link .ql-icon.green{background:rgba(32,96,61,.24);border-color:rgba(32,96,61,.5);color:#6fd39c}
+.quick-link svg{width:18px;height:18px}
+.quick-link .ql-text strong{display:block;font-size:.9rem;font-weight:600;margin-bottom:.1rem}
+.quick-link .ql-text span{font-size:.78rem;color:var(--dim)}
+
+/* ---- Notice ---- */
+.notice{
+  display:flex;gap:.85rem;align-items:flex-start;
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:1rem 1.15rem;font-size:.88rem;color:var(--muted);
+  background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));
+  margin-bottom:2rem;line-height:1.6;
+}
+.notice strong{color:var(--text)}
+.notice svg{flex:0 0 auto;margin-top:2px}
+
+/* ---- Footer ---- */
+.footer{
+  border-top:1px solid var(--line-soft);
+  padding:46px 0 26px;margin-top:2rem;
+  background:linear-gradient(180deg, rgba(4,18,31,.4), rgba(2,8,16,.9));
+}
+.footer-grid{
+  display:grid;gap:30px;grid-template-columns:1fr;
+  margin-bottom:32px;
+}
+@media(min-width:640px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.footer-brand p{color:var(--muted);font-size:.86rem;max-width:36ch;margin:.9rem 0 0}
+.footer h4{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;margin:0 0 .9rem;font-weight:700;
+}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{color:var(--muted);font-size:.86rem}
+.footer-links a:hover{color:var(--cyan);text-decoration:none}
+.footer-bottom{
+  padding-top:22px;border-top:1px solid var(--line-soft);
+  display:flex;flex-wrap:wrap;gap:.8rem;justify-content:space-between;align-items:center;
+  font-size:.8rem;color:var(--dim);
+}
+.footer-bottom nav{display:flex;flex-wrap:wrap;gap:1rem}
+.footer-bottom a{color:var(--dim)}
+.footer-bottom a:hover{color:var(--cyan)}
+
+/* ---- Toast ---- */
+.toast-stack{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  z-index:1200;display:flex;flex-direction:column;gap:.55rem;
+  width:min(430px,calc(100vw - 32px));pointer-events:none;
+}
+.toast{
+  pointer-events:auto;background:rgba(4,18,31,.94);
+  border:1px solid var(--line);border-left:3px solid var(--cyan);
+  border-radius:12px;padding:.8rem 1rem;font-size:.87rem;color:var(--text);
+  box-shadow:var(--shadow);backdrop-filter:blur(12px);
+  animation:toastIn .3s ease;
+}
+.toast.success{border-left-color:#3ecf8e}
+.toast.error{border-left-color:#ff6b6b}
+.toast.leaving{animation:toastOut .25s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
+
+mark{
+  background:rgba(250,210,1,.28);color:#fff;
+  padding:.05em .15em;border-radius:4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+  .apple-admin svg{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="REPORTX.COM home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+          <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
+          <path d="M12 55h40" stroke="#FAD201" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-word">REPORT<span>X</span>.COM</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="help.html" class="active" aria-current="page">Help</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="auth-buttons" id="authButtons">
+        <a class="btn btn-quiet btn-sm" href="index.html#login">Log In</a>
+        <a class="btn btn-primary btn-sm" href="index.html#register">Create Account</a>
+      </div>
+
+      <div class="nav-user" id="navUser">
+        <span class="avatar" id="navAvatar" aria-hidden="true">R</span>
+        <span class="user-name" id="navName">—</span>
+        <a class="btn btn-ghost btn-sm" href="dashboard.html">Dashboard</a>
+      </div>
+
+      <button type="button" class="hamburger" id="hamburger" aria-expanded="false" aria-controls="drawer" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <div class="drawer-scrim" data-close-drawer></div>
+  <div class="drawer-panel">
+    <div class="drawer-head">
+      <span class="brand-word">REPORT<span>X</span>.COM</span>
+      <button type="button" class="drawer-close" id="drawerClose" aria-label="Close navigation menu">✕</button>
+    </div>
+    <nav class="drawer-nav" aria-label="Mobile primary">
+      <a href="index.html" data-close-drawer>Home</a>
+      <a href="index.html#how" data-close-drawer>How It Works</a>
+      <a href="index.html#features" data-close-drawer>Features</a>
+      <a href="index.html#pricing" data-close-drawer>Pricing</a>
+      <a href="help.html" data-close-drawer>Help Center</a>
+      <a href="contact.html" data-close-drawer>Contact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- 3D admin apple -->
+<button type="button" class="apple-admin" id="adminApple" aria-label="Open the administration panel" title="Administration">
+  <span class="apple-glow" aria-hidden="true"></span>
+  <svg viewBox="0 0 100 110" aria-hidden="true">
+    <path d="M52 18c-2-8 4-14 12-15 1 8-4 15-12 15Z" fill="#4CAF50"/>
+    <path d="M52 18c2-6 7-10 12-11" stroke="#2E7D32" stroke-width="1" fill="none"/>
+    <path d="M50 20c0-6 0-10 1-14" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
+    <defs>
+      <radialGradient id="appleBody" cx="38%" cy="32%" r="72%">
+        <stop offset="0%" stop-color="#FF8A80"/>
+        <stop offset="35%" stop-color="#EF3B2D"/>
+        <stop offset="75%" stop-color="#B71C1C"/>
+        <stop offset="100%" stop-color="#7A0E0E"/>
+      </radialGradient>
+      <radialGradient id="appleHighlight" cx="30%" cy="24%" r="34%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".75"/>
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <path d="M50 22c-10-6-26-4-30 10-3 11 2 30 12 44 5 7 11 11 18 11s13-4 18-11c10-14 15-33 12-44-4-14-20-16-30-10Z" fill="url(#appleBody)"/>
+    <ellipse cx="42" cy="42" rx="15" ry="20" fill="url(#appleHighlight)"/>
+    <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,.4)"/>
+  </svg>
+</button>
+<span class="apple-tip">Admin Panel → admin.html</span>
+
+<main class="wrap">
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="eyebrow">Help Center</span>
+    <h1>How can we help you today?</h1>
+    <p>Search guides, browse categories, or jump straight to the page you need. Most questions about building and exporting your internship report are answered below.</p>
+
+    <div class="search-shell" id="searchShell">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <label for="helpSearch" class="sr-only" style="position:absolute;left:-9999px">Search help articles</label>
+      <input type="search" id="helpSearch" placeholder="Search: e.g. payment, PDF export, auto-save, Google sign-in…" autocomplete="off" />
+      <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+    </div>
+
+    <!-- Category chips -->
+    <div class="chips" id="chips" role="tablist" aria-label="Help categories">
+      <button type="button" class="chip active" data-cat="all" role="tab" aria-selected="true">All articles <span class="count" id="countAll">0</span></button>
+      <button type="button" class="chip" data-cat="getting-started" role="tab" aria-selected="false">Getting started <span class="count" id="countGetting">0</span></button>
+      <button type="button" class="chip" data-cat="internship" role="tab" aria-selected="false">Internship details <span class="count" id="countInternship">0</span></button>
+      <button type="button" class="chip" data-cat="reports" role="tab" aria-selected="false">Report builder <span class="count" id="countReports">0</span></button>
+      <button type="button" class="chip" data-cat="payments" role="tab" aria-selected="false">Payments &amp; access <span class="count" id="countPayments">0</span></button>
+      <button type="button" class="chip" data-cat="account" role="tab" aria-selected="false">Account &amp; security <span class="count" id="countAccount">0</span></button>
+      <button type="button" class="chip" data-cat="troubleshoot" role="tab" aria-selected="false">Troubleshooting <span class="count" id="countTroubleshoot">0</span></button>
+    </div>
+  </section>
+
+  <!-- Category cards -->
+  <section>
+    <h2 class="section-title">Browse by category</h2>
+    <p class="section-lead">Six focused guides covering every part of the platform.</p>
+
+    <div class="cat-grid" id="catGrid">
+      <button type="button" class="cat-card" data-goto-cat="getting-started">
+        <span class="cat-count" id="catCardGetting">0</span>
+        <div class="cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2 2 7l10 5 10-5-10-5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Getting started</h3>
+        <p>Create an account, log in, and tour your dashboard.</p>
+      </button>
+
+      <button type="button" class="cat-card" data-goto-cat="internship">
+        <span class="cat-count" id="catCardInternship">0</span>
+        <div class="cat-icon green" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Internship details</h3>
+        <p>Host school, mentor, dates and teaching load.</p>
+      </button>
+
+      <button type="button" class="cat-card" data-goto-cat="reports">
+        <span class="cat-count" id="catCardReports">0</span>
+        <div class="cat-icon gold" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Report builder</h3>
+        <p>Build chapters, save drafts, track completion.</p>
+      </button>
+
+      <button type="button" class="cat-card" data-goto-cat="payments">
+        <span class="cat-count" id="catCardPayments">0</span>
+        <div class="cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M7 15h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Payments &amp; access</h3>
+        <p>Submit references, get verified, receive codes.</p>
+      </button>
+
+      <button type="button" class="cat-card" data-goto-cat="account">
+        <span class="cat-count" id="catCardAccount">0</span>
+        <div class="cat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Account &amp; security</h3>
+        <p>Password reset, privacy, and who can see your work.</p>
+      </button>
+
+      <button type="button" class="cat-card" data-goto-cat="troubleshoot">
+        <span class="cat-count" id="catCardTroubleshoot">0</span>
+        <div class="cat-icon green" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg>
+        </div>
+        <h3>Troubleshooting</h3>
+        <p>Fix common issues: sign-in errors, missing data, exports.</p>
+      </button>
+    </div>
+  </section>
+
+  <!-- Article list -->
+  <section>
+    <h2 class="section-title" id="articlesHeading">All help articles</h2>
+    <p class="section-lead" id="articlesLead">Tap any article to expand it. Your search filters the list live.</p>
+
+    <div class="article-list" id="articleList"></div>
+
+    <div class="no-results" id="noResults" hidden>
+      <div class="no-results-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3M8 11h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <h3>No articles match your search</h3>
+      <p>Try different keywords, or clear the search to see everything.</p>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <section>
+    <h2 class="section-title">Jump straight to a page</h2>
+    <p class="section-lead">Quick links to the places users visit most often.</p>
+
+    <div class="quick-links">
+      <a class="quick-link" href="report-builder.html">
+        <span class="ql-icon gold" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="ql-text">
+          <strong>Report builder</strong>
+          <span>Build and save your chapters</span>
+        </span>
+      </a>
+
+      <a class="quick-link" href="internship-details.html">
+        <span class="ql-icon green" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="ql-text">
+          <strong>Internship details</strong>
+          <span>Host school, mentor, dates</span>
+        </span>
+      </a>
+
+      <a class="quick-link" href="my-reports.html">
+        <span class="ql-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M8 3h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </span>
+        <span class="ql-text">
+          <strong>My reports</strong>
+          <span>All your drafts in one place</span>
+        </span>
+      </a>
+
+      <a class="quick-link" href="payment-verification.html">
+        <span class="ql-icon gold" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M7 15h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </span>
+        <span class="ql-text">
+          <strong>Payment verification</strong>
+          <span>Submit reference, enter code</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact card -->
+  <section>
+    <div class="contact-card">
+      <div>
+        <h3>Still need help?</h3>
+        <p>If your question isn't answered here, reach out. Include your registered email and, if relevant, the report ID — that helps us find your account quickly.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="contact.html">Contact support</a>
+          <a class="btn btn-ghost" href="index.html#faq">Read the public FAQ</a>
+        </div>
+      </div>
+      <div class="contact-info">
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Email</b><span id="contactEmail">support@reportx.com</span></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Phone</b><span id="contactPhone">+250 788 000 000</span></span>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><b>Response time</b><span>Within 24 hours on business days</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notice -->
+  <div class="notice">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="#40D9FF" stroke-width="1.6"/>
+      <path d="M12 8h.01M11 12h1v4h1" stroke="#40D9FF" stroke-width="1.7" stroke-linecap="round"/>
+    </svg>
+    <span>
+      <strong>Honest scope.</strong> REPORTX.COM is an independent platform. Final report requirements and acceptance remain subject to your institution. Nothing on this site replaces your institution's own review.
+    </span>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="REPORTX.COM home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+              <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
+              <path d="M12 55h40" stroke="#FAD201" stroke-width="3.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-word">REPORT<span>X</span>.COM</span>
+        </a>
+        <p>Your Experience. Your Growth. Your Professional Story.</p>
+      </div>
+
+      <div>
+        <h4>Platform</h4>
+        <nav class="footer-links" aria-label="Footer platform">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="report-builder.html">Report Builder</a>
+          <a href="internship-details.html">Internship Details</a>
+          <a href="my-reports.html">My Reports</a>
+          <a href="payment-verification.html">Payment Verification</a>
+        </nav>
+      </div>
+
+      <div>
+        <h4>Support</h4>
+        <nav class="footer-links" aria-label="Footer support">
+          <a href="help.html">Help Center</a>
+          <a href="contact.html">Contact</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#about">About</a>
+        </nav>
+      </div>
+
+      <div>
+        <h4>Legal</h4>
+        <nav class="footer-links" aria-label="Footer legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> REPORTX.COM — All rights reserved.</span>
+      <nav aria-label="Footer legal quick">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script type="module">
+/* =========================================================================
+   REPORTX.COM — help.html
+   -----------------------------------------------------------------------------
+   Live help center with search, category filter, and auth-aware header.
+   Reads optional contact info from platform_settings/public so the
+   administrator can update it without editing this file.
+   ========================================================================= */
+
+/* ---------- Firebase configuration (same project) ---------- */
+const firebaseConfig = {
+  apiKey:            "AIzaSyCHKjRQwalZSoV9sOQR5ZiPM9btBXxD9yo",
+  authDomain:        "repora-2a29c.firebaseapp.com",
+  projectId:         "repora-2a29c",
+  storageBucket:     "repora-2a29c.firebasestorage.app",
+  messagingSenderId: "41097966352",
+  appId:             "1:41097966352:web:c60e0827727c80fa332b95"
+};
+
+/* ---------- Helpers ---------- */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+$("#year").textContent = new Date().getFullYear();
+
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+function highlight(text, needle) {
+  if (!needle) return escapeHtml(text);
+  const esc = escapeHtml(text);
+  try {
+    const re = new RegExp("(" + needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+    return esc.replace(re, "<mark>$1</mark>");
+  } catch { return esc; }
+}
+
+/* ---------- Toast ---------- */
+const toastStack = $("#toastStack");
+function toast(msg, type = "info", duration = 3600) {
+  if (!toastStack) return;
+  const el = document.createElement("div");
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  toastStack.appendChild(el);
+  const rm = () => { el.classList.add("leaving"); setTimeout(() => el.remove(), 260); };
+  const t = setTimeout(rm, duration);
+  el.addEventListener("click", () => { clearTimeout(t); rm(); });
+}
+
+/* ---------- Drawer ---------- */
+const drawer = $("#drawer");
+const hamburger = $("#hamburger");
+function closeDrawer() {
+  drawer?.classList.remove("open");
+  document.body.style.overflow = "";
+  hamburger?.setAttribute("aria-expanded", "false");
+}
+hamburger?.addEventListener("click", () => {
+  const open = drawer?.classList.toggle("open");
+  document.body.style.overflow = open ? "hidden" : "";
+  hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+});
+$("#drawerClose")?.addEventListener("click", closeDrawer);
+document.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close-drawer]")) closeDrawer();
+});
+
+/* ---------- 3D admin apple ---------- */
+$("#adminApple")?.addEventListener("click", () => {
+  const a = $("#adminApple");
+  a.style.transform = "scale(0.92)";
+  setTimeout(() => { window.location.href = "admin.html"; }, 120);
+});
+
+/* =========================================================================
+   HELP ARTICLES DATA
+   Each article: { id, cat, title, body (HTML string) }
+   ========================================================================= */
+const CATEGORIES = {
+  "getting-started": { label: "Getting started" },
+  "internship":      { label: "Internship details" },
+  "reports":         { label: "Report builder" },
+  "payments":        { label: "Payments & access" },
+  "account":         { label: "Account & security" },
+  "troubleshoot":    { label: "Troubleshooting" }
+};
+
+const ARTICLES = [
+  /* ---------------- GETTING STARTED ---------------- */
+  {
+    id: "gs-create",
+    cat: "getting-started",
+    title: "How do I create a REPORTX.COM account?",
+    body: `
+      <p>Creating an account is free and takes less than a minute.</p>
+      <ol>
+        <li>Open the <a href="index.html">homepage</a>.</li>
+        <li>Click <strong>Create Account</strong> in the top-right corner.</li>
+        <li>Enter your <strong>full legal name</strong>, <strong>email</strong>, and a <strong>password</strong> (at least 8 characters).</li>
+        <li>Optionally add your phone number and country.</li>
+        <li>Accept the Terms of Service and Privacy Policy.</li>
+        <li>Click <strong>Create Account</strong>.</li>
+      </ol>
+      <p>You will be signed in and taken straight to your dashboard. Your email is used for password recovery, so use one you check regularly.</p>
+      <div class="tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 8h.01M11 12h1v4h1" stroke="#40D9FF" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#40D9FF" stroke-width="1.6"/></svg><span>You can also sign up with <strong>Continue with Google</strong> — one click, no password to remember.</span></div>
+    `
+  },
+  {
+    id: "gs-google",
+    cat: "getting-started",
+    title: "How do I sign in with Google?",
+    body: `
+      <p>If you signed up with Google, use the same button to sign back in:</p>
+      <ul>
+        <li>On the <a href="index.html">homepage</a>, click <strong>Log In</strong>.</li>
+        <li>Choose <strong>Continue with Google</strong>.</li>
+        <li>Pick the Google account you registered with.</li>
+      </ul>
+      <p>If you previously signed up with email/password, use that instead — the two methods are separate.</p>
+      <div class="tip gold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01" stroke="#FAD201" stroke-width="1.8" stroke-linecap="round"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#FAD201" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Google sign-in uses a popup. If your browser blocks it, allow popups for this site and try again.</span></div>
+    `
+  },
+  {
+    id: "gs-dashboard",
+    cat: "getting-started",
+    title: "What can I see on my dashboard?",
+    body: `
+      <p>The dashboard is your home base after signing in. From there you can:</p>
+      <ul>
+        <li>See your profile details (name, email, phone, country).</li>
+        <li>Open the <a href="report-builder.html">Report Builder</a> to start or continue a report.</li>
+        <li>Open <a href="internship-details.html">Internship Details</a> to fill in host school, mentor and dates.</li>
+        <li>View all your drafts from <a href="my-reports.html">My Reports</a>.</li>
+        <li>Go to <a href="payment-verification.html">Payment Verification</a> when you're ready to unlock export.</li>
+      </ul>
+      <p>Every card on the dashboard is a direct link — click any of them to jump straight in.</p>
+    `
+  },
+  {
+    id: "gs-first-report",
+    cat: "getting-started",
+    title: "What is the fastest way to start my first report?",
+    body: `
+      <p>Follow this order for the smoothest experience:</p>
+      <ol>
+        <li><strong>Create your account</strong> — free, one minute.</li>
+        <li>Open <strong>Internship Details</strong> and fill in your host school, mentor, dates and teaching load.</li>
+        <li>Open the <strong>Report Builder</strong> and work through the six steps.</li>
+        <li>Everything saves automatically — you can stop at any point and come back later.</li>
+        <li>When you're ready to export, go to <strong>Payment Verification</strong>.</li>
+      </ol>
+      <p>You do not need to pay before starting. Draft creation and saving are always free.</p>
+    `
+  },
+
+  /* ---------------- INTERNSHIP ---------------- */
+  {
+    id: "int-why",
+    cat: "internship",
+    title: "Why do I need to fill in Internship Details separately?",
+    body: `
+      <p>Internship Details is a dedicated page for the <strong>facts</strong> of your attachment: which school, which mentor, which dates. Keeping it separate means:</p>
+      <ul>
+        <li>You can reuse the same details across multiple report drafts.</li>
+        <li>Changes to your school or mentor propagate to every report that references the record.</li>
+        <li>Your report can reference consistent data instead of retyping it per draft.</li>
+      </ul>
+      <p>Everything you enter is saved automatically under your account — no button to press.</p>
+    `
+  },
+  {
+    id: "int-fields",
+    cat: "internship",
+    title: "What does each field in Internship Details mean?",
+    body: `
+      <p>Four sections, each with a clear purpose:</p>
+      <ul>
+        <li><strong>Host School</strong> — official name, type, level, language, and location (province, district, sector, cell, village).</li>
+        <li><strong>People</strong> — headteacher, school mentor (required), mentor's subject, TTC supervisor, and any notes on your mentorship.</li>
+        <li><strong>Dates</strong> — start date, end date, academic year, term, teaching days per week, and hours per day.</li>
+        <li><strong>Teaching Load</strong> — classes taught, subjects taught, lesson count, approximate learner count, responsibilities, and resources used.</li>
+      </ul>
+      <p>The page auto-calculates duration in days and weeks once both dates are filled, and shows weekly hours if you provide days-per-week and hours-per-day.</p>
+    `
+  },
+  {
+    id: "int-edit",
+    cat: "internship",
+    title: "Can I edit my internship details later?",
+    body: `
+      <p>Yes. Everything on <a href="internship-details.html">Internship Details</a> is fully editable at any time. Just open the page and change any field — auto-save kicks in immediately.</p>
+      <p>When you generate your report, the report uses whatever is in your internship record at that moment. If you update the record and re-generate, the report reflects the new data.</p>
+    `
+  },
+
+  /* ---------------- REPORTS ---------------- */
+  {
+    id: "rep-autosave",
+    cat: "reports",
+    title: "Does the Report Builder really save automatically?",
+    body: `
+      <p>Yes. Every change you make — typing a field, adding an activity, changing a dropdown — is saved to your Firestore account after about one second of inactivity.</p>
+      <p>Look at the top-right corner of the <a href="report-builder.html">Report Builder</a>: you'll see one of three states:</p>
+      <ul>
+        <li><strong>Saving…</strong> — a write is in progress.</li>
+        <li><strong>All changes saved</strong> — the latest version is safely in the cloud.</li>
+        <li><strong>Save failed</strong> — the write did not go through; check your internet connection.</li>
+      </ul>
+      <div class="tip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 8h.01M11 12h1v4h1" stroke="#40D9FF" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#40D9FF" stroke-width="1.6"/></svg><span>Even if you close the tab accidentally, your last save is kept. When you reopen the builder, your draft is exactly where you left it.</span></div>
+    `
+  },
+  {
+    id: "rep-six-steps",
+    cat: "reports",
+    title: "What are the six steps in the Report Builder?",
+    body: `
+      <ol>
+        <li><strong>Student Information</strong> — your name, registration number, college, department, teaching combination.</li>
+        <li><strong>Host School</strong> — school identity and location (mirrors the Internship Details page).</li>
+        <li><strong>Internship Details</strong> — title, dates, classes, subjects, lessons, timetable.</li>
+        <li><strong>Activities &amp; Events</strong> — add as many entries as you need: classroom observations, school events, challenges, achievements.</li>
+        <li><strong>Reflection &amp; Growth</strong> — competencies acquired, challenges, personal growth, recommendations, conclusion.</li>
+        <li><strong>Review</strong> — a clean summary of everything you've entered, with a final chance to jump back and edit.</li>
+      </ol>
+      <p>The progress bar at the top updates automatically. You can jump to any step with the pill buttons.</p>
+    `
+  },
+  {
+    id: "rep-activities",
+    cat: "reports",
+    title: "How do I add and organise activities?",
+    body: `
+      <p>On step four of the Report Builder, click <strong>Add activity or event</strong>. Each entry has:</p>
+      <ul>
+        <li>A title (short description of what happened).</li>
+        <li>Date, category, and detailed description.</li>
+        <li>Your role in the activity.</li>
+        <li>Skills acquired, challenges faced, and a personal reflection.</li>
+      </ul>
+      <p>Empty entries are silently dropped when saving — so you can add several blank rows and only fill the ones you need.</p>
+      <p>To remove an entry, click <strong>Remove</strong> in its header.</p>
+    `
+  },
+  {
+    id: "rep-drafts",
+    cat: "reports",
+    title: "Where can I see all my drafts?",
+    body: `
+      <p>Open <a href="my-reports.html">My Reports</a>. That page lists every draft in your account, with:</p>
+      <ul>
+        <li>Title, status badge, last-updated time.</li>
+        <li>Host school and activity count.</li>
+        <li>A completion percentage bar.</li>
+        <li>Actions: <strong>Open</strong>, <strong>Rename</strong>, <strong>Copy</strong>, <strong>Delete</strong>.</li>
+      </ul>
+      <p>You can search by title and filter by status (draft, ready, paid) at the top.</p>
+    `
+  },
+  {
+    id: "rep-export",
+    cat: "reports",
+    title: "How do I export my report to PDF or DOCX?",
+    body: `
+      <p>Export is unlocked after your payment has been verified. The steps are:</p>
+      <ol>
+        <li>Finish your draft in the <a href="report-builder.html">Report Builder</a>.</li>
+        <li>Go to <a href="payment-verification.html">Payment Verification</a> and submit your payment reference.</li>
+        <li>An administrator verifies your payment and grants access.</li>
+        <li>Return to the builder (or open it from <strong>My Reports</strong>) and the export options become active.</li>
+      </ol>
+      <p>PDF and DOCX are the priority formats. PNG, HTML and ZIP are planned for a later release.</p>
+    `
+  },
+
+  /* ---------------- PAYMENTS ---------------- */
+  {
+    id: "pay-how",
+    cat: "payments",
+    title: "How does payment verification work?",
+    body: `
+      <p>REPORTX.COM uses <strong>manual payment verification</strong>. Here is the exact flow:</p>
+      <ol>
+        <li>You pay using the instructions published by the administrator (shown on the payment page).</li>
+        <li>You submit your <strong>payment reference</strong> and <strong>report ID</strong> on the payment page.</li>
+        <li>An administrator independently confirms the payment.</li>
+        <li>Once verified, your report is marked <strong>paid</strong> and export unlocks.</li>
+      </ol>
+      <p>You can keep drafting and saving for free at every step — payment only unlocks the final export.</p>
+      <div class="tip gold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01" stroke="#FAD201" stroke-width="1.8" stroke-linecap="round"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="#FAD201" stroke-width="1.6" stroke-linejoin="round"/></svg><span>No automated payment gateway is used. This keeps the process transparent and avoids charging you any gateway fees.</span></div>
+    `
+  },
+  {
+    id: "pay-reference",
+    cat: "payments",
+    title: "What is a payment reference and where do I find it?",
+    body: `
+      <p>Your <strong>payment reference</strong> is the unique code or transaction ID you receive when you make the payment. It is your proof that a payment was made.</p>
+      <ul>
+        <li><strong>Mobile money:</strong> the SMS you receive includes a transaction ID (e.g. <code>MOMO-2025-00123456</code>).</li>
+        <li><strong>Bank transfer:</strong> the receipt from your bank shows a transaction reference.</li>
+        <li><strong>Cash:</strong> use the receipt number if one is provided, otherwise a short note describing when and where you paid.</li>
+      </ul>
+      <p>Enter the reference exactly as it appears. Typos are the most common reason a payment takes longer to verify.</p>
+    `
+  },
+  {
+    id: "pay-code",
+    cat: "payments",
+    title: "What is an access code and when do I need one?",
+    body: `
+      <p>An access code is an optional extra layer the administrator can issue after approving your payment. It is a short code like <code>ABCD-EFGH-IJKL</code> that you enter on the payment page to unlock export directly.</p>
+      <p>You do not need an access code if the administrator has already approved your payment through the panel — the report is unlocked as soon as the payment request is marked <strong>approved</strong>.</p>
+      <p>Codes are single-use and expire. If you lose yours, contact support with your registered email.</p>
+    `
+  },
+  {
+    id: "pay-rejected",
+    cat: "payments",
+    title: "My payment was rejected. What should I do?",
+    body: `
+      <p>Rejections are usually due to a mismatch between what you submitted and what the administrator sees. Common reasons:</p>
+      <ul>
+        <li>The reference was not found in the payment records.</li>
+        <li>The amount submitted did not match the amount received.</li>
+        <li>The reference was already used by an earlier request.</li>
+      </ul>
+      <p>Open <a href="payment-verification.html">Payment Verification</a> — the reason for the rejection is shown on your payment request card. Correct any mistake and submit a new reference.</p>
+    `
+  },
+
+  /* ---------------- ACCOUNT ---------------- */
+  {
+    id: "acc-reset",
+    cat: "account",
+    title: "How do I reset my password?",
+    body: `
+      <p>On the homepage, click <strong>Log In</strong>, then click <strong>Forgot password?</strong>. Enter your registered email and a reset link will be sent to your inbox.</p>
+      <p>If you signed up with Google, there is no password to reset — just use <strong>Continue with Google</strong> again.</p>
+    `
+  },
+  {
+    id: "acc-privacy",
+    cat: "account",
+    title: "Who can see my reports?",
+    body: `
+      <p>Only you. Every document you create — internship details, reports, activities, payment requests — is stored in your own account and governed by owner-based Firestore Security Rules.</p>
+      <p>An administrator can see metadata (titles, statuses, payment references) for support and verification, but report content is yours alone.</p>
+      <p>Read the full <a href="privacy.html">Privacy Policy</a> for details.</p>
+    `
+  },
+  {
+    id: "acc-delete",
+    cat: "account",
+    title: "How do I delete a report?",
+    body: `
+      <p>Open <a href="my-reports.html">My Reports</a>, find the report card, and click <strong>Delete</strong>. You'll be asked to confirm — this cannot be undone.</p>
+      <p>Deleting a report removes it and its content permanently. If you only want to stop working on it, leave it as a draft instead — no penalty for keeping old drafts.</p>
+    `
+  },
+  {
+    id: "acc-logout",
+    cat: "account",
+    title: "How do I log out?",
+    body: `
+      <p>Click <strong>Log Out</strong> in the top-right of any signed-in page. You will be returned to the homepage and your session will end immediately.</p>
+      <p>Always log out on shared devices.</p>
+    `
+  },
+
+  /* ---------------- TROUBLESHOOTING ---------------- */
+  {
+    id: "ts-google-fail",
+    cat: "troubleshoot",
+    title: "Google sign-in says \"unauthorized domain\"",
+    body: `
+      <p>This means the website's domain has not been added to your Firebase project's list of authorised domains. It's a configuration issue, not a problem with your account.</p>
+      <p>The administrator needs to:</p>
+      <ol>
+        <li>Open Firebase Console → Authentication → Settings → Authorised domains.</li>
+        <li>Add the exact domain you are using (e.g. <code>reportx.com</code> and <code>www.reportx.com</code>).</li>
+        <li>Save and try again.</li>
+      </ol>
+      <p>Email/password sign-in works without this step.</p>
+    `
+  },
+  {
+    id: "ts-popup",
+    cat: "troubleshoot",
+    title: "Google sign-in popup is blocked",
+    body: `
+      <p>Some browsers block popups by default. When you click <strong>Continue with Google</strong>, the browser may show a small icon in the address bar asking whether to allow popups.</p>
+      <p>Allow popups for this site, then click the button again.</p>
+      <p>If the popup still doesn't appear, try a private/incognito window or a different browser — some aggressive ad-blockers block Google's sign-in frame.</p>
+    `
+  },
+  {
+    id: "ts-not-saving",
+    cat: "troubleshoot",
+    title: "My changes aren't saving",
+    body: `
+      <p>Check the save indicator at the top-right of the page you're on:</p>
+      <ul>
+        <li>If it says <strong>Save failed</strong>, you likely lost your network connection.</li>
+        <li>Check your internet — try opening another website.</li>
+        <li>Once connected, the next change you make will trigger a fresh save attempt.</li>
+      </ul>
+      <p>If the indicator stays stuck on <strong>Saving…</strong>, reload the page. Your last successful save is retained — you won't lose more than the change you were making.</p>
+    `
+  },
+  {
+    id: "ts-missing",
+    cat: "troubleshoot",
+    title: "My report disappeared from My Reports",
+    body: `
+      <p>First check the filters at the top of <a href="my-reports.html">My Reports</a>:</p>
+      <ul>
+        <li>Clear the search box — even a leftover character can filter everything out.</li>
+        <li>Set the status filter to <strong>All statuses</strong>.</li>
+      </ul>
+      <p>If it still doesn't appear, ensure you're signed in with the same account you used to create it. Reports are strictly tied to their owning account.</p>
+    `
+  },
+  {
+    id: "ts-blank",
+    cat: "troubleshoot",
+    title: "The page shows a blank screen or spinner forever",
+    body: `
+      <p>This usually means the connection to Firebase could not be established.</p>
+      <ol>
+        <li>Hard-refresh the page (Ctrl+F5 on Windows, Cmd+Shift+R on Mac).</li>
+        <li>Check your internet connection.</li>
+        <li>Disable any browser extensions that block scripts, then reload.</li>
+        <li>Try a different browser — Chrome or Firefox give the most reliable results.</li>
+      </ol>
+      <p>If the problem persists, contact support with the page URL and any error message you see in the browser console.</p>
+    `
+  },
+  {
+    id: "ts-institution",
+    cat: "troubleshoot",
+    title: "Will my institution accept this report format?",
+    body: `
+      <p>REPORTX.COM produces a professional academic structure based on common school-attachment conventions. However, <strong>final acceptance is always determined by your institution</strong>.</p>
+      <p>If your institution requires specific headings, chapters or ordering, check with your supervisor before submitting. The structure shown in the platform is a configurable proposal — institutions can define their own templates.</p>
+      <p>REPORTX.COM does not claim endorsement by any education authority.</p>
+    `
+  }
+];
+
+/* =========================================================================
+   RENDER
+   ========================================================================= */
+const articleList = $("#articleList");
+const noResults = $("#noResults");
+const articlesHeading = $("#articlesHeading");
+const articlesLead = $("#articlesLead");
+
+let filterState = { cat: "all", q: "" };
+
+function renderCategoryCounts() {
+  const total = ARTICLES.length;
+  $("#countAll").textContent = total;
+
+  const counts = {};
+  for (const key of Object.keys(CATEGORIES)) counts[key] = 0;
+  ARTICLES.forEach((a) => { if (counts[a.cat] !== undefined) counts[a.cat]++; });
+
+  $("#countGetting").textContent      = counts["getting-started"];
+  $("#countInternship").textContent   = counts["internship"];
+  $("#countReports").textContent      = counts["reports"];
+  $("#countPayments").textContent     = counts["payments"];
+  $("#countAccount").textContent      = counts["account"];
+  $("#countTroubleshoot").textContent = counts["troubleshoot"];
+
+  $("#catCardGetting").textContent      = counts["getting-started"];
+  $("#catCardInternship").textContent   = counts["internship"];
+  $("#catCardReports").textContent      = counts["reports"];
+  $("#catCardPayments").textContent     = counts["payments"];
+  $("#catCardAccount").textContent      = counts["account"];
+  $("#catCardTroubleshoot").textContent = counts["troubleshoot"];
+}
+
+function filtered() {
+  const q = filterState.q.trim().toLowerCase();
+  return ARTICLES.filter((a) => {
+    if (filterState.cat !== "all" && a.cat !== filterState.cat) return false;
+    if (q) {
+      const hay = (a.title + " " + stripHtml(a.body)).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function stripHtml(html) {
+  const d = document.createElement("div");
+  d.innerHTML = html;
+  return d.textContent || "";
+}
+
+function renderArticles() {
+  const list = filtered();
+
+  /* Heading reflects current filter */
+  if (filterState.cat === "all" && !filterState.q) {
+    articlesHeading.textContent = "All help articles";
+    articlesLead.textContent = "Tap any article to expand it. Your search filters the list live.";
+  } else if (filterState.q) {
+    articlesHeading.textContent = `Results for "${filterState.q}"`;
+    articlesLead.textContent = `${list.length} article${list.length === 1 ? "" : "s"} match your search.`;
+  } else {
+    articlesHeading.textContent = CATEGORIES[filterState.cat]?.label || "Articles";
+    articlesLead.textContent = `${list.length} article${list.length === 1 ? "" : "s"} in this category.`;
+  }
+
+  if (!list.length) {
+    articleList.innerHTML = "";
+    noResults.hidden = false;
+    return;
+  }
+
+  noResults.hidden = true;
+  articleList.innerHTML = list.map((a) => {
+    const catLabel = CATEGORIES[a.cat]?.label || a.cat;
+    const q = filterState.q.trim();
+    const titleHtml = q ? highlight(a.title, q) : escapeHtml(a.title);
+
+    return `
+      <details class="article" data-id="${escapeHtml(a.id)}">
+        <summary>
+          <span class="article-meta"><span class="dot" aria-hidden="true"></span>${escapeHtml(catLabel)}</span>
+          ${titleHtml}
+        </summary>
+        <div class="article-body">
+          ${a.body}
+        </div>
+      </details>
+    `;
+  }).join("");
+}
+
+/* =========================================================================
+   WIRE UP SEARCH & CHIPS
+   ========================================================================= */
+const searchShell = $("#searchShell");
+const searchInput = $("#helpSearch");
+const searchClear = $("#searchClear");
+
+searchInput?.addEventListener("input", (e) => {
+  filterState.q = e.target.value;
+  searchShell.classList.toggle("has-value", e.target.value.length > 0);
+  renderArticles();
+});
+
+searchClear?.addEventListener("click", () => {
+  searchInput.value = "";
+  filterState.q = "";
+  searchShell.classList.remove("has-value");
+  renderArticles();
+  searchInput.focus();
+});
+
+$$(".chip").forEach((chip) => {
+  chip.addEventListener("click", () => {
+    $$(".chip").forEach((c) => {
+      c.classList.toggle("active", c === chip);
+      c.setAttribute("aria-selected", c === chip ? "true" : "false");
+    });
+    filterState.cat = chip.dataset.cat || "all";
+    renderArticles();
+    /* Scroll to articles on mobile after selecting a chip */
+    if (window.innerWidth < 900) {
+      setTimeout(() => {
+        articlesHeading?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  });
+});
+
+/* Category cards switch the chip and scroll to articles */
+$$(".cat-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    const cat = card.dataset.gotoCat;
+    const chip = $(`.chip[data-cat="${cat}"]`);
+    if (chip) {
+      $$(".chip").forEach((c) => {
+        c.classList.toggle("active", c === chip);
+        c.setAttribute("aria-selected", c === chip ? "true" : "false");
+      });
+      filterState.cat = cat;
+      renderArticles();
+      setTimeout(() => {
+        articlesHeading?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  });
+});
+
+/* =========================================================================
+   FIREBASE — auth state and contact info from platform settings
+   ========================================================================= */
+async function boot() {
+  try {
+    const [
+      { initializeApp },
+      authMod,
+      fsMod
+    ] = await Promise.all([
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+    ]);
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db   = fsMod.getFirestore(app);
+
+    /* Auth-aware header */
+    authMod.onAuthStateChanged(auth, async (user) => {
+      const authButtons = $("#authButtons");
+      const navUser = $("#navUser");
+
+      if (!user) {
+        authButtons?.classList.remove("hide");
+        navUser?.classList.remove("show");
+        return;
+      }
+
+      authButtons?.classList.add("hide");
+      navUser?.classList.add("show");
+
+      let profile = null;
+      try {
+        const snap = await fsMod.getDoc(fsMod.doc(db, "users", user.uid));
+        if (snap.exists()) profile = snap.data();
+      } catch (_) {}
+
+      const name = profile?.fullName || user.displayName || (user.email ? user.email.split("@")[0] : "User");
+      $("#navName").textContent = name;
+
+      const av = $("#navAvatar");
+      if (user.photoURL) {
+        av.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = user.photoURL;
+        img.alt = "";
+        img.referrerPolicy = "no-referrer";
+        av.appendChild(img);
+      } else {
+        av.textContent = (name.trim().charAt(0) || "R").toUpperCase();
+      }
+    });
+
+    /* Contact info from platform settings (public read) */
+    try {
+      const snap = await fsMod.getDoc(fsMod.doc(db, "platform_settings", "public"));
+      if (snap.exists()) {
+        const data = snap.data() || {};
+        const info = data.contactInformation || {};
+        if (info.email) {
+          const el = $("#contactEmail");
+          if (el) {
+            el.innerHTML = `<a href="mailto:${escapeHtml(info.email)}">${escapeHtml(info.email)}</a>`;
+          }
+        }
+        if (info.phone) {
+          const el = $("#contactPhone");
+          if (el) {
+            el.innerHTML = `<a href="tel:${escapeHtml(info.phone.replace(/\s+/g, ""))}">${escapeHtml(info.phone)}</a>`;
+          }
+        }
+      }
+    } catch (e) {
+      console.info("[help] contact info not publicly readable:", e?.message || e);
+    }
+
+  } catch (err) {
+    console.error("[help] init failed:", err);
+  }
+}
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+renderCategoryCounts();
+renderArticles();
+boot();
+</script>
+</body>
+</html>
