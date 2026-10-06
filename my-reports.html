@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>My Reports — REPORTX.COM</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121f'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================================
+   REPORTX.COM — my-reports.html
+   ========================================================================= */
+:root{
+  --navy-900:#04121f;--navy-800:#0a2138;--blue:#00A1DE;--cyan:#40D9FF;
+  --gold:#FAD201;--green:#20603D;--text:#EAF0F7;--muted:#9DB2CC;--dim:#7C93B0;
+  --line:rgba(64,217,255,.16);--line-soft:rgba(234,240,247,.09);
+  --glass:rgba(9,26,48,.72);--radius:16px;--radius-pill:999px;
+  --shadow:0 18px 44px rgba(0,0,0,.42);
+  --font:'Inter',system-ui,sans-serif;--display:'Poppins',var(--font);
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 18px)}
+body{
+  margin:0;min-height:100vh;background:var(--navy-900);color:var(--text);
+  font-family:var(--font);line-height:1.65;font-size:16px;
+  background-image:
+    radial-gradient(1000px 600px at 80% -10%, rgba(0,161,222,.18), transparent 60%),
+    radial-gradient(800px 500px at 0% 20%, rgba(32,96,61,.18), transparent 60%);
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+img,svg{max-width:100%;display:block}
+[hidden]{display:none !important}
+
+/* ---- Nav ---- */
+.nav{
+  position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;
+  background:rgba(4,18,31,.78);backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-inner{
+  width:100%;max-width:1240px;margin:auto;padding:0 22px;
+  display:flex;align-items:center;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--text)}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(145deg,#0d2540,#04121f);
+  border:1px solid rgba(64,217,255,.35);
+  display:grid;place-items:center;
+}
+.brand-word{font-family:var(--display);font-weight:700;letter-spacing:.13em;font-size:1.18rem;color:#fff}
+.brand-word span{color:var(--cyan)}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:.6rem}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(140deg,var(--blue),var(--green));
+  display:grid;place-items:center;font-weight:700;color:#04121f;overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.user-name{font-size:.88rem;font-weight:600;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.72rem 1.25rem;border-radius:var(--radius-pill);
+  border:1px solid transparent;font-weight:600;font-size:.92rem;
+  cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+  min-height:42px;text-decoration:none;white-space:nowrap;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary{
+  background:linear-gradient(120deg,var(--blue),#0a86c9 55%,var(--cyan));
+  color:#03131f;font-weight:700;box-shadow:0 10px 26px rgba(0,161,222,.32);
+}
+.btn-ghost{
+  border-color:rgba(64,217,255,.35);color:var(--text);
+  background:rgba(64,217,255,.06);
+}
+.btn-ghost:hover{background:rgba(64,217,255,.13)}
+.btn-quiet{color:var(--muted);padding:.55rem .85rem}
+.btn-quiet:hover{color:var(--cyan);background:rgba(64,217,255,.08);text-decoration:none}
+.btn-sm{padding:.55rem .95rem;font-size:.85rem;min-height:38px}
+
+/* ---- Layout ---- */
+.wrap{max-width:1240px;margin:auto;padding:26px 22px 80px}
+.page-head{
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:flex-end;
+  margin-bottom:22px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cyan);background:rgba(64,217,255,.08);
+  border:1px solid var(--line);border-radius:var(--radius-pill);
+  padding:.35rem .85rem;margin-bottom:.9rem;
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+h1{font-family:var(--display);font-weight:600;letter-spacing:-.015em;font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .25rem}
+.sub{color:var(--muted);margin:0;font-size:.94rem}
+
+/* ---- Stats ---- */
+.stats-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin-bottom:22px;
+}
+.stat-tile{
+  border:1px solid var(--line-soft);border-radius:14px;
+  padding:.9rem 1rem;background:linear-gradient(180deg,rgba(16,38,66,.6),rgba(9,26,48,.5));
+  display:flex;flex-direction:column;gap:.15rem;
+}
+.stat-tile b{
+  font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--cyan);
+  line-height:1.1;
+}
+.stat-tile span{
+  font-size:.72rem;color:var(--dim);font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.stat-tile.gold b{color:var(--gold)}
+.stat-tile.green b{color:#8fe0b4}
+
+/* ---- Toolbar ---- */
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;
+  padding:1rem 1.1rem;margin-bottom:20px;
+  border:1px solid var(--line-soft);border-radius:14px;
+  background:linear-gradient(180deg,rgba(16,38,66,.6),rgba(9,26,48,.5));
+}
+.search-wrap{
+  position:relative;flex:1 1 220px;min-width:200px;
+}
+.search-wrap svg{
+  position:absolute;left:.85rem;top:50%;transform:translateY(-50%);
+  color:var(--dim);pointer-events:none;
+}
+.search-wrap input{
+  width:100%;padding-left:2.4rem;
+  background:rgba(4,14,26,.6);border:1px solid var(--line-soft);
+  border-radius:12px;color:var(--text);font-size:.9rem;
+  min-height:42px;font-family:inherit;
+}
+.search-wrap input:focus{
+  outline:none;border-color:rgba(64,217,255,.6);
+  box-shadow:0 0 0 3px rgba(64,217,255,.14);
+}
+.toolbar select{
+  background:rgba(4,14,26,.6);border:1px solid var(--line-soft);
+  border-radius:12px;color:var(--text);font-size:.88rem;
+  padding:.6rem 2rem .6rem .85rem;min-height:42px;cursor:pointer;
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2340D9FF' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .7rem center;
+}
+.toolbar select:focus{outline:none;border-color:rgba(64,217,255,.6)}
+.toolbar select option{background:#0b1c33;color:#EAF0F7}
+
+/* ---- Report cards grid ---- */
+.reports-grid{
+  display:grid;gap:16px;
+  grid-template-columns:1fr;
+}
+@media(min-width:720px){.reports-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.reports-grid{grid-template-columns:repeat(3,1fr)}}
+
+.report-card{
+  position:relative;
+  border:1px solid var(--line-soft);border-radius:14px;
+  background:linear-gradient(180deg,rgba(16,38,66,.72),rgba(9,26,48,.62));
+  padding:1.15rem 1.15rem 1rem;
+  display:flex;flex-direction:column;gap:.8rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  overflow:hidden;
+}
+.report-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--cyan),var(--blue));
+  opacity:.55;transition:opacity .25s;
+}
+.report-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(64,217,255,.36);
+  box-shadow:0 0 0 1px rgba(64,217,255,.18),0 16px 40px rgba(0,161,222,.15);
+}
+.report-card:hover::before{opacity:1}
+.report-card.paid::before{background:linear-gradient(180deg,#3ecf8e,var(--green))}
+.report-card.complete::before{background:linear-gradient(180deg,var(--gold),#c9a800)}
+
+.card-top{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:.6rem;
+}
+.card-title{
+  font-family:var(--display);font-size:1rem;font-weight:600;
+  color:var(--white);line-height:1.35;margin:0;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;word-break:break-word;
+}
+.status-badge{
+  flex:0 0 auto;
+  font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.28rem .6rem;border-radius:99px;
+  display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;
+}
+.status-badge.draft{background:rgba(64,217,255,.12);border:1px solid rgba(64,217,255,.35);color:var(--cyan)}
+.status-badge.ready{background:rgba(250,210,1,.14);border:1px solid rgba(250,210,1,.4);color:#FFE28A}
+.status-badge.paid{background:rgba(32,96,61,.28);border:1px solid rgba(32,96,61,.6);color:#8fe0b4}
+
+.card-meta{
+  display:flex;flex-wrap:wrap;gap:.4rem .75rem;font-size:.78rem;color:var(--dim);
+}
+.card-meta span{display:inline-flex;align-items:center;gap:.35rem}
+.card-meta svg{width:13px;height:13px;flex:0 0 auto}
+
+.completion{
+  display:flex;flex-direction:column;gap:.35rem;
+}
+.completion-top{
+  display:flex;justify-content:space-between;font-size:.72rem;
+  color:var(--dim);font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+}
+.completion-top b{color:var(--cyan)}
+.completion-track{
+  height:6px;border-radius:99px;background:rgba(234,240,247,.10);overflow:hidden;
+}
+.completion-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--cyan));
+  box-shadow:0 0 10px rgba(64,217,255,.45);
+  transition:width .5s cubic-bezier(.22,.75,.28,1);
+}
+.report-card.complete .completion-fill{
+  background:linear-gradient(90deg,#c9a800,var(--gold));
+}
+
+.card-actions{
+  display:flex;gap:.4rem;flex-wrap:wrap;
+  padding-top:.7rem;border-top:1px solid var(--line-soft);
+  margin-top:auto;
+}
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+  padding:.5rem .75rem;border-radius:9px;
+  border:1px solid var(--line-soft);background:rgba(234,240,247,.04);
+  color:var(--muted);font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:all .2s;text-decoration:none;
+  min-height:34px;
+}
+.icon-btn:hover{
+  color:var(--cyan);border-color:rgba(64,217,255,.4);
+  background:rgba(64,217,255,.08);text-decoration:none;
+}
+.icon-btn.danger:hover{
+  color:#ff8a8a;border-color:rgba(255,107,107,.4);
+  background:rgba(255,107,107,.08);
+}
+.icon-btn svg{width:14px;height:14px}
+.icon-btn.primary{
+  color:#03131f;background:linear-gradient(120deg,var(--cyan),var(--blue));
+  border-color:transparent;font-weight:700;
+}
+.icon-btn.primary:hover{
+  background:linear-gradient(120deg,var(--cyan),var(--blue));
+  color:#03131f;box-shadow:0 6px 18px rgba(0,161,222,.35);
+}
+
+/* ---- Empty state ---- */
+.empty{
+  text-align:center;padding:60px 20px;
+  border:1px dashed var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(64,217,255,.04),rgba(64,217,255,.01));
+}
+.empty-icon{
+  width:72px;height:72px;border-radius:18px;margin:0 auto 1.2rem;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,rgba(0,161,222,.18),rgba(64,217,255,.04));
+  border:1px solid rgba(64,217,255,.28);color:var(--cyan);
+}
+.empty-icon svg{width:32px;height:32px}
+.empty h2{font-family:var(--display);font-weight:600;font-size:1.25rem;margin:0 0 .5rem}
+.empty p{color:var(--muted);max-width:420px;margin:0 auto 1.4rem;font-size:.92rem}
+.empty-actions{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+
+/* ---- Loading skeleton ---- */
+.skeleton-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:720px){.skeleton-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1020px){.skeleton-grid{grid-template-columns:repeat(3,1fr)}}
+.skeleton{
+  height:220px;border-radius:14px;
+  background:linear-gradient(90deg,rgba(234,240,247,.04) 0%,rgba(234,240,247,.09) 50%,rgba(234,240,247,.04) 100%);
+  background-size:200% 100%;
+  animation:shimmer 1.4s linear infinite;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ---- Notice ---- */
+.notice{
+  display:flex;gap:.8rem;align-items:flex-start;
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:.95rem 1.1rem;font-size:.86rem;color:var(--muted);
+  background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));
+  margin-bottom:18px;
+}
+.notice strong{color:var(--text)}
+.notice svg{flex:0 0 auto;margin-top:2px}
+
+/* ---- Modals ---- */
+.modal{
+  position:fixed;inset:0;z-index:1000;display:none;
+  align-items:center;justify-content:center;padding:18px;
+}
+.modal.open{display:flex}
+.modal-scrim{
+  position:absolute;inset:0;background:rgba(3,10,20,.74);
+  backdrop-filter:blur(5px);animation:fadeIn .25s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-panel{
+  position:relative;width:100%;max-width:440px;
+  background:linear-gradient(180deg,#0c2138,#04121f);
+  border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:1.6rem 1.5rem;
+  animation:modalIn .3s ease;
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.modal-panel h2{
+  font-family:var(--display);font-size:1.15rem;font-weight:600;margin:0 0 .35rem;
+}
+.modal-panel p{color:var(--muted);font-size:.88rem;margin:0 0 1.2rem}
+.modal-input{
+  width:100%;background:rgba(4,14,26,.6);
+  border:1px solid var(--line-soft);border-radius:12px;
+  padding:.75rem .9rem;color:var(--text);font-size:.92rem;
+  min-height:46px;font-family:inherit;margin-bottom:1.2rem;
+}
+.modal-input:focus{
+  outline:none;border-color:rgba(64,217,255,.6);
+  box-shadow:0 0 0 3px rgba(64,217,255,.14);
+}
+.modal-actions{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.modal-close{
+  position:absolute;top:.85rem;right:.85rem;
+  width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--line-soft);background:rgba(234,240,247,.05);
+  color:var(--muted);cursor:pointer;display:grid;place-items:center;font-size:1rem;
+}
+.modal-close:hover{color:var(--white);border-color:var(--line)}
+
+/* ---- Toast ---- */
+.toast-stack{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  z-index:1200;display:flex;flex-direction:column;gap:.55rem;
+  width:min(430px,calc(100vw - 32px));pointer-events:none;
+}
+.toast{
+  pointer-events:auto;background:rgba(4,18,31,.94);
+  border:1px solid var(--line);border-left:3px solid var(--cyan);
+  border-radius:12px;padding:.8rem 1rem;font-size:.87rem;color:var(--text);
+  box-shadow:var(--shadow);backdrop-filter:blur(12px);
+  animation:toastIn .3s ease;
+}
+.toast.error{border-left-color:#ff6b6b}
+.toast.success{border-left-color:#3ecf8e}
+.toast.warn{border-left-color:var(--gold)}
+.toast.leaving{animation:toastOut .25s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
+
+/* ---- Loading spinner ---- */
+.loading{min-height:60vh;display:grid;place-items:center;text-align:center}
+.spinner{
+  width:42px;height:42px;border-radius:50%;
+  border:3px solid rgba(64,217,255,.2);border-top-color:var(--cyan);
+  animation:spin .8s linear infinite;margin:0 auto 1rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---- Footer ---- */
+.footer{
+  border-top:1px solid var(--line-soft);padding:26px 22px;text-align:center;
+  color:var(--dim);font-size:.82rem;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="REPORTX.COM home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+          <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
+          <path d="M12 55h40" stroke="#FAD201" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-word">REPORT<span>X</span>.COM</span>
+    </a>
+
+    <div class="nav-actions">
+      <span class="avatar" id="navAvatar" aria-hidden="true">R</span>
+      <span class="user-name" id="navName">Loading…</span>
+      <a class="btn btn-quiet btn-sm" href="dashboard.html">Dashboard</a>
+      <button type="button" class="btn btn-quiet btn-sm" id="logoutBtn">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="loading" id="loadingState">
+    <div>
+      <div class="spinner"></div>
+      <p style="color:var(--muted)">Loading your reports…</p>
+    </div>
+  </div>
+
+  <div id="signedOutState" hidden>
+    <div class="notice">
+      <span><strong>You are not signed in.</strong> Please <a href="index.html">log in</a> to view your reports.</span>
+    </div>
+  </div>
+
+  <div id="content" hidden>
+
+    <div class="page-head">
+      <div>
+        <span class="eyebrow">My Reports</span>
+        <h1>Your internship reports</h1>
+        <p class="sub">Every draft you create is saved automatically. Open, rename, duplicate or remove them here.</p>
+      </div>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <a class="btn btn-ghost btn-sm" href="internship-details.html">Internship details</a>
+        <a class="btn btn-primary btn-sm" href="report-builder.html">New report</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-tile">
+        <b id="statTotal">0</b><span>Total reports</span>
+      </div>
+      <div class="stat-tile gold">
+        <b id="statDrafts">0</b><span>Drafts</span>
+      </div>
+      <div class="stat-tile">
+        <b id="statInProgress">0</b><span>In progress</span>
+      </div>
+      <div class="stat-tile green">
+        <b id="statComplete">0</b><span>Complete</span>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar" role="search">
+      <div class="search-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <label for="searchInput" class="sr-only" style="position:absolute;left:-9999px">Search reports</label>
+        <input type="search" id="searchInput" placeholder="Search by title…" autocomplete="off" />
+      </div>
+
+      <label for="statusFilter" style="position:absolute;left:-9999px">Filter by status</label>
+      <select id="statusFilter">
+        <option value="all">All statuses</option>
+        <option value="draft">Drafts only</option>
+        <option value="ready">Ready</option>
+        <option value="paid">Paid</option>
+      </select>
+
+      <label for="sortSelect" style="position:absolute;left:-9999px">Sort by</label>
+      <select id="sortSelect">
+        <option value="updated-desc">Recently updated</option>
+        <option value="updated-asc">Oldest updated</option>
+        <option value="created-desc">Recently created</option>
+        <option value="created-asc">Oldest created</option>
+        <option value="title-asc">Title A → Z</option>
+        <option value="title-desc">Title Z → A</option>
+        <option value="completion-desc">Most complete</option>
+        <option value="completion-asc">Least complete</option>
+      </select>
+    </div>
+
+    <!-- Loading skeleton -->
+    <div id="skeletons" class="skeleton-grid">
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty" id="emptyState" hidden>
+      <div class="empty-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M8 3h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h2 id="emptyTitle">No reports yet</h2>
+      <p id="emptyMessage">Start your first internship report and it will appear here. Everything is saved automatically as you work.</p>
+      <div class="empty-actions">
+        <a class="btn btn-primary" href="report-builder.html">Start my first report</a>
+        <a class="btn btn-ghost" href="internship-details.html">Set up internship details</a>
+      </div>
+    </div>
+
+    <!-- Reports grid -->
+    <div class="reports-grid" id="reportsGrid" hidden></div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  © <span id="year"></span> REPORTX.COM — All rights reserved.
+</footer>
+
+<!-- ===================== Rename modal ===================== -->
+<div class="modal" id="renameModal" role="dialog" aria-modal="true" aria-labelledby="renameTitle">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close rename dialog">✕</button>
+    <h2 id="renameTitle">Rename report</h2>
+    <p>Give this report a clear, descriptive title.</p>
+    <label for="renameInput" style="position:absolute;left:-9999px">New title</label>
+    <input type="text" id="renameInput" class="modal-input" placeholder="e.g. Teaching Internship Report — GS Remera" maxlength="120" />
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" id="renameConfirmBtn">Save title</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== Delete confirm modal ===================== -->
+<div class="modal" id="deleteModal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close delete dialog">✕</button>
+    <h2 id="deleteTitle">Delete this report?</h2>
+    <p id="deleteMessage">This will permanently remove the report and everything inside it. This action cannot be undone.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" id="deleteConfirmBtn" style="background:linear-gradient(120deg,#e94b4b,#b32222);color:#fff">Yes, delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script type="module">
+/* =========================================================================
+   REPORTX.COM — my-reports.html
+   -----------------------------------------------------------------------------
+   Reads all reports and internships owned by the signed-in user.
+   Live updates via onSnapshot — changes made in other tabs appear here.
+   ========================================================================= */
+
+/* ---------- Firebase configuration ---------- */
+const firebaseConfig = {
+  apiKey:            "AIzaSyCHKjRQwalZSoV9sOQR5ZiPM9btBXxD9yo",
+  authDomain:        "repora-2a29c.firebaseapp.com",
+  projectId:         "repora-2a29c",
+  storageBucket:     "repora-2a29c.firebasestorage.app",
+  messagingSenderId: "41097966352",
+  appId:             "1:41097966352:web:c60e0827727c80fa332b95"
+};
+
+/* ---------- DOM helpers ---------- */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+$("#year").textContent = new Date().getFullYear();
+
+/* ---------- State ---------- */
+let fb = null;
+let currentUser = null;
+let allReports = [];
+let allInternships = [];
+let unsubReports = null;
+let unsubInternships = null;
+
+let filterState = { search: "", status: "all" };
+let sortState = "updated-desc";
+
+/* Pending action targets */
+let pendingRenameId = null;
+let pendingDeleteId = null;
+
+/* =========================================================================
+   Toast
+   ========================================================================= */
+const toastStack = $("#toastStack");
+function toast(message, type = "info", duration = 4200) {
+  if (!toastStack) return;
+  const el = document.createElement("div");
+  el.className = `toast ${type}`;
+  el.setAttribute("role", type === "error" ? "alert" : "status");
+  el.textContent = message;
+  toastStack.appendChild(el);
+  const remove = () => { el.classList.add("leaving"); setTimeout(() => el.remove(), 260); };
+  const t = setTimeout(remove, duration);
+  el.addEventListener("click", () => { clearTimeout(t); remove(); });
+}
+
+/* =========================================================================
+   Modal utilities
+   ========================================================================= */
+let lastFocused = null;
+function openModal(id) {
+  const m = document.getElementById(id);
+  if (!m) return;
+  lastFocused = document.activeElement;
+  $$(".modal.open").forEach((x) => x.classList.remove("open"));
+  m.classList.add("open");
+  document.body.style.overflow = "hidden";
+  const first = m.querySelector("input, button");
+  if (first) setTimeout(() => first.focus(), 60);
+}
+function closeModal(m) {
+  if (!m) return;
+  m.classList.remove("open");
+  if (!$(".modal.open")) document.body.style.overflow = "";
+  if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+}
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal($(".modal.open"));
+});
+document.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close-modal]")) closeModal(e.target.closest(".modal"));
+});
+
+/* =========================================================================
+   Helpers
+   ========================================================================= */
+function toDate(value) {
+  if (!value) return null;
+  if (typeof value.toDate === "function") return value.toDate();
+  const d = new Date(value);
+  return isNaN(d) ? null : d;
+}
+
+function relativeTime(date) {
+  if (!date) return "—";
+  const diff = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (diff < 5) return "just now";
+  if (diff < 60) return `${diff}s ago`;
+  const m = Math.floor(diff / 60);
+  if (m < 60) return `${m}m ago`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${h}h ago`;
+  const d = Math.floor(h / 24);
+  if (d < 7) return `${d}d ago`;
+  if (d < 30) return `${Math.floor(d / 7)}w ago`;
+  return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+}
+
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function reportTitle(r) {
+  return (
+    r.title ||
+    r.internship?.internshipTitle ||
+    (r.hostSchool?.hostSchool ? `Report — ${r.hostSchool.hostSchool}` : "") ||
+    "Untitled report"
+  );
+}
+
+function reportStatus(r) {
+  const pay = (r.paymentStatus || "unpaid").toLowerCase();
+  const rep = (r.reportStatus || "draft").toLowerCase();
+  if (pay === "paid") return { key: "paid", label: "Paid" };
+  if (rep === "ready") return { key: "ready", label: "Ready" };
+  return { key: "draft", label: "Draft" };
+}
+
+function completionOf(r) {
+  if (typeof r.completionPercentage === "number") return Math.max(0, Math.min(100, r.completionPercentage));
+  return 0;
+}
+
+function activitiesCount(r) {
+  return Array.isArray(r.activities) ? r.activities.length : 0;
+}
+
+/* =========================================================================
+   Rendering — stats
+   ========================================================================= */
+function renderStats() {
+  const total = allReports.length;
+  const drafts = allReports.filter((r) => reportStatus(r).key === "draft").length;
+  const complete = allReports.filter((r) => completionOf(r) >= 100).length;
+  const inProgress = total - complete;
+
+  $("#statTotal").textContent = total;
+  $("#statDrafts").textContent = drafts;
+  $("#statInProgress").textContent = inProgress;
+  $("#statComplete").textContent = complete;
+}
+
+/* =========================================================================
+   Filtering & sorting
+   ========================================================================= */
+function applyFilterSort(list) {
+  const q = filterState.search.trim().toLowerCase();
+
+  let out = list.filter((r) => {
+    if (filterState.status !== "all" && reportStatus(r).key !== filterState.status) return false;
+    if (q) {
+      const hay = (reportTitle(r) + " " + (r.hostSchool?.hostSchool || "") + " " + (r.internship?.internshipTitle || "")).toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  const getUpdated = (r) => toDate(r.updatedAt)?.getTime() || 0;
+  const getCreated = (r) => toDate(r.createdAt)?.getTime() || 0;
+  const getTitle = (r) => reportTitle(r).toLowerCase();
+  const getComp = (r) => completionOf(r);
+
+  switch (sortState) {
+    case "updated-asc":    out.sort((a, b) => getUpdated(a) - getUpdated(b)); break;
+    case "created-desc":   out.sort((a, b) => getCreated(b) - getCreated(a)); break;
+    case "created-asc":    out.sort((a, b) => getCreated(a) - getCreated(b)); break;
+    case "title-asc":      out.sort((a, b) => getTitle(a).localeCompare(getTitle(b))); break;
+    case "title-desc":     out.sort((a, b) => getTitle(b).localeCompare(getTitle(a))); break;
+    case "completion-desc":out.sort((a, b) => getComp(b) - getComp(a)); break;
+    case "completion-asc": out.sort((a, b) => getComp(a) - getComp(b)); break;
+    case "updated-desc":
+    default:               out.sort((a, b) => getUpdated(b) - getUpdated(a));
+  }
+
+  return out;
+}
+
+/* =========================================================================
+   Rendering — report card
+   ========================================================================= */
+function cardHtml(r) {
+  const id = r.id;
+  const title = reportTitle(r);
+  const status = reportStatus(r);
+  const pct = completionOf(r);
+  const updated = relativeTime(toDate(r.updatedAt));
+  const created = toDate(r.createdAt);
+  const acts = activitiesCount(r);
+  const school = r.hostSchool?.hostSchool || "";
+  const mentor = r.hostSchool?.mentor || r.people?.mentor || "";
+
+  const classes = [
+    "report-card",
+    status.key === "paid" ? "paid" : "",
+    pct >= 100 ? "complete" : ""
+  ].filter(Boolean).join(" ");
+
+  return `
+    <article class="${classes}" data-id="${escapeHtml(id)}">
+      <div class="card-top">
+        <h3 class="card-title">${escapeHtml(title)}</h3>
+        <span class="status-badge ${status.key}">${status.label}</span>
+      </div>
+
+      <div class="card-meta">
+        <span title="Last updated">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          ${escapeHtml(updated)}
+        </span>
+        ${school ? `<span title="Host school">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          ${escapeHtml(school)}
+        </span>` : ""}
+        ${acts > 0 ? `<span title="Recorded activities">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          ${acts} ${acts === 1 ? "activity" : "activities"}
+        </span>` : ""}
+      </div>
+
+      <div class="completion">
+        <div class="completion-top">
+          <span>Completion</span>
+          <b>${pct}%</b>
+        </div>
+        <div class="completion-track">
+          <div class="completion-fill" style="width:${pct}%"></div>
+        </div>
+      </div>
+
+      <div class="card-actions">
+        <a class="icon-btn primary" href="report-builder.html?report=${encodeURIComponent(id)}" title="Open in Report Builder">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v6h6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Open
+        </a>
+        <button type="button" class="icon-btn" data-action="rename" data-id="${escapeHtml(id)}" title="Rename">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Rename
+        </button>
+        <button type="button" class="icon-btn" data-action="duplicate" data-id="${escapeHtml(id)}" title="Duplicate">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          Copy
+        </button>
+        <button type="button" class="icon-btn danger" data-action="delete" data-id="${escapeHtml(id)}" title="Delete">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M6 6l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Delete
+        </button>
+      </div>
+    </article>
+  `;
+}
+
+function renderList() {
+  const grid = $("#reportsGrid");
+  const empty = $("#emptyState");
+  const skeletons = $("#skeletons");
+
+  skeletons.hidden = true;
+
+  const filtered = applyFilterSort(allReports);
+
+  if (!allReports.length) {
+    empty.hidden = false;
+    grid.hidden = true;
+    grid.innerHTML = "";
+    $("#emptyTitle").textContent = "No reports yet";
+    $("#emptyMessage").textContent = "Start your first internship report and it will appear here. Everything is saved automatically as you work.";
+    return;
+  }
+
+  if (!filtered.length) {
+    empty.hidden = false;
+    grid.hidden = true;
+    grid.innerHTML = "";
+    $("#emptyTitle").textContent = "No reports match your filters";
+    $("#emptyMessage").textContent = "Try clearing the search or choosing a different status.";
+    return;
+  }
+
+  empty.hidden = true;
+  grid.hidden = false;
+  grid.innerHTML = filtered.map(cardHtml).join("");
+}
+
+/* =========================================================================
+   Actions
+   ========================================================================= */
+function findReport(id) {
+  return allReports.find((r) => r.id === id);
+}
+
+async function doDuplicate(id) {
+  const src = findReport(id);
+  if (!src) return;
+
+  try {
+    const { addDoc, collection, serverTimestamp } = fb.api.firestore;
+
+    /* Strip Firestore-generated fields, add new title */
+    const copy = { ...src };
+    delete copy.id;
+    delete copy.createdAt;
+    delete copy.updatedAt;
+
+    copy.title = (copy.title || "Untitled report") + " (copy)";
+    copy.reportStatus = "draft";
+    copy.paymentStatus = "unpaid";
+    copy.completionPercentage = copy.completionPercentage || 0;
+    copy.createdAt = serverTimestamp();
+    copy.updatedAt = serverTimestamp();
+
+    await addDoc(collection(fb.db, "reports"), copy);
+    toast("Report duplicated.", "success");
+  } catch (e) {
+    console.error(e);
+    toast("Could not duplicate: " + (e?.message || e), "error");
+  }
+}
+
+function openRename(id) {
+  const r = findReport(id);
+  if (!r) return;
+  pendingRenameId = id;
+  $("#renameInput").value = reportTitle(r);
+  openModal("renameModal");
+}
+
+async function confirmRename() {
+  const id = pendingRenameId;
+  const newTitle = $("#renameInput").value.trim();
+  if (!id) return;
+  if (!newTitle) { toast("Please enter a title.", "warn"); return; }
+
+  try {
+    const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
+    await updateDoc(doc(fb.db, "reports", id), {
+      title: newTitle,
+      updatedAt: serverTimestamp()
+    });
+    pendingRenameId = null;
+    closeModal($("#renameModal"));
+    toast("Title updated.", "success");
+  } catch (e) {
+    console.error(e);
+    toast("Could not rename: " + (e?.message || e), "error");
+  }
+}
+
+function openDelete(id) {
+  const r = findReport(id);
+  if (!r) return;
+  pendingDeleteId = id;
+  $("#deleteMessage").textContent =
+    `"${reportTitle(r)}" will be permanently deleted. This cannot be undone.`;
+  openModal("deleteModal");
+}
+
+async function confirmDelete() {
+  const id = pendingDeleteId;
+  if (!id) return;
+
+  const btn = $("#deleteConfirmBtn");
+  btn.disabled = true;
+  btn.textContent = "Deleting…";
+
+  try {
+    const { doc, deleteDoc } = fb.api.firestore;
+    await deleteDoc(doc(fb.db, "reports", id));
+
+    /* Clear activeReportId on user profile if it matched */
+    try {
+      const { doc: d2, getDoc, updateDoc } = fb.api.firestore;
+      const userSnap = await getDoc(d2(fb.db, "users", currentUser.uid));
+      if (userSnap.exists() && userSnap.data().activeReportId === id) {
+        await updateDoc(d2(fb.db, "users", currentUser.uid), { activeReportId: null });
+      }
+    } catch (_) { /* non-fatal */ }
+
+    pendingDeleteId = null;
+    closeModal($("#deleteModal"));
+    toast("Report deleted.", "success");
+  } catch (e) {
+    console.error(e);
+    toast("Could not delete: " + (e?.message || e), "error");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Yes, delete";
+  }
+}
+
+/* Delegated action handler */
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const id = btn.dataset.id;
+
+  if (action === "rename") openRename(id);
+  else if (action === "duplicate") doDuplicate(id);
+  else if (action === "delete") openDelete(id);
+});
+
+$("#renameConfirmBtn")?.addEventListener("click", confirmRename);
+$("#deleteConfirmBtn")?.addEventListener("click", confirmDelete);
+
+/* Enter key inside rename input */
+$("#renameInput")?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { e.preventDefault(); confirmRename(); }
+});
+
+/* =========================================================================
+   Toolbar wiring
+   ========================================================================= */
+$("#searchInput")?.addEventListener("input", (e) => {
+  filterState.search = e.target.value;
+  renderList();
+});
+$("#statusFilter")?.addEventListener("change", (e) => {
+  filterState.status = e.target.value;
+  renderList();
+});
+$("#sortSelect")?.addEventListener("change", (e) => {
+  sortState = e.target.value;
+  renderList();
+});
+
+/* =========================================================================
+   Firestore subscriptions
+   ========================================================================= */
+function subscribeReports(uid) {
+  const { collection, query, where, orderBy, onSnapshot } = fb.api.firestore;
+
+  if (unsubReports) unsubReports();
+
+  const q = query(
+    collection(fb.db, "reports"),
+    where("ownerUid", "==", uid),
+    orderBy("updatedAt", "desc")
+  );
+
+  unsubReports = onSnapshot(
+    q,
+    (snap) => {
+      allReports = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      renderStats();
+      renderList();
+    },
+    (error) => {
+      console.error("[my-reports] reports listener failed:", error);
+      $("#skeletons").hidden = true;
+      $("#emptyState").hidden = false;
+      $("#emptyTitle").textContent = "Could not load reports";
+      $("#emptyMessage").textContent =
+        "Firestore returned: " + (error?.message || error) +
+        ". This usually means a composite index is needed. Check the browser console for a link to create it.";
+    }
+  );
+}
+
+function subscribeInternships(uid) {
+  const { collection, query, where, orderBy, onSnapshot } = fb.api.firestore;
+
+  if (unsubInternships) unsubInternships();
+
+  const q = query(
+    collection(fb.db, "internships"),
+    where("ownerUid", "==", uid),
+    orderBy("updatedAt", "desc")
+  );
+
+  unsubInternships = onSnapshot(
+    q,
+    (snap) => {
+      allInternships = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+    },
+    (error) => {
+      /* Non-fatal — internships are supplementary here */
+      console.info("[my-reports] internships listener skipped:", error?.message || error);
+    }
+  );
+}
+
+/* =========================================================================
+   Firebase boot
+   ========================================================================= */
+async function boot() {
+  const loadingState   = $("#loadingState");
+  const signedOutState = $("#signedOutState");
+  const content        = $("#content");
+
+  try {
+    const [
+      { initializeApp },
+      authMod,
+      fsMod
+    ] = await Promise.all([
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+    ]);
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db   = fsMod.getFirestore(app);
+
+    fb = { app, auth, db, api: { auth: authMod, firestore: fsMod } };
+
+    authMod.onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        currentUser = null;
+        loadingState.hidden = true;
+        signedOutState.hidden = false;
+        content.hidden = true;
+        if (unsubReports) { unsubReports(); unsubReports = null; }
+        if (unsubInternships) { unsubInternships(); unsubInternships = null; }
+        return;
+      }
+
+      currentUser = user;
+      signedOutState.hidden = true;
+      content.hidden = false;
+
+      /* Header identity */
+      let profile = null;
+      try {
+        const snap = await fsMod.getDoc(fsMod.doc(db, "users", user.uid));
+        if (snap.exists()) profile = snap.data();
+      } catch (_) { /* ignore */ }
+
+      const name = profile?.fullName || user.displayName || (user.email ? user.email.split("@")[0] : "User");
+      $("#navName").textContent = name;
+      const av = $("#navAvatar");
+      if (user.photoURL) {
+        av.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = user.photoURL;
+        img.alt = "";
+        img.referrerPolicy = "no-referrer";
+        av.appendChild(img);
+      } else {
+        av.textContent = (name.trim().charAt(0) || "R").toUpperCase();
+      }
+
+      /* Start subscriptions */
+      subscribeReports(user.uid);
+      subscribeInternships(user.uid);
+
+      loadingState.hidden = true;
+    });
+
+    /* Logout */
+    $("#logoutBtn")?.addEventListener("click", async () => {
+      try {
+        await authMod.signOut(auth);
+        window.location.href = "index.html";
+      } catch (e) {
+        toast("Could not sign out: " + (e?.message || e), "error");
+      }
+    });
+
+  } catch (err) {
+    console.error("[my-reports] init failed:", err);
+    loadingState.innerHTML =
+      '<div><p style="color:#FFB4B4">Could not initialise Firebase.</p>' +
+      '<p style="color:var(--muted);font-size:.85rem">' + escapeHtml(err?.message || String(err)) + '</p></div>';
+  }
+}
+
+boot();
+</script>
+</body>
+</html>
