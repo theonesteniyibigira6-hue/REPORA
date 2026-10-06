@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<title>Payment Verification — REPORTX.COM</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121f'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================================
+   REPORTX.COM — payment-verification.html
+   ========================================================================= */
+:root{
+  --navy-900:#04121f;--navy-800:#0a2138;--blue:#00A1DE;--cyan:#40D9FF;
+  --gold:#FAD201;--green:#20603D;--text:#EAF0F7;--muted:#9DB2CC;--dim:#7C93B0;
+  --line:rgba(64,217,255,.16);--line-soft:rgba(234,240,247,.09);
+  --glass:rgba(9,26,48,.72);--radius:16px;--radius-pill:999px;
+  --shadow:0 18px 44px rgba(0,0,0,.42);
+  --font:'Inter',system-ui,sans-serif;--display:'Poppins',var(--font);
+  --nav-h:68px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 18px)}
+body{
+  margin:0;min-height:100vh;background:var(--navy-900);color:var(--text);
+  font-family:var(--font);line-height:1.65;font-size:16px;
+  background-image:
+    radial-gradient(1000px 600px at 80% -10%, rgba(0,161,222,.18), transparent 60%),
+    radial-gradient(800px 500px at 0% 20%, rgba(32,96,61,.18), transparent 60%);
+}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+img,svg{max-width:100%;display:block}
+[hidden]{display:none !important}
+
+/* ---- Nav ---- */
+.nav{
+  position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;
+  background:rgba(4,18,31,.78);backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-inner{
+  width:100%;max-width:1240px;margin:auto;padding:0 22px;
+  display:flex;align-items:center;gap:1rem;
+}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--text)}
+.brand-mark{
+  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(145deg,#0d2540,#04121f);
+  border:1px solid rgba(64,217,255,.35);
+  display:grid;place-items:center;
+}
+.brand-word{font-family:var(--display);font-weight:700;letter-spacing:.13em;font-size:1.18rem;color:#fff}
+.brand-word span{color:var(--cyan)}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:.6rem}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(140deg,var(--blue),var(--green));
+  display:grid;place-items:center;font-weight:700;color:#04121f;overflow:hidden;
+  border:1px solid rgba(255,255,255,.18);
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.user-name{font-size:.88rem;font-weight:600;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  padding:.72rem 1.25rem;border-radius:var(--radius-pill);
+  border:1px solid transparent;font-weight:600;font-size:.92rem;
+  cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;
+  min-height:42px;text-decoration:none;white-space:nowrap;
+}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn[disabled],.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none}
+.btn-primary{
+  background:linear-gradient(120deg,var(--blue),#0a86c9 55%,var(--cyan));
+  color:#03131f;font-weight:700;box-shadow:0 10px 26px rgba(0,161,222,.32);
+}
+.btn-primary:hover{box-shadow:0 14px 34px rgba(0,161,222,.42)}
+.btn-ghost{
+  border-color:rgba(64,217,255,.35);color:var(--text);
+  background:rgba(64,217,255,.06);
+}
+.btn-ghost:hover{background:rgba(64,217,255,.13)}
+.btn-quiet{color:var(--muted);padding:.55rem .85rem}
+.btn-quiet:hover{color:var(--cyan);background:rgba(64,217,255,.08);text-decoration:none}
+.btn-sm{padding:.55rem .95rem;font-size:.85rem;min-height:38px}
+.btn-block{width:100%}
+
+/* ---- Layout ---- */
+.wrap{max-width:1240px;margin:auto;padding:26px 22px 80px}
+.page-head{
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:flex-end;
+  margin-bottom:22px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cyan);background:rgba(64,217,255,.08);
+  border:1px solid var(--line);border-radius:var(--radius-pill);
+  padding:.35rem .85rem;margin-bottom:.9rem;
+}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+h1{font-family:var(--display);font-weight:600;letter-spacing:-.015em;font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 .25rem}
+.sub{color:var(--muted);margin:0;font-size:.94rem;max-width:60ch}
+
+/* ---- Layout grid ---- */
+.grid-2col{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:1024px){
+  .grid-2col{grid-template-columns:1.35fr 1fr;align-items:start}
+  .sidebar{position:sticky;top:calc(var(--nav-h) + 18px)}
+}
+
+/* ---- Section cards ---- */
+.card{
+  background:linear-gradient(180deg,rgba(16,38,66,.72),rgba(9,26,48,.62));
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  padding:1.5rem 1.4rem;
+  margin-bottom:18px;
+}
+.card h2{
+  font-family:var(--display);font-size:1.12rem;font-weight:600;margin:0 0 .4rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.card h2 .num{
+  width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;
+  font-size:.74rem;font-weight:700;
+  background:linear-gradient(140deg,var(--cyan),var(--blue));
+  color:#03131f;
+  flex:0 0 auto;
+}
+.card .lead{color:var(--muted);font-size:.9rem;margin:0 0 1.4rem}
+
+/* Status pill at top of card */
+.status-pill{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:99px;margin-bottom:.5rem;
+}
+.status-pill.draft{background:rgba(64,217,255,.12);border:1px solid rgba(64,217,255,.35);color:var(--cyan)}
+.status-pill.wait{background:rgba(250,210,1,.14);border:1px solid rgba(250,210,1,.4);color:#FFE28A}
+.status-pill.ok{background:rgba(32,96,61,.28);border:1px solid rgba(32,96,61,.6);color:#8fe0b4}
+.status-pill.err{background:rgba(255,107,107,.14);border:1px solid rgba(255,107,107,.4);color:#FFB4B4}
+
+/* ---- Fields ---- */
+.field{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1rem}
+.field label{font-size:.82rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.field label .req{color:var(--gold);margin-left:.15rem}
+.field .hint{font-size:.72rem;color:var(--dim)}
+input[type="text"],input[type="number"],input[type="email"],
+input[type="tel"],input[type="url"],select,textarea{
+  width:100%;background:rgba(4,14,26,.6);
+  border:1px solid var(--line-soft);border-radius:12px;
+  padding:.75rem .9rem;color:var(--text);font-size:.92rem;
+  transition:border-color .22s,box-shadow .22s,background .22s;min-height:46px;
+  font-family:inherit;
+}
+input::placeholder,textarea::placeholder{color:#5b7793}
+textarea{min-height:96px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:rgba(64,217,255,.6);
+  box-shadow:0 0 0 3px rgba(64,217,255,.14);background:rgba(4,14,26,.85);
+}
+select option{background:#0b1c33;color:#EAF0F7}
+
+/* Code input — extra-large monospaced */
+.code-input{
+  width:100%;background:rgba(4,14,26,.7);
+  border:2px solid rgba(64,217,255,.35);border-radius:14px;
+  padding:1rem 1.1rem;color:var(--cyan);
+  font-family:'Poppins',monospace;font-size:1.4rem;font-weight:700;
+  letter-spacing:.24em;text-align:center;
+  min-height:64px;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.code-input::placeholder{color:#3a5a75;letter-spacing:.18em;font-size:1rem;font-weight:500}
+.code-input:focus{
+  outline:none;border-color:var(--cyan);
+  box-shadow:0 0 0 4px rgba(64,217,255,.18);background:rgba(4,14,26,.9);
+}
+
+/* Field grid */
+.field-grid{display:grid;gap:0 1rem;grid-template-columns:1fr}
+@media(min-width:560px){.field-grid.two{grid-template-columns:1fr 1fr}}
+
+/* ---- Payment instructions block ---- */
+.instructions{
+  border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));
+  border-radius:14px;padding:1.1rem 1.2rem;margin-bottom:1.4rem;
+}
+.instructions h3{
+  font-size:.86rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--cyan);margin:0 0 .75rem;
+}
+.instructions .row{
+  display:flex;flex-wrap:wrap;gap:.4rem .8rem;
+  padding:.5rem 0;border-bottom:1px solid var(--line-soft);
+  font-size:.88rem;
+}
+.instructions .row:last-child{border-bottom:0}
+.instructions .row .lbl{color:var(--dim);font-weight:600;min-width:120px}
+.instructions .row .val{color:var(--text);font-family:monospace;font-weight:600;word-break:break-word}
+.instructions .empty-note{
+  color:var(--muted);font-size:.86rem;line-height:1.6;margin:0;
+}
+.instructions .empty-note strong{color:var(--text)}
+
+/* ---- Pricing display ---- */
+.price-badge{
+  display:inline-flex;align-items:baseline;gap:.4rem;
+  font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--white);
+  margin-bottom:.4rem;
+}
+.price-badge small{font-size:.86rem;font-weight:500;color:var(--muted)}
+.price-note{font-size:.82rem;color:var(--dim);margin:0}
+
+/* ---- Steps timeline ---- */
+.timeline{
+  display:flex;flex-direction:column;gap:0;margin-top:.3rem;
+}
+.tl-step{
+  display:grid;grid-template-columns:34px 1fr;gap:.9rem;
+  padding-bottom:1rem;position:relative;
+}
+.tl-step:not(:last-child)::before{
+  content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;
+  background:var(--line-soft);
+}
+.tl-dot{
+  width:34px;height:34px;border-radius:50%;flex:0 0 auto;
+  display:grid;place-items:center;font-size:.8rem;font-weight:700;
+  background:rgba(234,240,247,.06);color:var(--dim);
+  border:1px solid var(--line-soft);z-index:1;
+}
+.tl-step.done .tl-dot{background:rgba(32,96,61,.4);border-color:rgba(32,96,61,.7);color:#8fe0b4}
+.tl-step.active .tl-dot{background:linear-gradient(140deg,var(--cyan),var(--blue));border-color:transparent;color:#03131f}
+.tl-body{padding-top:.3rem}
+.tl-body strong{display:block;font-size:.9rem;margin-bottom:.15rem}
+.tl-body span{font-size:.82rem;color:var(--muted)}
+.tl-step.active .tl-body strong{color:var(--cyan)}
+
+/* ---- Sidebar ---- */
+.sidebar{display:grid;gap:16px}
+.aside-card{
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  padding:1.15rem 1.15rem;
+  background:linear-gradient(180deg,rgba(16,38,66,.62),rgba(9,26,48,.5));
+}
+.aside-card h3{font-size:.94rem;margin:0 0 .4rem;font-family:var(--display)}
+.aside-card p{font-size:.84rem;color:var(--muted);margin:0}
+.aside-meta{display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;color:var(--muted);margin-top:.75rem}
+.aside-meta span{display:flex;justify-content:space-between;gap:.6rem}
+.aside-meta b{color:var(--text);font-weight:600;word-break:break-word;max-width:60%;text-align:right}
+.aside-meta b.ok{color:#8fe0b4}
+.aside-meta b.wait{color:var(--gold)}
+
+/* ---- Notice ---- */
+.notice{
+  display:flex;gap:.85rem;align-items:flex-start;
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:1rem 1.15rem;font-size:.88rem;color:var(--muted);
+  background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));
+  margin-bottom:18px;line-height:1.6;
+}
+.notice strong{color:var(--text)}
+.notice.gold{
+  border-color:rgba(250,210,1,.32);
+  background:linear-gradient(180deg,rgba(250,210,1,.09),rgba(250,210,1,.02));
+}
+.notice.green{
+  border-color:rgba(32,96,61,.5);
+  background:linear-gradient(180deg,rgba(32,96,61,.16),rgba(32,96,61,.03));
+}
+.notice.err{
+  border-color:rgba(255,107,107,.4);
+  background:linear-gradient(180deg,rgba(255,107,107,.1),rgba(255,107,107,.02));
+}
+.notice svg{flex:0 0 auto;margin-top:2px}
+
+/* ---- Requests list ---- */
+.request-row{
+  border:1px solid var(--line-soft);border-radius:14px;
+  padding:1rem 1.1rem;margin-bottom:.8rem;
+  background:rgba(234,240,247,.03);
+  transition:border-color .25s;
+}
+.request-row:last-child{margin-bottom:0}
+.request-row.pending{border-color:rgba(250,210,1,.35)}
+.request-row.approved{border-color:rgba(32,96,61,.5)}
+.request-row.rejected{border-color:rgba(255,107,107,.3)}
+.request-row .head{
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between;align-items:center;
+  margin-bottom:.6rem;
+}
+.request-row .head .ref{
+  font-family:monospace;font-size:.86rem;font-weight:700;color:var(--cyan);
+  word-break:break-word;
+}
+.request-row .meta{
+  display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;
+  font-size:.8rem;
+}
+.request-row .meta dt{color:var(--dim);font-weight:600}
+.request-row .meta dd{margin:0;color:var(--muted);word-break:break-word}
+
+/* ---- Toast ---- */
+.toast-stack{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  z-index:1200;display:flex;flex-direction:column;gap:.55rem;
+  width:min(430px,calc(100vw - 32px));pointer-events:none;
+}
+.toast{
+  pointer-events:auto;background:rgba(4,18,31,.94);
+  border:1px solid var(--line);border-left:3px solid var(--cyan);
+  border-radius:12px;padding:.8rem 1rem;font-size:.87rem;color:var(--text);
+  box-shadow:var(--shadow);backdrop-filter:blur(12px);
+  animation:toastIn .3s ease;
+}
+.toast.error{border-left-color:#ff6b6b}
+.toast.success{border-left-color:#3ecf8e}
+.toast.warn{border-left-color:var(--gold)}
+.toast.leaving{animation:toastOut .25s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
+
+/* ---- Loading ---- */
+.loading{min-height:60vh;display:grid;place-items:center;text-align:center}
+.spinner{
+  width:42px;height:42px;border-radius:50%;
+  border:3px solid rgba(64,217,255,.2);border-top-color:var(--cyan);
+  animation:spin .8s linear infinite;margin:0 auto 1rem;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn .spinner-sm{
+  width:14px;height:14px;border-radius:50%;
+  border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
+  animation:spin .7s linear infinite;display:none;
+}
+.btn.loading .spinner-sm{display:block}
+.btn.loading .btn-label{opacity:.75}
+
+/* ---- Form alert ---- */
+.form-alert{
+  display:none;gap:.6rem;align-items:flex-start;
+  border-radius:12px;padding:.8rem .95rem;font-size:.85rem;line-height:1.5;
+  margin-bottom:1rem;
+}
+.form-alert.show{display:flex}
+.form-alert.error{background:rgba(220,60,60,.12);border:1px solid rgba(220,60,60,.4);color:#FFB4B4}
+.form-alert.success{background:rgba(32,96,61,.22);border:1px solid rgba(32,96,61,.6);color:#9FE7C0}
+.form-alert.info{background:rgba(64,217,255,.08);border:1px solid var(--line);color:var(--muted)}
+.form-alert.warn{background:rgba(250,210,1,.1);border:1px solid rgba(250,210,1,.35);color:#FFE28A}
+
+/* ---- Footer ---- */
+.footer{
+  border-top:1px solid var(--line-soft);padding:26px 22px;text-align:center;
+  color:var(--dim);font-size:.82rem;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="REPORTX.COM home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+          <path d="M20 14h15a11 11 0 0 1 0 22h-5l11 14h-8L22 36v14h-6V14h4Zm4 6v10h10a5 5 0 0 0 0-10H24Z" fill="#40D9FF"/>
+          <path d="M12 55h40" stroke="#FAD201" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand-word">REPORT<span>X</span>.COM</span>
+    </a>
+
+    <div class="nav-actions">
+      <span class="avatar" id="navAvatar" aria-hidden="true">R</span>
+      <span class="user-name" id="navName">Loading…</span>
+      <a class="btn btn-quiet btn-sm" href="my-reports.html">My Reports</a>
+      <a class="btn btn-quiet btn-sm" href="dashboard.html">Dashboard</a>
+      <button type="button" class="btn btn-quiet btn-sm" id="logoutBtn">Log Out</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="loading" id="loadingState">
+    <div>
+      <div class="spinner"></div>
+      <p style="color:var(--muted)">Verifying your session…</p>
+    </div>
+  </div>
+
+  <div id="signedOutState" hidden>
+    <div class="notice">
+      <span><strong>You are not signed in.</strong> Please <a href="index.html">log in</a> to verify a payment.</span>
+    </div>
+  </div>
+
+  <div id="content" hidden>
+
+    <div class="page-head">
+      <div>
+        <span class="eyebrow">Payment &amp; Access</span>
+        <h1>Unlock your report generation</h1>
+        <p class="sub">Submit your payment reference, then enter the access code you receive once an administrator confirms your payment.</p>
+      </div>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+        <a class="btn btn-ghost btn-sm" href="report-builder.html">← Back to builder</a>
+      </div>
+    </div>
+
+    <!-- Honest backend notice (shown when endpoint is not configured) -->
+    <div class="notice gold" id="backendNotice" hidden>
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 9v4m0 4h.01" stroke="#FAD201" stroke-width="1.9" stroke-linecap="round"/>
+        <circle cx="12" cy="12" r="9" stroke="#FAD201" stroke-width="1.6"/>
+      </svg>
+      <span>
+        <strong>Backend verification not yet configured.</strong>
+        You can submit a payment reference below — your request is stored securely in Firestore and visible to the administrator. The final step (entering an access code) requires a trusted backend endpoint to be deployed before it can safely authorise report generation. Until then, the code entry is disabled.
+      </span>
+    </div>
+
+    <div class="grid-2col">
+
+      <!-- ===================== MAIN COLUMN ===================== -->
+      <div>
+
+        <!-- ================= 1. PAYMENT INSTRUCTIONS ================= -->
+        <section class="card" id="instructionsCard">
+          <h2><span class="num">1</span> Payment instructions</h2>
+          <p class="lead">Use the payment method below, then keep your reference or transaction ID ready.</p>
+
+          <div class="instructions" id="instructionsBox">
+            <p class="empty-note">Loading instructions from the platform administrator…</p>
+          </div>
+
+          <div class="notice" id="priceNotice" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#40D9FF" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            <span id="priceNoticeText"></span>
+          </div>
+        </section>
+
+        <!-- ================= 2. SUBMIT PAYMENT REFERENCE ================= -->
+        <section class="card" id="submitCard">
+          <h2><span class="num">2</span> Submit your payment reference</h2>
+          <p class="lead">Enter the transaction reference you received when you paid. An administrator will verify it against the actual payment.</p>
+
+          <div class="form-alert" id="submitAlert" role="alert" aria-live="assertive"></div>
+
+          <form id="paymentForm" novalidate autocomplete="off">
+            <div class="field">
+              <label for="reportSelect">Report this payment is for <span class="req">*</span></label>
+              <select id="reportSelect" required>
+                <option value="">Loading your reports…</option>
+              </select>
+              <span class="hint">Only your own reports appear here.</span>
+            </div>
+
+            <div class="field">
+              <label for="paymentReference">Payment reference / transaction ID <span class="req">*</span></label>
+              <input type="text" id="paymentReference" required
+                     placeholder="e.g. MOMO-2025-00123456"
+                     maxlength="80" />
+              <span class="hint">Copy this exactly as it appears on your payment confirmation.</span>
+            </div>
+
+            <div class="field-grid two">
+              <div class="field">
+                <label for="amount">Amount paid <span class="req">*</span></label>
+                <input type="number" id="amount" min="0" step="0.01" required placeholder="e.g. 5000" />
+              </div>
+              <div class="field">
+                <label for="currency">Currency <span class="req">*</span></label>
+                <select id="currency" required>
+                  <option value="RWF">RWF — Rwandan Franc</option>
+                  <option value="USD">USD — US Dollar</option>
+                  <option value="EUR">EUR — Euro</option>
+                  <option value="KES">KES — Kenyan Shilling</option>
+                  <option value="UGX">UGX — Ugandan Shilling</option>
+                  <option value="TZS">TZS — Tanzanian Shilling</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="paymentMethod">Payment method <span class="req">*</span></label>
+              <select id="paymentMethod" required>
+                <option value="">Select…</option>
+                <option value="mobile_money">Mobile Money</option>
+                <option value="bank_transfer">Bank transfer</option>
+                <option value="cash">Cash</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="notes">Notes for the administrator <span class="hint">(optional)</span></label>
+              <textarea id="notes" placeholder="Any details that may help verify your payment…" maxlength="500"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+              <span class="spinner-sm" aria-hidden="true"></span>
+              <span class="btn-label">Submit payment reference</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- ================= 3. ACCESS CODE ENTRY ================= -->
+        <section class="card" id="codeCard">
+          <h2><span class="num">3</span> Enter your access code</h2>
+          <p class="lead">Once an administrator verifies your payment, you will receive a single-use access code. Enter it below to unlock report generation.</p>
+
+          <div class="form-alert" id="codeAlert" role="alert" aria-live="assertive"></div>
+
+          <div id="codeGate" hidden>
+            <div class="notice gold">
+              <span>
+                <strong>No approved payment found.</strong>
+                Submit a payment reference above first. The access code field will unlock once an administrator has verified your payment and issued your code.
+              </span>
+            </div>
+          </div>
+
+          <form id="codeForm" novalidate autocomplete="off">
+            <div class="field">
+              <label for="accessCode">Access code</label>
+              <input type="text" id="accessCode" class="code-input"
+                     placeholder="XXXX-XXXX"
+                     autocomplete="off" spellcheck="false"
+                     maxlength="40" />
+              <span class="hint">Codes are single-use. They expire after use or after the validity window set by the administrator.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="verifyBtn" disabled aria-disabled="true">
+              <span class="spinner-sm" aria-hidden="true"></span>
+              <span class="btn-label">Verify access code</span>
+            </button>
+          </form>
+        </section>
+
+        <!-- ================= 4. YOUR PAYMENT REQUESTS ================= -->
+        <section class="card" id="requestsCard">
+          <h2><span class="num">4</span> Your payment requests</h2>
+          <p class="lead">Live status of every reference you have submitted.</p>
+
+          <div id="requestsList">
+            <p class="price-note">Loading your requests…</p>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ===================== SIDEBAR ===================== -->
+      <aside class="sidebar">
+
+        <div class="aside-card">
+          <h3>Your account</h3>
+          <div class="aside-meta">
+            <span>Signed in <b id="metaUser">—</b></span>
+            <span>Active report <b id="metaReport">—</b></span>
+            <span>Latest request <b id="metaLatest" class="wait">—</b></span>
+          </div>
+        </div>
+
+        <div class="aside-card">
+          <h3>How verification works</h3>
+          <p>An administrator independently confirms your payment, then issues a single-use access code bound to your account and your report.</p>
+        </div>
+
+        <div class="aside-card">
+          <h3>Security</h3>
+          <p style="line-height:1.6">
+            Access codes are never stored in page source code. Verification is performed server-side against:
+          </p>
+          <div class="aside-meta">
+            <span>Your account <b class="ok">✓</b></span>
+            <span>Payment approval <b class="ok">✓</b></span>
+            <span>Report ownership <b class="ok">✓</b></span>
+            <span>Code validity <b class="ok">✓</b></span>
+            <span>Expiration <b class="ok">✓</b></span>
+            <span>Single use <b class="ok">✓</b></span>
+          </div>
+        </div>
+
+        <div class="aside-card">
+          <h3>Need help?</h3>
+          <p style="display:grid;gap:.4rem">
+            <a href="help.html">Help center</a>
+            <a href="contact.html">Contact support</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="my-reports.html">My reports</a>
+          </p>
+        </div>
+
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  © <span id="year"></span> REPORTX.COM — All rights reserved.
+</footer>
+
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script type="module">
+/* =============================================================================
+   REPORTX.COM — payment-verification.html
+   -----------------------------------------------------------------------------
+   SECURITY MODEL (read this before deploying)
+
+   1. Payment reference submission:
+      ✔ Works entirely client-side. The user creates a `payment_requests`
+        document with `status: "pending"`. Owner-based rules allow this.
+
+   2. Access code verification:
+      ✖ MUST NOT happen in the browser. Anyone with DevTools could otherwise
+        brute-force or bypass the check.
+      ✔ It happens by calling a trusted backend endpoint (Firebase Cloud
+        Function or any HTTPS server) that:
+          • Confirms the user is authenticated (Firebase ID token)
+          • Confirms the payment request is approved
+          • Confirms the code is valid, unexpired, unused, and matches the user
+          • Marks the code as used atomically
+          • Grants report-generation access
+
+   Set VERIFICATION_ENDPOINT below once your Cloud Function is deployed.
+   Until then, the code entry is honestly disabled.
+   ============================================================================= */
+
+/* ---------- Firebase configuration ---------- */
+const firebaseConfig = {
+  apiKey:            "AIzaSyCHKjRQwalZSoV9sOQR5ZiPM9btBXxD9yo",
+  authDomain:        "repora-2a29c.firebaseapp.com",
+  projectId:         "repora-2a29c",
+  storageBucket:     "repora-2a29c.firebasestorage.app",
+  messagingSenderId: "41097966352",
+  appId:             "1:41097966352:web:c60e0827727c80fa332b95"
+};
+
+/* =============================================================================
+   BACKEND VERIFICATION ENDPOINT
+   -----------------------------------------------------------------------------
+   Paste the HTTPS URL of your deployed Cloud Function below, for example:
+     const VERIFICATION_ENDPOINT = "https://us-central1-repora-2a29c.cloudfunctions.net/verifyAccessCode";
+
+   The endpoint must accept a POST with JSON:
+     { code: "XXXX-XXXX", reportId: "..." }
+   and return JSON:
+     { success: true|false, message: "...", accessGranted: true|false }
+
+   It must verify the caller's Firebase ID token (Authorization: Bearer <idToken>).
+
+   Leave this empty until the function is deployed. The UI will clearly show
+   that the backend is not yet configured rather than pretend it works.
+   ============================================================================= */
+const VERIFICATION_ENDPOINT = "";
+
+/* ---------- DOM helpers ---------- */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+$("#year").textContent = new Date().getFullYear();
+
+/* ---------- State ---------- */
+let fb = null;
+let currentUser = null;
+let userReports = [];
+let userRequests = [];
+let platformSettings = null;
+let unsubRequests = null;
+
+/* =============================================================================
+   Toast
+   ============================================================================= */
+const toastStack = $("#toastStack");
+function toast(message, type = "info", duration = 4600) {
+  if (!toastStack) return;
+  const el = document.createElement("div");
+  el.className = `toast ${type}`;
+  el.setAttribute("role", type === "error" ? "alert" : "status");
+  el.textContent = message;
+  toastStack.appendChild(el);
+  const remove = () => { el.classList.add("leaving"); setTimeout(() => el.remove(), 260); };
+  const t = setTimeout(remove, duration);
+  el.addEventListener("click", () => { clearTimeout(t); remove(); });
+}
+
+/* =============================================================================
+   Alert helpers
+   ============================================================================= */
+function showAlert(el, message, type = "error") {
+  if (!el) return;
+  el.className = `form-alert show ${type}`;
+  el.textContent = message;
+}
+function hideAlert(el) {
+  if (!el) return;
+  el.className = "form-alert";
+  el.textContent = "";
+}
+function setBtnLoading(btn, loading) {
+  if (!btn) return;
+  btn.classList.toggle("loading", loading);
+  btn.disabled = loading;
+}
+
+/* =============================================================================
+   Helpers
+   ============================================================================= */
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, (c) => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function toDate(value) {
+  if (!value) return null;
+  if (typeof value.toDate === "function") return value.toDate();
+  const d = new Date(value);
+  return isNaN(d) ? null : d;
+}
+
+function fmtDateTime(d) {
+  if (!d) return "—";
+  return d.toLocaleString(undefined, {
+    year: "numeric", month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit"
+  });
+}
+
+function reportTitle(r) {
+  return r.title || r.internship?.internshipTitle || r.hostSchool?.hostSchool || "Untitled report";
+}
+
+/* =============================================================================
+   Platform settings — payment instructions and pricing
+   ============================================================================= */
+async function loadPlatformSettings() {
+  if (!fb) return;
+  try {
+    const { doc, getDoc } = fb.api.firestore;
+    const snap = await getDoc(doc(fb.db, "platform_settings", "public"));
+    if (snap.exists()) {
+      platformSettings = snap.data() || {};
+    }
+  } catch (e) {
+    console.info("[payment-verification] platform settings unavailable:", e?.message || e);
+  }
+  renderInstructions();
+  renderPricing();
+}
+
+function renderInstructions() {
+  const box = $("#instructionsBox");
+  if (!box) return;
+
+  const info = platformSettings?.contactInformation || {};
+  const pay = platformSettings?.paymentInstructions || {};
+
+  const methods = [];
+  if (pay.mobileMoney) {
+    methods.push({
+      label: "Mobile Money",
+      lines: [
+        ["Account name", pay.mobileMoney.name || "—"],
+        ["Number", pay.mobileMoney.number || "—"],
+        ["Network", pay.mobileMoney.network || "—"]
+      ]
+    });
+  }
+  if (pay.bankTransfer) {
+    methods.push({
+      label: "Bank transfer",
+      lines: [
+        ["Bank", pay.bankTransfer.bank || "—"],
+        ["Account name", pay.bankTransfer.accountName || "—"],
+        ["Account number", pay.bankTransfer.accountNumber || "—"],
+        ["SWIFT / IBAN", pay.bankTransfer.swift || "—"]
+      ]
+    });
+  }
+  if (pay.cash) {
+    methods.push({
+      label: "Cash",
+      lines: [["Instructions", pay.cash]]
+    });
+  }
+
+  if (!methods.length) {
+    box.innerHTML = `
+      <p class="empty-note">
+        <strong>Payment instructions have not been published yet.</strong>
+        The platform administrator has not yet set the payment method in the
+        <code>platform_settings/public</code> document. You can still submit your
+        reference below — the administrator will see it and reply with the correct
+        instructions.
+      </p>
+    `;
+    return;
+  }
+
+  let html = "";
+  methods.forEach((m) => {
+    html += `<h3>${escapeHtml(m.label)}</h3>`;
+    m.lines.forEach(([k, v]) => {
+      html += `<div class="row"><span class="lbl">${escapeHtml(k)}</span><span class="val">${escapeHtml(v)}</span></div>`;
+    });
+    html += `<div style="height:.6rem"></div>`;
+  });
+  box.innerHTML = html;
+}
+
+function renderPricing() {
+  const notice = $("#priceNotice");
+  const text = $("#priceNoticeText");
+  const pricing = platformSettings?.pricing;
+
+  if (!pricing || (!pricing.amount && !pricing.display)) {
+    if (notice) notice.hidden = true;
+    return;
+  }
+
+  const display = pricing.display ||
+    `${pricing.amount} ${pricing.currency || ""}`.trim();
+
+  if (text) {
+    text.innerHTML =
+      `<strong>Current price:</strong> ${escapeHtml(display)}` +
+      (pricing.note ? ` — ${escapeHtml(pricing.note)}` : "");
+  }
+  if (notice) notice.hidden = false;
+
+  /* Prefill the amount field if empty */
+  const amountEl = $("#amount");
+  const currencyEl = $("#currency");
+  if (amountEl && !amountEl.value && pricing.amount) amountEl.value = pricing.amount;
+  if (currencyEl && pricing.currency) {
+    const opt = Array.from(currencyEl.options).find((o) => o.value === pricing.currency);
+    if (opt) currencyEl.value = pricing.currency;
+  }
+}
+
+/* =============================================================================
+   Load user's reports (for the dropdown)
+   ============================================================================= */
+async function loadUserReports(uid) {
+  const select = $("#reportSelect");
+  if (!select) return;
+
+  try {
+    const { collection, query, where, orderBy, getDocs } = fb.api.firestore;
+    const q = query(
+      collection(fb.db, "reports"),
+      where("ownerUid", "==", uid),
+      orderBy("updatedAt", "desc")
+    );
+    const snap = await getDocs(q);
+    userReports = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
+    if (!userReports.length) {
+      select.innerHTML = `<option value="">No reports yet — create one first</option>`;
+      select.disabled = true;
+      return;
+    }
+
+    /* Prefer the activeReportId if it exists */
+    let activeId = null;
+    try {
+      const { doc, getDoc } = fb.api.firestore;
+      const uSnap = await getDoc(doc(fb.db, "users", uid));
+      if (uSnap.exists()) activeId = uSnap.data().activeReportId || null;
+    } catch (_) {}
+
+    select.disabled = false;
+    select.innerHTML = userReports
+      .map((r) => {
+        const sel = r.id === activeId ? " selected" : "";
+        const t = escapeHtml(reportTitle(r));
+        const short = r.id.slice(0, 8);
+        return `<option value="${escapeHtml(r.id)}"${sel}>${t} · #${short}</option>`;
+      })
+      .join("");
+
+  } catch (e) {
+    console.warn("[payment-verification] reports query failed:", e?.message || e);
+    select.innerHTML = `<option value="">Could not load reports</option>`;
+    select.disabled = true;
+  }
+
+  updateMetaReport();
+}
+
+function updateMetaReport() {
+  const el = $("#metaReport");
+  if (!el) return;
+  const id = $("#reportSelect")?.value;
+  if (!id) { el.textContent = "—"; return; }
+  const r = userReports.find((x) => x.id === id);
+  el.textContent = r ? `#${id.slice(0, 8)}` : "—";
+}
+
+$("#reportSelect")?.addEventListener("change", updateMetaReport);
+
+/* =============================================================================
+   Submit payment reference
+   ============================================================================= */
+$("#paymentForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const alertEl = $("#submitAlert");
+  hideAlert(alertEl);
+
+  if (!fb || !currentUser) {
+    showAlert(alertEl, "You are not signed in.");
+    return;
+  }
+
+  const reportId = $("#reportSelect").value;
+  const reference = $("#paymentReference").value.trim();
+  const amount = Number($("#amount").value);
+  const currency = $("#currency").value;
+  const method = $("#paymentMethod").value;
+  const notes = $("#notes").value.trim();
+
+  /* Validation */
+  if (!reportId) return showAlert(alertEl, "Please select the report this payment is for.");
+  if (!reference) return showAlert(alertEl, "Please enter your payment reference.");
+  if (!amount || amount <= 0) return showAlert(alertEl, "Please enter the amount you paid.");
+  if (!currency) return showAlert(alertEl, "Please choose the currency.");
+  if (!method) return showAlert(alertEl, "Please choose a payment method.");
+
+  /* Prevent duplicate references from the same user */
+  if (userRequests.some((r) =>
+    (r.paymentReference || "").toLowerCase() === reference.toLowerCase() &&
+    r.status !== "rejected"
+  )) {
+    return showAlert(alertEl, "You have already submitted this reference. Please wait for the administrator to review it.", "warn");
+  }
+
+  const btn = $("#submitBtn");
+  setBtnLoading(btn, true);
+
+  try {
+    const { addDoc, collection, serverTimestamp } = fb.api.firestore;
+    await addDoc(collection(fb.db, "payment_requests"), {
+      ownerUid: currentUser.uid,
+      reportId,
+      paymentReference: reference,
+      amount,
+      currency,
+      paymentMethod: method,
+      notes,
+      status: "pending",
+      submittedAt: serverTimestamp(),
+      reviewedAt: null,
+      reviewedBy: null
+    });
+
+    /* Also flag the report as awaiting payment review */
+    try {
+      const { doc, updateDoc, serverTimestamp: ts } = fb.api.firestore;
+      await updateDoc(doc(fb.db, "reports", reportId), {
+        paymentStatus: "pending_review",
+        updatedAt: ts()
+      });
+    } catch (_) { /* non-fatal */ }
+
+    $("#paymentReference").value = "";
+    $("#notes").value = "";
+    showAlert(alertEl, "Payment reference submitted. An administrator will verify it shortly.", "success");
+    toast("Payment reference submitted.", "success");
+
+  } catch (error) {
+    console.error("[payment-verification] submit failed:", error);
+    showAlert(alertEl, "Could not submit: " + (error?.message || error));
+  } finally {
+    setBtnLoading(btn, false);
+  }
+});
+
+/* =============================================================================
+   Access code verification
+   ============================================================================= */
+function hasApprovedPayment() {
+  return userRequests.some((r) => r.status === "approved");
+}
+
+function updateCodeGate() {
+  const gate = $("#codeGate");
+  const verifyBtn = $("#verifyBtn");
+  const codeInput = $("#accessCode");
+  const endpointReady = Boolean(VERIFICATION_ENDPOINT);
+
+  const approved = hasApprovedPayment();
+
+  if (!approved) {
+    /* No approved payment → hide the form, show the gate */
+    if (gate) gate.hidden = false;
+    if (codeInput) codeInput.disabled = true;
+    if (verifyBtn) {
+      verifyBtn.disabled = true;
+      verifyBtn.setAttribute("aria-disabled", "true");
+    }
+  } else {
+    if (gate) gate.hidden = true;
+    if (codeInput) codeInput.disabled = !endpointReady;
+
+    if (!endpointReady) {
+      /* Approved but no backend yet — honest message, button stays disabled */
+      if (verifyBtn) {
+        verifyBtn.disabled = true;
+        verifyBtn.setAttribute("aria-disabled", "true");
+        verifyBtn.querySelector(".btn-label").textContent = "Backend not configured";
+      }
+    } else {
+      if (verifyBtn) {
+        verifyBtn.disabled = false;
+        verifyBtn.setAttribute("aria-disabled", "false");
+        verifyBtn.querySelector(".btn-label").textContent = "Verify access code";
+      }
+    }
+  }
+}
+
+/* Show honest "backend required" banner */
+function renderBackendNotice() {
+  const notice = $("#backendNotice");
+  if (!notice) return;
+  notice.hidden = Boolean(VERIFICATION_ENDPOINT);
+}
+
+/* Auto-format code input (XXXX-XXXX) */
+$("#accessCode")?.addEventListener("input", (e) => {
+  let v = e.target.value.replace(/[^A-Za-z0-9]/g, "").toUpperCase();
+  /* Insert a dash every 4 characters */
+  const parts = [];
+  for (let i = 0; i < v.length; i += 4) parts.push(v.slice(i, i + 4));
+  const formatted = parts.join("-").slice(0, 24);
+  e.target.value = formatted;
+});
+
+/* Verify button */
+$("#codeForm")?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const alertEl = $("#codeAlert");
+  hideAlert(alertEl);
+
+  if (!currentUser) {
+    showAlert(alertEl, "You are not signed in.");
+    return;
+  }
+  if (!VERIFICATION_ENDPOINT) {
+    showAlert(alertEl, "Access code verification requires the server-side endpoint to be deployed first.", "warn");
+    return;
+  }
+
+  const code = $("#accessCode").value.trim();
+  const reportId = $("#reportSelect").value || (userRequests[0]?.reportId || "");
+
+  if (!code) return showAlert(alertEl, "Please enter your access code.");
+  if (code.replace(/-/g, "").length < 8) return showAlert(alertEl, "Access codes are at least 8 characters long.");
+
+  const btn = $("#verifyBtn");
+  setBtnLoading(btn, true);
+
+  try {
+    /* Retrieve a fresh ID token — the backend needs it to identify the user */
+    const idToken = await currentUser.getIdToken(true);
+
+    const res = await fetch(VERIFICATION_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + idToken
+      },
+      body: JSON.stringify({ code, reportId })
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok || !data.success) {
+      showAlert(alertEl, data.message || "That code could not be verified. Check for typos and try again.");
+      return;
+    }
+
+    showAlert(alertEl, data.message || "Access granted. Your report is now unlocked.", "success");
+    toast("Access granted. You can now generate and export your report.", "success");
+
+    /* Update local state so the UI reflects the grant immediately */
+    if (reportId) {
+      try {
+        const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
+        await updateDoc(doc(fb.db, "reports", reportId), {
+          paymentStatus: "paid",
+          updatedAt: serverTimestamp()
+        });
+      } catch (_) { /* backend already did this, but keep local UI honest */ }
+    }
+
+    $("#accessCode").value = "";
+
+    /* Offer quick navigation to the builder */
+    setTimeout(() => {
+      if (confirm("Access granted. Open your report now?")) {
+        window.location.href = "report-builder.html?report=" + encodeURIComponent(reportId);
+      }
+    }, 800);
+
+  } catch (error) {
+    console.error("[payment-verification] verify failed:", error);
+    showAlert(alertEl, "Could not reach the verification service: " + (error?.message || error));
+  } finally {
+    setBtnLoading(btn, false);
+  }
+});
+
+/* =============================================================================
+   Payment requests subscription (live)
+   ============================================================================= */
+function subscribePaymentRequests(uid) {
+  const { collection, query, where, onSnapshot } = fb.api.firestore;
+
+  if (unsubRequests) { unsubRequests(); unsubRequests = null; }
+
+  /* No orderBy — avoids a composite index requirement in Firestore.
+     We sort client-side by submittedAt. */
+  const q = query(
+    collection(fb.db, "payment_requests"),
+    where("ownerUid", "==", uid)
+  );
+
+  unsubRequests = onSnapshot(
+    q,
+    (snap) => {
+      userRequests = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      /* Sort newest first, tolerate missing timestamps */
+      userRequests.sort((a, b) => {
+        const da = toDate(a.submittedAt)?.getTime() || 0;
+        const db = toDate(b.submittedAt)?.getTime() || 0;
+        return db - da;
+      });
+      renderRequests();
+      updateMetaLatest();
+      updateCodeGate();
+    },
+    (error) => {
+      console.error("[payment-verification] requests listener failed:", error);
+      const list = $("#requestsList");
+      if (list) {
+        list.innerHTML = `<p class="price-note">Could not load your requests: ${escapeHtml(error?.message || String(error))}</p>`;
+      }
+    }
+  );
+}
+
+function renderRequests() {
+  const list = $("#requestsList");
+  if (!list) return;
+
+  if (!userRequests.length) {
+    list.innerHTML = `
+      <p class="price-note">
+        You have not submitted any payment references yet. Use the form above to submit one.
+      </p>
+    `;
+    return;
+  }
+
+  list.innerHTML = userRequests.map((r) => {
+    const status = (r.status || "pending").toLowerCase();
+    const submitted = fmtDateTime(toDate(r.submittedAt));
+    const reviewed = r.reviewedAt ? fmtDateTime(toDate(r.reviewedAt)) : "—";
+    const report = userReports.find((x) => x.id === r.reportId);
+    const reportLabel = report ? reportTitle(report) : (r.reportId ? `#${r.reportId.slice(0, 8)}` : "—");
+
+    let pillClass = "wait";
+    let pillLabel = "Pending review";
+    if (status === "approved") { pillClass = "ok"; pillLabel = "Approved"; }
+    else if (status === "rejected") { pillClass = "err"; pillLabel = "Rejected"; }
+
+    return `
+      <div class="request-row ${escapeHtml(status)}">
+        <div class="head">
+          <span class="ref">${escapeHtml(r.paymentReference || "—")}</span>
+          <span class="status-pill ${pillClass}">${escapeHtml(pillLabel)}</span>
+        </div>
+        <dl class="meta">
+          <dt>Report</dt><dd>${escapeHtml(reportLabel)}</dd>
+          <dt>Amount</dt><dd>${escapeHtml(String(r.amount ?? "—"))} ${escapeHtml(r.currency || "")}</dd>
+          <dt>Method</dt><dd>${escapeHtml((r.paymentMethod || "—").replace(/_/g, " "))}</dd>
+          <dt>Submitted</dt><dd>${escapeHtml(submitted)}</dd>
+          <dt>Reviewed</dt><dd>${escapeHtml(reviewed)}</dd>
+          ${r.reviewNote ? `<dt>Note</dt><dd>${escapeHtml(r.reviewNote)}</dd>` : ""}
+        </dl>
+      </div>
+    `;
+  }).join("");
+}
+
+function updateMetaLatest() {
+  const el = $("#metaLatest");
+  if (!el) return;
+  if (!userRequests.length) { el.textContent = "None yet"; el.className = "wait"; return; }
+  const r = userRequests[0];
+  const s = (r.status || "pending").toLowerCase();
+  el.textContent = s.charAt(0).toUpperCase() + s.slice(1);
+  el.className = s === "approved" ? "ok" : (s === "rejected" ? "" : "wait");
+}
+
+/* =============================================================================
+   Firebase boot
+   ============================================================================= */
+async function boot() {
+  const loadingState   = $("#loadingState");
+  const signedOutState = $("#signedOutState");
+  const content        = $("#content");
+
+  renderBackendNotice();
+
+  try {
+    const [
+      { initializeApp },
+      authMod,
+      fsMod
+    ] = await Promise.all([
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"),
+      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js")
+    ]);
+
+    const app  = initializeApp(firebaseConfig);
+    const auth = authMod.getAuth(app);
+    const db   = fsMod.getFirestore(app);
+
+    fb = { app, auth, db, api: { auth: authMod, firestore: fsMod } };
+
+    authMod.onAuthStateChanged(auth, async (user) => {
+      loadingState.hidden = true;
+
+      if (!user) {
+        currentUser = null;
+        signedOutState.hidden = false;
+        content.hidden = true;
+        if (unsubRequests) { unsubRequests(); unsubRequests = null; }
+        return;
+      }
+
+      currentUser = user;
+      signedOutState.hidden = true;
+      content.hidden = false;
+
+      /* Header identity */
+      let profile = null;
+      try {
+        const snap = await fsMod.getDoc(fsMod.doc(db, "users", user.uid));
+        if (snap.exists()) profile = snap.data();
+      } catch (_) {}
+
+      const name = profile?.fullName || user.displayName || (user.email ? user.email.split("@")[0] : "User");
+      $("#navName").textContent = name;
+      const metaUser = $("#metaUser");
+      if (metaUser) metaUser.textContent = user.email || name;
+      const av = $("#navAvatar");
+      if (user.photoURL) {
+        av.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = user.photoURL;
+        img.alt = "";
+        img.referrerPolicy = "no-referrer";
+        av.appendChild(img);
+      } else {
+        av.textContent = (name.trim().charAt(0) || "R").toUpperCase();
+      }
+
+      /* Load reports, settings, then subscribe to requests */
+      await loadUserReports(user.uid);
+      await loadPlatformSettings();
+      subscribePaymentRequests(user.uid);
+
+      /* Initial gate state */
+      updateCodeGate();
+      updateMetaLatest();
+    });
+
+    /* Logout */
+    $("#logoutBtn")?.addEventListener("click", async () => {
+      try {
+        await authMod.signOut(auth);
+        window.location.href = "index.html";
+      } catch (e) {
+        toast("Could not sign out: " + (e?.message || e), "error");
+      }
+    });
+
+  } catch (err) {
+    console.error("[payment-verification] init failed:", err);
+    loadingState.innerHTML =
+      '<div><p style="color:#FFB4B4">Could not initialise Firebase.</p>' +
+      '<p style="color:var(--muted);font-size:.85rem">' + escapeHtml(err?.message || String(err)) + '</p></div>';
+  }
+}
+
+/* =============================================================================
+   Init
+   ============================================================================= */
+boot();
+</script>
+</body>
+</html>
