@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="dark" />
 <title>Admin Panel — REPORTX.COM</title>
-<meta name="robots" content="noindex, nofollow" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+<meta name="referrer" content="no-referrer" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121f'/%3E%3Cpath d='M20 16h16a10 10 0 0 1 0 20h-6l10 12h-8l-10-12v12h-6V16zm6 6v8h9a4 4 0 0 0 0-8h-9z' fill='%2340D9FF'/%3E%3Cpath d='M14 52h36' stroke='%23FAD201' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,7 +21,6 @@
   --glass:rgba(9,26,48,.72);--glass-strong:rgba(4,18,31,.92);
   --radius-sm:10px;--radius:14px;--radius-lg:20px;--radius-pill:999px;
   --shadow:0 18px 44px rgba(0,0,0,.42);
-  --shadow-glow:0 0 0 1px rgba(64,217,255,.18),0 18px 50px rgba(0,161,222,.16);
   --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
   --font-display:'Poppins',var(--font-body);
   --font-mono:'JetBrains Mono',monospace;
@@ -46,7 +46,6 @@ ul{margin:0;padding:0;list-style:none}
 ::-webkit-scrollbar-thumb{background:rgba(64,217,255,.2);border-radius:4px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(64,217,255,.4)}
 
-/* ---- NAV ---- */
 .nav{position:sticky;top:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:rgba(4,18,31,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft)}
 .nav-inner{width:100%;max-width:var(--maxw);margin:auto;padding:0 18px;display:flex;align-items:center;gap:1rem;flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:.55rem;color:var(--text);flex:0 0 auto}
@@ -80,10 +79,8 @@ ul{margin:0;padding:0;list-style:none}
 .btn.loading .btn-label{opacity:.75}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---- LAYOUT ---- */
 .layout{display:grid;grid-template-columns:1fr;min-height:calc(100vh - var(--nav-h))}
 @media (min-width:900px){.layout{grid-template-columns:var(--side-w) 1fr}}
-
 .sidebar{background:linear-gradient(180deg,rgba(9,26,48,.5),rgba(4,18,31,.75));border-right:1px solid var(--line-soft);padding:20px 14px}
 @media (max-width:899px){.sidebar{border-right:0;border-bottom:1px solid var(--line-soft);padding:12px;overflow-x:auto}.side-nav{display:flex;gap:.4rem;flex-wrap:nowrap}}
 .side-nav{display:flex;flex-direction:column;gap:.25rem}
@@ -96,7 +93,6 @@ ul{margin:0;padding:0;list-style:none}
 
 .main{padding:22px 18px 60px;max-width:1200px}
 @media (min-width:1200px){.main{padding:30px 38px 80px}}
-
 .tab-section{display:none}
 .tab-section.active{display:block;animation:fadeIn .3s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -105,7 +101,6 @@ ul{margin:0;padding:0;list-style:none}
 .page-head h1{font-family:var(--font-display);font-weight:700;letter-spacing:-.015em;font-size:clamp(1.4rem,2.6vw,1.85rem);margin:0 0 .25rem}
 .page-head p{color:var(--text-muted);margin:0;font-size:.9rem;max-width:70ch}
 
-/* ---- STATS ---- */
 .stats{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:22px}
 @media (min-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1020px){.stats{grid-template-columns:repeat(4,1fr)}}
@@ -117,13 +112,11 @@ ul{margin:0;padding:0;list-style:none}
 .stat.red .val{color:var(--red)}
 .stat .sub{font-size:.72rem;color:var(--text-dim);margin-top:.2rem}
 
-/* ---- CARD ---- */
 .card{background:linear-gradient(180deg,rgba(16,38,66,.65),rgba(9,26,48,.5));border:1px solid var(--line-soft);border-radius:14px;padding:1.3rem 1.25rem;margin-bottom:18px}
 .card-head{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .card-head h2{font-family:var(--font-display);font-size:1rem;font-weight:600;margin:0}
 .card-head p{color:var(--text-muted);font-size:.82rem;margin:0}
 
-/* ---- TABLE ---- */
 .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line-soft)}
 table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:640px}
 thead th{text-align:left;padding:.7rem .85rem;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);background:rgba(4,18,31,.5);border-bottom:1px solid var(--line-soft);white-space:nowrap}
@@ -134,7 +127,6 @@ td.mono{font-family:var(--font-mono);font-size:.76rem;color:var(--cyan);word-bre
 td .title-cell{font-weight:600;color:var(--text)}
 td .sub{font-size:.76rem;color:var(--text-dim);margin-top:.15rem}
 
-/* ---- PILLS ---- */
 .pill{display:inline-flex;align-items:center;gap:.3rem;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.22rem .55rem;border-radius:99px;white-space:nowrap}
 .pill.pending{background:rgba(250,210,1,.15);border:1px solid rgba(250,210,1,.4);color:#FFE28A}
 .pill.approved{background:rgba(32,96,61,.28);border:1px solid rgba(32,96,61,.6);color:#8fe0b4}
@@ -145,8 +137,8 @@ td .sub{font-size:.76rem;color:var(--text-dim);margin-top:.15rem}
 .pill.revoked{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.4);color:#FFB4B4}
 .pill.admin{background:rgba(250,210,1,.15);border:1px solid rgba(250,210,1,.4);color:var(--gold)}
 .pill.student{background:rgba(64,217,255,.1);border:1px solid rgba(64,217,255,.3);color:var(--cyan)}
+.pill.suspended{background:rgba(255,107,107,.12);border:1px solid rgba(255,107,107,.4);color:#FFB4B4}
 
-/* ---- ROW ACTIONS ---- */
 .row-actions{display:flex;gap:.35rem;flex-wrap:wrap}
 .mini{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .6rem;border-radius:8px;border:1px solid var(--line-soft);background:rgba(234,240,247,.04);color:var(--text-muted);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .15s;text-decoration:none}
 .mini:hover{color:var(--cyan);border-color:rgba(64,217,255,.4);background:rgba(64,217,255,.08);text-decoration:none}
@@ -156,37 +148,32 @@ td .sub{font-size:.76rem;color:var(--text-dim);margin-top:.15rem}
 .mini.gold{color:#231a00;background:linear-gradient(120deg,#FFD83D,var(--gold));border-color:transparent}
 .mini.gold:hover{color:#231a00}
 
-/* ---- EMPTY STATE ---- */
 .empty{text-align:center;padding:40px 20px;color:var(--text-muted);border:1px dashed var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(64,217,255,.04),rgba(64,217,255,.01))}
 .empty svg{width:32px;height:32px;color:var(--text-dim);margin:0 auto 1rem}
 .empty p{margin:0;font-size:.9rem}
 .empty strong{display:block;color:var(--text);font-family:var(--font-display);font-size:1rem;margin-bottom:.35rem;font-weight:600}
 
-/* ---- FIELDS ---- */
 .field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
 .field label{font-size:.78rem;font-weight:600;color:var(--text-muted)}
 .field .hint{font-size:.7rem;color:var(--text-dim)}
-input[type="text"],input[type="number"],input[type="email"],input[type="url"],input[type="tel"],select,textarea{width:100%;background:rgba(4,14,26,.6);border:1px solid var(--line-soft);border-radius:10px;padding:.65rem .85rem;color:var(--text);font-size:.88rem;transition:border-color .2s,box-shadow .2s;min-height:42px;font-family:inherit}
+input[type="text"],input[type="number"],input[type="email"],input[type="url"],input[type="tel"],input[type="date"],select,textarea{width:100%;background:rgba(4,14,26,.6);border:1px solid var(--line-soft);border-radius:10px;padding:.65rem .85rem;color:var(--text);font-size:.88rem;transition:border-color .2s,box-shadow .2s;min-height:42px;font-family:inherit}
 input:focus,select:focus,textarea:focus{outline:none;border-color:rgba(64,217,255,.6);box-shadow:0 0 0 3px rgba(64,217,255,.14)}
 textarea{min-height:90px;resize:vertical;line-height:1.55}
 select option{background:#0b1c33;color:#EAF0F7}
 .field-grid{display:grid;gap:0 1rem;grid-template-columns:1fr}
 @media (min-width:640px){.field-grid.two{grid-template-columns:1fr 1fr}.field-grid.three{grid-template-columns:1fr 1fr 1fr}}
 
-/* ---- NOTICE ---- */
 .notice{display:flex;gap:.8rem;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:.9rem 1.05rem;font-size:.85rem;color:var(--text-muted);background:linear-gradient(180deg,rgba(64,217,255,.07),rgba(64,217,255,.02));margin-bottom:18px;line-height:1.6}
 .notice.gold{border-color:rgba(250,210,1,.32);background:linear-gradient(180deg,rgba(250,210,1,.09),rgba(250,210,1,.02))}
 .notice.err{border-color:rgba(255,107,107,.4);background:linear-gradient(180deg,rgba(255,107,107,.1),rgba(255,107,107,.02))}
 .notice svg{flex:0 0 auto;margin-top:2px}
 .notice strong{color:var(--text)}
 
-/* ---- FILTER BAR ---- */
 .filter-bar{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.9rem}
 .filter-bar input[type="search"]{flex:1 1 220px;min-width:180px;min-height:38px;padding:.5rem .85rem;font-size:.85rem;background:rgba(4,14,26,.6);border:1px solid var(--line-soft);border-radius:10px;color:var(--text)}
 .filter-bar select{min-height:38px;padding:.5rem 2rem .5rem .8rem;font-size:.85rem;background:rgba(4,14,26,.6);border:1px solid var(--line-soft);border-radius:10px;color:var(--text);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2340D9FF' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .6rem center}
 .filter-bar select:focus,.filter-bar input:focus{outline:none;border-color:rgba(64,217,255,.6)}
 
-/* ---- GATE PANELS ---- */
 .gate{max-width:540px;margin:60px auto;padding:2rem 1.8rem;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(16,38,66,.8),rgba(4,18,31,.9));text-align:center;box-shadow:var(--shadow)}
 .gate-icon{width:64px;height:64px;border-radius:16px;margin:0 auto 1.1rem;display:grid;place-items:center;background:rgba(250,210,1,.12);border:1px solid rgba(250,210,1,.4);color:var(--gold)}
 .gate-icon svg{width:28px;height:28px}
@@ -194,11 +181,10 @@ select option{background:#0b1c33;color:#EAF0F7}
 .gate p{color:var(--text-muted);font-size:.9rem;margin:0 0 1.3rem}
 .gate .gate-actions{display:flex;gap:.55rem;justify-content:center;flex-wrap:wrap}
 
-/* ---- MODAL ---- */
 .modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:14px}
 .modal.open{display:flex}
 .modal-scrim{position:absolute;inset:0;background:rgba(3,10,20,.8);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);animation:fadeIn .2s ease}
-.modal-panel{position:relative;width:100%;max-width:520px;max-height:calc(100vh - 28px);overflow-y:auto;background:linear-gradient(180deg,#0c2138,#04121f);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:1.5rem 1.4rem;animation:modalIn .25s ease}
+.modal-panel{position:relative;width:100%;max-width:540px;max-height:calc(100vh - 28px);overflow-y:auto;background:linear-gradient(180deg,#0c2138,#04121f);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:1.5rem 1.4rem;animation:modalIn .25s ease}
 @keyframes modalIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
 .modal-panel h2{font-family:var(--font-display);font-size:1.12rem;font-weight:700;margin:0 0 .35rem;padding-right:2rem}
 .modal-panel p.modal-sub{color:var(--text-muted);font-size:.86rem;margin:0 0 1.1rem}
@@ -206,7 +192,6 @@ select option{background:#0b1c33;color:#EAF0F7}
 .modal-close:hover{color:var(--text);border-color:var(--line)}
 .modal-actions{display:flex;gap:.5rem;justify-content:flex-end;flex-wrap:wrap;margin-top:1.1rem}
 
-/* ---- CODE REVEAL ---- */
 .code-reveal{background:linear-gradient(180deg,rgba(4,14,26,.85),rgba(4,14,26,.6));border:2px dashed rgba(250,210,1,.5);border-radius:14px;padding:1.1rem 1rem;margin:.9rem 0;text-align:center}
 .code-reveal .lbl{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
 .code-reveal .code{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;letter-spacing:.18em;color:var(--gold);word-break:break-all;line-height:1.4;user-select:all}
@@ -216,7 +201,6 @@ select option{background:#0b1c33;color:#EAF0F7}
 .detail-grid dt{color:var(--text-dim);font-weight:600}
 .detail-grid dd{margin:0;color:var(--text);word-break:break-word}
 
-/* ---- TOAST ---- */
 .toast-stack{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:1200;display:flex;flex-direction:column;gap:.5rem;width:min(420px,calc(100vw - 28px));pointer-events:none}
 .toast{pointer-events:auto;background:var(--glass-strong);border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:11px;padding:.75rem .95rem;font-size:.85rem;color:var(--text);box-shadow:var(--shadow);backdrop-filter:blur(12px);animation:toastIn .3s var(--ease)}
 .toast.error{border-left-color:var(--red)}
@@ -226,9 +210,10 @@ select option{background:#0b1c33;color:#EAF0F7}
 @keyframes toastIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateY(10px)}}
 
-/* ---- SPINNER ---- */
 .loading{min-height:60vh;display:grid;place-items:center;text-align:center}
 .spinner-lg{width:42px;height:42px;border-radius:50%;border:3px solid rgba(64,217,255,.2);border-top-color:var(--cyan);animation:spin .8s linear infinite;margin:0 auto 1rem}
+
+.code-form{background:rgba(4,14,26,.5);border:1px solid var(--line-soft);border-radius:14px;padding:1.2rem 1.15rem;margin-bottom:1.2rem}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}}
 </style>
@@ -243,17 +228,14 @@ select option{background:#0b1c33;color:#EAF0F7}
       </span>
       <span class="brand-word">REPORT<span>X</span>.COM</span>
     </a>
-
     <span class="admin-badge" aria-label="Admin panel">
       <svg viewBox="0 0 100 110" aria-hidden="true"><path d="M52 18c-2-8 4-14 12-15 1 8-4 15-12 15Z" fill="#FAD201"/><path d="M50 20c0-6 0-10 1-14" stroke="#8B5A2B" stroke-width="3" stroke-linecap="round"/><path d="M50 22c-10-6-26-4-30 10-3 11 2 30 12 44 5 7 11 11 18 11s13-4 18-11c10-14 15-33 12-44-4-14-20-16-30-10Z" fill="#FAD201" opacity=".9"/></svg>
       Admin
     </span>
-
     <div class="nav-actions">
       <span class="avatar" id="navAvatar" aria-hidden="true">A</span>
       <span class="user-name" id="navName">—</span>
       <a class="btn btn-quiet btn-sm" href="index.html">Site</a>
-      <a class="btn btn-quiet btn-sm" href="dashboard.html">Dashboard</a>
       <button type="button" class="btn btn-quiet btn-sm" id="logoutBtn">Log Out</button>
     </div>
   </div>
@@ -261,49 +243,37 @@ select option{background:#0b1c33;color:#EAF0F7}
 
 <main>
 
-  <!-- Loading -->
   <div class="loading" id="loadingState">
-    <div>
-      <div class="spinner-lg"></div>
-      <p style="color:var(--text-muted)">Verifying administrator access…</p>
-    </div>
+    <div><div class="spinner-lg"></div><p style="color:var(--text-muted)">Verifying administrator access…</p></div>
   </div>
 
-  <!-- Signed out -->
   <div id="signedOutState" hidden>
     <div class="gate">
       <div class="gate-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
       <h2>Sign in required</h2>
-      <p>Administrator access requires an authenticated session with the authorised admin account.</p>
+      <p>Administrator access requires an authenticated session.</p>
       <div class="gate-actions">
         <button type="button" class="btn btn-primary" id="adminSignInGoogle">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill="#EA4335" d="M12 10.2v3.9h5.5a4.7 4.7 0 0 1-2 3.1l3.2 2.5c1.9-1.7 3-4.3 3-7.4 0-.7-.1-1.4-.2-2H12z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.2-2.5c-.9.6-2 1-3.5 1a6 6 0 0 1-5.7-4.1l-3.3 2.5A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.3 14a6 6 0 0 1 0-3.9L3 7.6a10 10 0 0 0 0 8.9L6.3 14z"/><path fill="#4285F4" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3 7.6l3.3 2.5A6 6 0 0 1 12 5.9z"/></svg>
           Continue with Google
         </button>
-        <a class="btn btn-ghost" href="index.html">Go to homepage</a>
+        <a class="btn btn-ghost" href="index.html">Homepage</a>
       </div>
-      <p style="margin-top:1.3rem;font-size:.8rem;color:var(--text-dim)">Only <strong style="color:var(--gold)">theonesteniyibigira6@gmail.com</strong> is authorised to access this panel.</p>
     </div>
   </div>
 
-  <!-- Denied -->
   <div id="deniedState" hidden>
     <div class="gate">
       <div class="gate-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
       <h2>Not authorised</h2>
-      <p id="deniedMessage">This account does not have administrator privileges. Please sign in with the authorised admin account to continue.</p>
+      <p id="deniedMessage">This account does not have administrator privileges.</p>
       <div class="gate-actions">
-        <button type="button" class="btn btn-primary" id="deniedSignInGoogle">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path fill="#EA4335" d="M12 10.2v3.9h5.5a4.7 4.7 0 0 1-2 3.1l3.2 2.5c1.9-1.7 3-4.3 3-7.4 0-.7-.1-1.4-.2-2H12z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.2-2.5c-.9.6-2 1-3.5 1a6 6 0 0 1-5.7-4.1l-3.3 2.5A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.3 14a6 6 0 0 1 0-3.9L3 7.6a10 10 0 0 0 0 8.9L6.3 14z"/><path fill="#4285F4" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.9-2.9A10 10 0 0 0 3 7.6l3.3 2.5A6 6 0 0 1 12 5.9z"/></svg>
-          Sign in with a different Google account
-        </button>
+        <button type="button" class="btn btn-primary" id="deniedSignInGoogle">Sign in with a different Google account</button>
         <button type="button" class="btn btn-ghost" id="deniedSignOut">Sign out</button>
       </div>
-      <p style="margin-top:1.3rem;font-size:.8rem;color:var(--text-dim)">Only <strong style="color:var(--gold)">theonesteniyibigira6@gmail.com</strong> is authorised to access this panel.</p>
     </div>
   </div>
 
-  <!-- Admin panel -->
   <div id="adminLayout" class="layout" hidden>
     <aside class="sidebar">
       <nav class="side-nav" aria-label="Admin sections">
@@ -346,9 +316,9 @@ select option{background:#0b1c33;color:#EAF0F7}
 
         <div class="stats">
           <div class="stat"><div class="lbl">Total users</div><div class="val" id="statUsers">0</div><div class="sub" id="statUsersSub">—</div></div>
-          <div class="stat gold"><div class="lbl">Pending payments</div><div class="val" id="statPending">0</div><div class="sub">Awaiting your review</div></div>
+          <div class="stat gold"><div class="lbl">Pending payments</div><div class="val" id="statPending">0</div><div class="sub">Awaiting review</div></div>
           <div class="stat"><div class="lbl">Total reports</div><div class="val" id="statReports">0</div><div class="sub" id="statReportsSub">—</div></div>
-          <div class="stat green"><div class="lbl">Paid reports</div><div class="val" id="statPaid">0</div><div class="sub">Access granted</div></div>
+          <div class="stat green"><div class="lbl">Active codes</div><div class="val" id="statCodes">0</div><div class="sub">Issued &amp; unexpired</div></div>
         </div>
 
         <div class="card">
@@ -361,7 +331,7 @@ select option{background:#0b1c33;color:#EAF0F7}
 
         <div class="notice gold">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01" stroke="#FAD201" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#FAD201" stroke-width="1.6"/></svg>
-          <span><strong>Security reminder.</strong> Access to this panel is protected by Firestore Security Rules that check <code>request.auth.token.email == "theonesteniyibigira6@gmail.com"</code>. Client-side checks are only a UX gate. When you approve a payment, the panel generates a single-use access code and shows it once. Send it to the user; the plaintext is never stored.</span>
+          <span><strong>Admin control centre.</strong> You have full CRUD control over payment requests, access codes, users, and platform settings. Access codes are stored as SHA-256 hashes — the plaintext is only shown once when generated. Send it to the user immediately via WhatsApp or Email. If lost, revoke the code and generate a new one.</span>
         </div>
       </div>
 
@@ -369,7 +339,7 @@ select option{background:#0b1c33;color:#EAF0F7}
       <div class="tab-section" id="tab-payments">
         <div class="page-head">
           <h1>Payment requests</h1>
-          <p>Review each reference against the actual payment you received. Approving a request generates a unique access code for the user — copy it and send it to them.</p>
+          <p>Approve a request to unlock the user's report and automatically generate a unique access code.</p>
         </div>
 
         <div class="filter-bar">
@@ -387,16 +357,7 @@ select option{background:#0b1c33;color:#EAF0F7}
         <div class="card" style="padding:0;overflow:hidden">
           <div class="table-wrap" style="border:0">
             <table>
-              <thead>
-                <tr>
-                  <th>Reference</th>
-                  <th>Report / User</th>
-                  <th>Amount</th>
-                  <th>Submitted</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Reference</th><th>Report / User</th><th>Amount</th><th>Submitted</th><th>Status</th><th>Actions</th></tr></thead>
               <tbody id="paymentsBody"><tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr></tbody>
             </table>
           </div>
@@ -407,28 +368,19 @@ select option{background:#0b1c33;color:#EAF0F7}
       <div class="tab-section" id="tab-users">
         <div class="page-head">
           <h1>Users</h1>
-          <p>Every registered account. Only the platform owner's email can hold administrator privileges.</p>
+          <p>Edit profiles, suspend accounts, and contact users directly via email.</p>
         </div>
 
         <div class="filter-bar">
           <label for="userSearch" style="position:absolute;left:-9999px">Search</label>
-          <input type="search" id="userSearch" placeholder="Search by name, email, or registration number…" />
+          <input type="search" id="userSearch" placeholder="Search by name, email, phone, or registration number…" />
         </div>
 
         <div class="card" style="padding:0;overflow:hidden">
           <div class="table-wrap" style="border:0">
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Joined</th>
-                  <th>Reports</th>
-                  <th>Role</th>
-                </tr>
-              </thead>
-              <tbody id="usersBody"><tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr></tbody>
+              <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Reports</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="usersBody"><tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr></tbody>
             </table>
           </div>
         </div>
@@ -438,7 +390,7 @@ select option{background:#0b1c33;color:#EAF0F7}
       <div class="tab-section" id="tab-reports">
         <div class="page-head">
           <h1>Reports</h1>
-          <p>Every report created on the platform. Metadata only — the report content belongs to the user.</p>
+          <p>Every report created on the platform. Metadata only — content belongs to the user.</p>
         </div>
 
         <div class="filter-bar">
@@ -456,16 +408,7 @@ select option{background:#0b1c33;color:#EAF0F7}
         <div class="card" style="padding:0;overflow:hidden">
           <div class="table-wrap" style="border:0">
             <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Owner</th>
-                  <th>Completion</th>
-                  <th>Payment</th>
-                  <th>Updated</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Title</th><th>Owner</th><th>Completion</th><th>Payment</th><th>Updated</th><th>Actions</th></tr></thead>
               <tbody id="reportsBody"><tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr></tbody>
             </table>
           </div>
@@ -476,53 +419,72 @@ select option{background:#0b1c33;color:#EAF0F7}
       <div class="tab-section" id="tab-codes">
         <div class="page-head">
           <h1>Access codes</h1>
-          <p>Every code issued. Codes are stored as SHA-256 hashes — the plaintext is shown only once when generated.</p>
+          <p>Full control: generate new codes, edit expiry and status, revoke active codes, or delete codes entirely. The plaintext is only shown once when generated.</p>
         </div>
 
-        <div class="notice gold">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01" stroke="#FAD201" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#FAD201" stroke-width="1.6"/></svg>
-          <span><strong>How verification works.</strong> When you approve a payment, a code is generated automatically and shown to you. Send it to the user via WhatsApp, email, or in person. The user enters it on the payment page or the report viewer to unlock downloads. Codes are single-use and expire after the validity window.</span>
-        </div>
+        <!-- Manual generation form -->
+        <div class="code-form">
+          <h2 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin:0 0 .5rem;color:#fff">Generate a new access code</h2>
+          <p style="color:var(--text-muted);font-size:.83rem;margin:0 0 1rem">Assign a code to any registered user. Optionally link it to a specific report.</p>
 
-        <div class="card">
-          <div class="card-head">
-            <h2>Issue a new access code manually</h2>
-          </div>
           <div class="field-grid two">
             <div class="field">
-              <label for="codeReportSelect">Report with approved payment</label>
-              <select id="codeReportSelect"><option value="">No approved reports yet</option></select>
-              <span class="hint">Only reports with an approved payment appear here.</span>
+              <label for="codeUserSelect">Assigned user <span style="color:var(--gold)">*</span></label>
+              <select id="codeUserSelect"><option value="">Loading users…</option></select>
+              <span class="hint">Any registered user, regardless of payment status.</span>
             </div>
+            <div class="field">
+              <label for="codeReportSelect">Link to report <span class="hint">(optional)</span></label>
+              <select id="codeReportSelect"><option value="">No specific report</option></select>
+            </div>
+          </div>
+
+          <div class="field-grid three">
             <div class="field">
               <label for="codeExpiry">Expires in (days)</label>
               <input type="number" id="codeExpiry" value="30" min="1" max="365" />
             </div>
+            <div class="field">
+              <label for="codeCustom">Or custom code <span class="hint">(optional)</span></label>
+              <input type="text" id="codeCustom" placeholder="Leave blank to auto-generate" maxlength="24" />
+            </div>
+            <div class="field">
+              <label for="codeNote">Internal note</label>
+              <input type="text" id="codeNote" placeholder="e.g. Sent via WhatsApp" maxlength="160" />
+            </div>
           </div>
-          <div class="field">
-            <label for="codeNote">Internal note <span class="hint">(optional)</span></label>
-            <input type="text" id="codeNote" placeholder="e.g. Delivered via WhatsApp on 12 May" maxlength="160" />
+
+          <div style="display:flex;gap:.55rem;flex-wrap:wrap;margin-top:.6rem">
+            <button type="button" class="btn btn-gold" id="generateCodeBtn">
+              <span class="spinner"></span>
+              <span class="btn-label">✨ Generate access code</span>
+            </button>
+            <button type="button" class="btn btn-ghost" id="previewCodeBtn">Preview code format</button>
           </div>
-          <button type="button" class="btn btn-gold" id="generateCodeBtn" disabled>Generate access code</button>
         </div>
 
-        <div class="card">
-          <div class="card-head">
+        <!-- Codes table -->
+        <div class="filter-bar">
+          <label for="codeSearch" style="position:absolute;left:-9999px">Search</label>
+          <input type="search" id="codeSearch" placeholder="Search by code preview, user email, or report…" />
+          <label for="codeFilter" style="position:absolute;left:-9999px">Status</label>
+          <select id="codeFilter">
+            <option value="all">All statuses</option>
+            <option value="active">Active</option>
+            <option value="used">Used</option>
+            <option value="expired">Expired</option>
+            <option value="revoked">Revoked</option>
+          </select>
+        </div>
+
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="card-head" style="padding:1rem 1.1rem .6rem;margin-bottom:0">
             <h2>Issued codes</h2>
             <p id="codesCount">—</p>
           </div>
-          <div class="table-wrap">
+          <div class="table-wrap" style="border:0">
             <table>
-              <thead>
-                <tr>
-                  <th>Preview</th>
-                  <th>Assigned to</th>
-                  <th>Report</th>
-                  <th>Status</th>
-                  <th>Expires</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
+              <thead><tr><th>Preview</th><th>Assigned to</th><th>Report</th><th>Status</th><th>Expires</th><th>Actions</th></tr></thead>
               <tbody id="codesBody"><tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr></tbody>
             </table>
           </div>
@@ -556,7 +518,6 @@ select option{background:#0b1c33;color:#EAF0F7}
             <div class="field"><label for="setMomNumber">Number</label><input type="text" id="setMomNumber" placeholder="e.g. +250 794 204 258" /></div>
             <div class="field"><label for="setMomNetwork">Network</label><input type="text" id="setMomNetwork" placeholder="e.g. MTN MoMo" /></div>
           </div>
-
           <h3 style="font-size:.85rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;margin:1.3rem 0 .7rem;font-weight:700">Bank transfer</h3>
           <div class="field-grid two">
             <div class="field"><label for="setBankName">Bank</label><input type="text" id="setBankName" placeholder="e.g. Bank of Kigali" /></div>
@@ -564,7 +525,6 @@ select option{background:#0b1c33;color:#EAF0F7}
             <div class="field"><label for="setBankAccountNumber">Account number</label><input type="text" id="setBankAccountNumber" placeholder="e.g. 000123456789" /></div>
             <div class="field"><label for="setBankSwift">SWIFT / IBAN</label><input type="text" id="setBankSwift" placeholder="e.g. BKIGRWRW" /></div>
           </div>
-
           <h3 style="font-size:.85rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;margin:1.3rem 0 .7rem;font-weight:700">Cash instructions</h3>
           <div class="field"><label for="setCash">Where and how to pay in cash</label><textarea id="setCash" placeholder="e.g. Visit our office at ... during business hours" maxlength="500"></textarea></div>
         </div>
@@ -579,7 +539,6 @@ select option{background:#0b1c33;color:#EAF0F7}
 
         <div class="card">
           <button type="button" class="btn btn-primary" id="saveSettingsBtn"><span class="spinner"></span><span class="btn-label">Save platform settings</span></button>
-          <p style="color:var(--text-dim);font-size:.78rem;margin:.8rem 0 0">Settings are stored in <code>platform_settings/public</code>. They are read by the public homepage and the payment page.</p>
         </div>
       </div>
 
@@ -587,76 +546,143 @@ select option{background:#0b1c33;color:#EAF0F7}
   </div>
 </main>
 
-<!-- ===== APPROVE PAYMENT MODAL ===== -->
-<div class="modal" id="approveModal" role="dialog" aria-modal="true" aria-labelledby="approveTitle">
+<!-- ===== APPROVE MODAL ===== -->
+<div class="modal" id="approveModal" role="dialog" aria-modal="true">
   <div class="modal-scrim" data-close-modal></div>
   <div class="modal-panel">
     <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
-    <h2 id="approveTitle">Approve payment request</h2>
-    <p class="modal-sub">Marking this approved will unlock generation and download for the user. A unique access code will be generated automatically — you can copy it after approval and send it to the user.</p>
-
+    <h2>Approve payment request</h2>
+    <p class="modal-sub">Approving marks the report as paid and automatically generates a unique access code for the user.</p>
     <div id="approveDetails"></div>
-
     <div class="field" style="margin-top:.7rem">
       <label for="approveNote">Note to record <span class="hint">(optional)</span></label>
       <input type="text" id="approveNote" placeholder="e.g. Verified against MoMo statement" maxlength="180" />
     </div>
-
     <div class="modal-actions">
       <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
-      <button type="button" class="btn btn-primary btn-sm" id="confirmApproveBtn">
-        <span class="spinner"></span>
-        <span class="btn-label">Approve &amp; generate code</span>
-      </button>
+      <button type="button" class="btn btn-primary btn-sm" id="confirmApproveBtn"><span class="spinner"></span><span class="btn-label">Approve &amp; generate code</span></button>
     </div>
   </div>
 </div>
 
-<!-- ===== REJECT PAYMENT MODAL ===== -->
-<div class="modal" id="rejectModal" role="dialog" aria-modal="true" aria-labelledby="rejectTitle">
+<!-- ===== REJECT MODAL ===== -->
+<div class="modal" id="rejectModal" role="dialog" aria-modal="true">
   <div class="modal-scrim" data-close-modal></div>
   <div class="modal-panel">
     <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
-    <h2 id="rejectTitle">Reject payment request</h2>
-    <p class="modal-sub">The user will see your reason on the payment page and can resubmit.</p>
-
-    <div class="field">
-      <label for="rejectReason">Reason <span style="color:var(--gold)">*</span></label>
-      <textarea id="rejectReason" placeholder="e.g. Reference not found in our records" maxlength="400" required></textarea>
-    </div>
-
+    <h2>Reject payment request</h2>
+    <p class="modal-sub">The user will see your reason on the payment page.</p>
+    <div class="field"><label for="rejectReason">Reason <span style="color:var(--gold)">*</span></label><textarea id="rejectReason" placeholder="e.g. Reference not found in our records" maxlength="400" required></textarea></div>
     <div class="modal-actions">
       <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
-      <button type="button" class="btn btn-danger btn-sm" id="confirmRejectBtn">
-        <span class="spinner"></span>
-        <span class="btn-label">Confirm rejection</span>
-      </button>
+      <button type="button" class="btn btn-danger btn-sm" id="confirmRejectBtn"><span class="spinner"></span><span class="btn-label">Confirm rejection</span></button>
     </div>
   </div>
 </div>
 
 <!-- ===== CODE REVEAL MODAL ===== -->
-<div class="modal" id="codeRevealModal" role="dialog" aria-modal="true" aria-labelledby="codeRevealTitle">
+<div class="modal" id="codeRevealModal" role="dialog" aria-modal="true">
   <div class="modal-scrim" data-close-modal></div>
   <div class="modal-panel">
     <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
-    <h2 id="codeRevealTitle">Access code generated</h2>
-    <p class="modal-sub">This code is shown once. Copy it now and send it to the user — for security it is stored only as a SHA-256 hash and will never appear again.</p>
-
+    <h2>Access code generated</h2>
+    <p class="modal-sub">Copy this code now — for security it is stored only as a SHA-256 hash and will never appear again.</p>
     <div class="code-reveal">
       <div class="lbl">Access code</div>
       <div class="code" id="codeRevealValue">XXXX-XXXX-XXXX</div>
       <div class="copy-row">
-        <button type="button" class="btn btn-gold btn-sm" id="copyCodeBtn">📋 Copy code</button>
+        <button type="button" class="btn btn-gold btn-sm" id="copyCodeBtn">📋 Copy</button>
         <button type="button" class="btn btn-ghost btn-sm" id="whatsappCodeBtn">💬 WhatsApp</button>
         <button type="button" class="btn btn-ghost btn-sm" id="emailCodeBtn">✉️ Email</button>
       </div>
     </div>
-
     <div class="copy-meta" id="codeRevealMeta"></div>
+    <div class="modal-actions"><button type="button" class="btn btn-primary btn-sm" data-close-modal>Done</button></div>
+  </div>
+</div>
+
+<!-- ===== EDIT CODE MODAL ===== -->
+<div class="modal" id="editCodeModal" role="dialog" aria-modal="true">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
+    <h2>Edit access code</h2>
+    <p class="modal-sub">Change expiry, status, or internal notes. The plaintext code itself cannot be recovered — if you need a new code, revoke this one and generate another.</p>
+
+    <div id="editCodeMeta" style="margin-bottom:1rem"></div>
+
+    <div class="field-grid two">
+      <div class="field">
+        <label for="editCodeStatus">Status</label>
+        <select id="editCodeStatus">
+          <option value="active">Active</option>
+          <option value="revoked">Revoked</option>
+          <option value="used">Used</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="editCodeExpiry">Expiry date</label>
+        <input type="date" id="editCodeExpiry" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="editCodeNote">Internal note</label>
+      <input type="text" id="editCodeNote" maxlength="180" placeholder="e.g. Delivered via WhatsApp on 12 May" />
+    </div>
 
     <div class="modal-actions">
-      <button type="button" class="btn btn-primary btn-sm" data-close-modal>Done</button>
+      <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" id="saveCodeBtn"><span class="spinner"></span><span class="btn-label">Save changes</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EDIT USER MODAL ===== -->
+<div class="modal" id="editUserModal" role="dialog" aria-modal="true">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
+    <h2>Edit user profile</h2>
+    <p class="modal-sub">Update the user's stored profile fields. Note: the email address is managed by Firebase Authentication and cannot be changed here.</p>
+
+    <div id="editUserMeta" style="margin-bottom:1rem"></div>
+
+    <div class="field-grid two">
+      <div class="field"><label for="editUserName">Full name</label><input type="text" id="editUserName" maxlength="120" /></div>
+      <div class="field"><label for="editUserPhone">Phone</label><input type="tel" id="editUserPhone" maxlength="40" /></div>
+      <div class="field"><label for="editUserCountry">Country</label><input type="text" id="editUserCountry" maxlength="60" /></div>
+      <div class="field"><label for="editUserInstitution">Institution</label><input type="text" id="editUserInstitution" maxlength="120" /></div>
+      <div class="field"><label for="editUserRegNumber">Registration number</label><input type="text" id="editUserRegNumber" maxlength="60" /></div>
+      <div class="field">
+        <label for="editUserStatus">Account status</label>
+        <select id="editUserStatus"><option value="active">Active</option><option value="suspended">Suspended</option><option value="disabled">Disabled</option></select>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-primary btn-sm" id="saveUserBtn"><span class="spinner"></span><span class="btn-label">Save changes</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SEND EMAIL MODAL ===== -->
+<div class="modal" id="emailModal" role="dialog" aria-modal="true">
+  <div class="modal-scrim" data-close-modal></div>
+  <div class="modal-panel">
+    <button type="button" class="modal-close" data-close-modal aria-label="Close">✕</button>
+    <h2>Send email to user</h2>
+    <p class="modal-sub">Open your default email client with the message pre-filled. Or copy the address to use in your own email service.</p>
+
+    <div class="field"><label for="emailTo">To</label><input type="email" id="emailTo" readonly /></div>
+    <div class="field"><label for="emailSubject">Subject</label><input type="text" id="emailSubject" placeholder="REPORTX.COM — Message from administration" maxlength="180" /></div>
+    <div class="field"><label for="emailBody">Message</label><textarea id="emailBody" placeholder="Type your message here..." maxlength="2000"></textarea></div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost btn-sm" data-close-modal>Cancel</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="copyEmailBtn">Copy address</button>
+      <button type="button" class="btn btn-primary btn-sm" id="openEmailBtn">Open mail client</button>
     </div>
   </div>
 </div>
@@ -665,14 +691,10 @@ select option{background:#0b1c33;color:#EAF0F7}
 
 <script type="module">
 /* ============================================================================
-   REPORTX.COM — admin.html (FINAL)
-   Admin authorization is enforced by:
-     1) Firestore Security Rules checking request.auth.token.email
-     2) Client-side check for UX clarity
-   The hardcoded admin email is theonesteniyibigira6@gmail.com
+   REPORTX.COM — admin.html v3
+   Full CRUD over payment requests, access codes, users, settings.
    ============================================================================ */
 
-/* ----------------------------------------------------------- CONFIG */
 const firebaseConfig = {
   apiKey:            "AIzaSyCHKjRQwalZSoV9sOQR5ZiPM9btBXxD9yo",
   authDomain:        "repora-2a29c.firebaseapp.com",
@@ -683,10 +705,9 @@ const firebaseConfig = {
 };
 const ADMIN_EMAIL = "theonesteniyibigira6@gmail.com";
 
-/* ----------------------------------------------------------- HELPERS */
+/* ---------------------------------------------------------------- HELPERS */
 const $  = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
 }
@@ -706,6 +727,14 @@ function fmtShort(d) {
   if (!t) return "—";
   return t.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
 }
+function dateInputValue(d) {
+  const t = toDate(d);
+  if (!t) return "";
+  const y = t.getFullYear();
+  const m = String(t.getMonth()+1).padStart(2,"0");
+  const day = String(t.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
 function relative(date) {
   const t = toDate(date);
   if (!t) return "—";
@@ -719,7 +748,7 @@ function relative(date) {
 function reportTitle(r) { return r?.title || r?.internship?.internshipTitle || r?.hostSchool?.hostSchool || "Untitled report"; }
 function userLabel(u) { return u?.fullName || u?.email || "Unknown user"; }
 
-/* ----------------------------------------------------------- TOAST */
+/* ---------------------------------------------------------------- TOAST */
 const toastStack = $("#toastStack");
 function toast(msg, type = "info", duration = 4600) {
   if (!toastStack) return;
@@ -732,7 +761,7 @@ function toast(msg, type = "info", duration = 4600) {
   el.addEventListener("click", () => { clearTimeout(t); remove(); });
 }
 
-/* ----------------------------------------------------------- MODAL */
+/* ---------------------------------------------------------------- MODAL */
 let lastFocused = null;
 function openModal(id) {
   const m = document.getElementById(id);
@@ -741,7 +770,7 @@ function openModal(id) {
   $$(".modal.open").forEach((x) => x.classList.remove("open"));
   m.classList.add("open");
   document.body.style.overflow = "hidden";
-  const first = m.querySelector("input, button");
+  const first = m.querySelector("input:not([readonly]), button, select, textarea");
   if (first) setTimeout(() => first.focus(), 60);
 }
 function closeModal(m) {
@@ -753,7 +782,7 @@ function closeModal(m) {
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal($(".modal.open")); });
 document.addEventListener("click", (e) => { if (e.target.closest("[data-close-modal]")) closeModal(e.target.closest(".modal")); });
 
-/* ----------------------------------------------------------- TABS */
+/* ---------------------------------------------------------------- TABS */
 $$(".side-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const tab = btn.dataset.tab;
@@ -763,7 +792,7 @@ $$(".side-btn").forEach((btn) => {
   });
 });
 
-/* ----------------------------------------------------------- STATE */
+/* ---------------------------------------------------------------- STATE */
 let fb = null;
 let currentUser = null;
 let allUsers = [];
@@ -773,9 +802,11 @@ let allCodes = [];
 let unsubUsers = null, unsubReports = null, unsubPayments = null, unsubCodes = null;
 let pendingApproveId = null;
 let pendingRejectId = null;
+let editingCodeId = null;
+let editingUserId = null;
 let lastGeneratedCode = null;
 
-/* ----------------------------------------------------------- GATES */
+/* ---------------------------------------------------------------- GATES */
 function showGate(which) {
   $("#loadingState").hidden = true;
   $("#adminLayout").hidden = true;
@@ -789,7 +820,7 @@ function showAdmin() {
   $("#adminLayout").hidden = false;
 }
 
-/* ----------------------------------------------------------- SUBSCRIBERS */
+/* ---------------------------------------------------------------- SUBSCRIBERS */
 function subscribeUsers() {
   const { collection, onSnapshot } = fb.api.firestore;
   if (unsubUsers) unsubUsers();
@@ -798,9 +829,10 @@ function subscribeUsers() {
       allUsers = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
       renderUsers();
       renderOverviewStats();
-      refreshCodeReportDropdown();
+      refreshUserDropdowns();
+      renderCodes(); /* codes table shows assigned user names */
     },
-    (err) => { console.warn("users listener:", err?.message); }
+    (err) => console.warn("users listener:", err?.message)
   );
 }
 function subscribeReports() {
@@ -812,9 +844,10 @@ function subscribeReports() {
       renderReports();
       renderOverviewStats();
       renderRecentActivity();
-      refreshCodeReportDropdown();
+      refreshReportDropdown();
+      renderCodes();
     },
-    (err) => { console.warn("reports listener:", err?.message); }
+    (err) => console.warn("reports listener:", err?.message)
   );
 }
 function subscribePayments() {
@@ -827,10 +860,9 @@ function subscribePayments() {
       renderPayments();
       renderOverviewStats();
       renderRecentActivity();
-      refreshCodeReportDropdown();
       updatePendingBadge();
     },
-    (err) => { console.warn("payments listener:", err?.message); }
+    (err) => console.warn("payments listener:", err?.message)
   );
 }
 function subscribeCodes() {
@@ -841,8 +873,9 @@ function subscribeCodes() {
       allCodes = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
       allCodes.sort((a, b) => (toDate(b.createdAt)?.getTime()||0) - (toDate(a.createdAt)?.getTime()||0));
       renderCodes();
+      renderOverviewStats();
     },
-    (err) => { console.warn("codes listener:", err?.message); }
+    (err) => console.warn("codes listener:", err?.message)
   );
 }
 function updatePendingBadge() {
@@ -853,21 +886,26 @@ function updatePendingBadge() {
   badge.dataset.zero = n === 0 ? "true" : "false";
 }
 
-/* ----------------------------------------------------------- OVERVIEW */
+/* ---------------------------------------------------------------- OVERVIEW */
 function renderOverviewStats() {
   const totalUsers = allUsers.length;
   const admins = allUsers.filter((u) => (u.email || "").toLowerCase() === ADMIN_EMAIL.toLowerCase()).length;
   const students = totalUsers - admins;
   const pending = allPayments.filter((p) => (p.status || "pending").toLowerCase() === "pending").length;
   const totalReports = allReports.length;
-  const paidReports = allReports.filter((r) => (r.paymentStatus || "").toLowerCase() === "paid").length;
+  const activeCodes = allCodes.filter((c) => {
+    const s = (c.status || "active").toLowerCase();
+    const exp = toDate(c.expiresAt);
+    return s === "active" && (!exp || exp.getTime() > Date.now());
+  }).length;
 
   $("#statUsers").textContent = totalUsers;
   $("#statUsersSub").textContent = `${students} students · ${admins} admin${admins===1?"":"s"}`;
   $("#statPending").textContent = pending;
   $("#statReports").textContent = totalReports;
   $("#statReportsSub").textContent = `${allReports.filter(r => (r.reportStatus || "draft") === "draft").length} drafts`;
-  $("#statPaid").textContent = paidReports;
+  const statCodes = $("#statCodes");
+  if (statCodes) statCodes.textContent = activeCodes;
 }
 function renderRecentActivity() {
   const box = $("#recentActivity");
@@ -876,6 +914,10 @@ function renderRecentActivity() {
   allPayments.slice(0, 5).forEach((p) => {
     const u = allUsers.find((x) => x.id === p.ownerUid);
     items.push({ when: toDate(p.submittedAt), html: `<strong>Payment</strong> <span style="font-family:var(--font-mono);font-size:.85em;color:var(--cyan)">${escapeHtml(p.paymentReference || "—")}</span> by ${escapeHtml(userLabel(u))} — <span class="pill ${(p.status||"pending").toLowerCase()}">${escapeHtml(p.status || "pending")}</span>` });
+  });
+  allCodes.slice(0, 3).forEach((c) => {
+    const u = allUsers.find((x) => x.id === c.assignedUid);
+    items.push({ when: toDate(c.createdAt), html: `<strong>Code issued</strong> <span style="font-family:var(--font-mono);font-size:.85em;color:var(--gold)">${escapeHtml(c.codePreview || "—")}</span> to ${escapeHtml(userLabel(u))}` });
   });
   allReports.slice(0, 5).forEach((r) => {
     const u = allUsers.find((x) => x.id === r.ownerUid);
@@ -886,14 +928,11 @@ function renderRecentActivity() {
     box.innerHTML = `<div class="empty"><p><strong>Nothing to show yet</strong>Activity will appear here as users submit payments and update reports.</p></div>`;
     return;
   }
-  box.innerHTML = `<ul style="list-style:none;padding:0;margin:0;display:grid;gap:.55rem">${items.slice(0, 10).map((it) => `<li style="display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .8rem;border:1px solid var(--line-soft);border-radius:10px;background:rgba(234,240,247,.02)"><span style="font-size:.72rem;color:var(--text-dim);white-space:nowrap;min-width:70px">${escapeHtml(relative(it.when))}</span><span style="font-size:.85rem">${it.html}</span></li>`).join("")}</ul>`;
+  box.innerHTML = `<ul style="list-style:none;padding:0;margin:0;display:grid;gap:.55rem">${items.slice(0, 12).map((it) => `<li style="display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .8rem;border:1px solid var(--line-soft);border-radius:10px;background:rgba(234,240,247,.02)"><span style="font-size:.72rem;color:var(--text-dim);white-space:nowrap;min-width:70px">${escapeHtml(relative(it.when))}</span><span style="font-size:.85rem">${it.html}</span></li>`).join("")}</ul>`;
 }
-$("#refreshOverview")?.addEventListener("click", () => {
-  renderOverviewStats(); renderRecentActivity();
-  toast("Overview refreshed.", "success");
-});
+$("#refreshOverview")?.addEventListener("click", () => { renderOverviewStats(); renderRecentActivity(); toast("Overview refreshed.", "success"); });
 
-/* ----------------------------------------------------------- PAYMENTS */
+/* ---------------------------------------------------------------- PAYMENTS */
 function filteredPayments() {
   const q = ($("#paySearch")?.value || "").trim().toLowerCase();
   const statusFilter = $("#payFilter")?.value || "pending";
@@ -922,14 +961,15 @@ function renderPayments() {
     const actionBtns = st === "pending"
       ? `<button type="button" class="mini primary" data-action="approve" data-id="${escapeHtml(p.id)}">Approve</button>
          <button type="button" class="mini danger" data-action="reject" data-id="${escapeHtml(p.id)}">Reject</button>`
-      : `<span style="color:var(--text-dim);font-size:.75rem">Reviewed</span>`;
+      : `<button type="button" class="mini" data-action="resetPayment" data-id="${escapeHtml(p.id)}">Reset to pending</button>`;
+    const emailBtn = owner?.email ? `<button type="button" class="mini" data-action="emailUser" data-uid="${escapeHtml(owner.id)}">✉️ Email</button>` : "";
     return `<tr>
       <td><div class="title-cell">${escapeHtml(p.paymentReference || "—")}</div><div class="sub">${escapeHtml((p.paymentMethod||"—").replace(/_/g," "))}</div></td>
       <td><div class="title-cell">${escapeHtml(report ? reportTitle(report) : "—")}</div><div class="sub">${escapeHtml(userLabel(owner))} · ${escapeHtml(owner?.email || "")}</div></td>
       <td>${escapeHtml(String(p.amount ?? "—"))} ${escapeHtml(p.currency || "")}</td>
       <td>${escapeHtml(relative(p.submittedAt))}</td>
       <td><span class="pill ${st}">${escapeHtml(st)}</span></td>
-      <td><div class="row-actions">${actionBtns}</div></td>
+      <td><div class="row-actions">${actionBtns}${emailBtn}</div></td>
     </tr>`;
   }).join("");
 }
@@ -940,12 +980,19 @@ document.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-action]");
   if (!btn) return;
   const id = btn.dataset.id;
-  if (btn.dataset.action === "approve") openApproveModal(id);
-  else if (btn.dataset.action === "reject") openRejectModal(id);
-  else if (btn.dataset.action === "revokeCode") revokeCode(id);
+  const uid = btn.dataset.uid;
+  const action = btn.dataset.action;
+  if (action === "approve") openApproveModal(id);
+  else if (action === "reject") openRejectModal(id);
+  else if (action === "resetPayment") resetPayment(id);
+  else if (action === "editCode") openEditCodeModal(id);
+  else if (action === "deleteCode") deleteCode(id);
+  else if (action === "revokeCode") revokeCode(id);
+  else if (action === "editUser") openEditUserModal(uid || id);
+  else if (action === "emailUser") openEmailModal(uid || id);
 });
 
-/* ----------------------------------------------------------- APPROVE */
+/* ---- Approve ---- */
 function openApproveModal(id) {
   const p = allPayments.find((x) => x.id === id);
   if (!p) return;
@@ -967,7 +1014,6 @@ function openApproveModal(id) {
   $("#approveNote").value = "";
   openModal("approveModal");
 }
-
 $("#confirmApproveBtn")?.addEventListener("click", async () => {
   const id = pendingApproveId;
   if (!id) return;
@@ -978,8 +1024,6 @@ $("#confirmApproveBtn")?.addEventListener("click", async () => {
 
   try {
     const { doc, updateDoc, serverTimestamp, addDoc, collection } = fb.api.firestore;
-
-    /* 1. Mark approved */
     await updateDoc(doc(fb.db, "payment_requests", id), {
       status: "approved",
       reviewedAt: serverTimestamp(),
@@ -987,7 +1031,6 @@ $("#confirmApproveBtn")?.addEventListener("click", async () => {
       reviewNote: $("#approveNote").value.trim() || null
     });
 
-    /* 2. Grant access on the report */
     if (p.reportId) {
       try {
         await updateDoc(doc(fb.db, "reports", p.reportId), {
@@ -998,13 +1041,11 @@ $("#confirmApproveBtn")?.addEventListener("click", async () => {
       } catch (e) { console.warn("report update:", e?.message); }
     }
 
-    /* 3. Generate the unique access code */
+    /* Generate access code */
     const code = generateCode();
     const codeHash = await sha256Hex(code);
     const days = Number($("#codeExpiry")?.value || 30);
     const expiresAt = new Date(Date.now() + days * 86400000);
-
-    /* Preview format: first 4 + last 4, middle masked */
     const preview = code.slice(0, 4) + "-****-****-" + code.slice(-4);
 
     await addDoc(collection(fb.db, "access_codes"), {
@@ -1024,11 +1065,9 @@ $("#confirmApproveBtn")?.addEventListener("click", async () => {
     closeModal($("#approveModal"));
     toast("Payment approved. Access code generated.", "success");
 
-    /* 4. Show code reveal */
     const owner = allUsers.find((x) => x.id === p.ownerUid);
     lastGeneratedCode = { plain: code, ownerEmail: owner?.email || "", ownerName: owner?.fullName || "", expiresAt, days };
     showCodeReveal(lastGeneratedCode);
-
   } catch (err) {
     console.error("approve:", err);
     toast("Could not approve: " + (err?.message || err), "error");
@@ -1037,7 +1076,7 @@ $("#confirmApproveBtn")?.addEventListener("click", async () => {
   }
 });
 
-/* ----------------------------------------------------------- REJECT */
+/* ---- Reject ---- */
 function openRejectModal(id) {
   pendingRejectId = id;
   $("#rejectReason").value = "";
@@ -1061,19 +1100,32 @@ $("#confirmRejectBtn")?.addEventListener("click", async () => {
     pendingRejectId = null;
     closeModal($("#rejectModal"));
     toast("Payment request rejected.", "success");
-  } catch (err) {
-    toast("Could not reject: " + (err?.message || err), "error");
-  } finally {
-    btn.classList.remove("loading"); btn.disabled = false;
-  }
+  } catch (err) { toast("Could not reject: " + (err?.message || err), "error"); }
+  finally { btn.classList.remove("loading"); btn.disabled = false; }
 });
 
-/* ----------------------------------------------------------- USERS */
+/* ---- Reset ---- */
+async function resetPayment(id) {
+  if (!confirm("Reset this payment request to pending?")) return;
+  try {
+    const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
+    await updateDoc(doc(fb.db, "payment_requests", id), {
+      status: "pending",
+      reviewedAt: null,
+      reviewedBy: null,
+      reviewNote: null,
+      updatedAt: serverTimestamp()
+    });
+    toast("Payment request reset to pending.", "success");
+  } catch (err) { toast("Could not reset: " + (err?.message || err), "error"); }
+}
+
+/* ---------------------------------------------------------------- USERS */
 function filteredUsers() {
   const q = ($("#userSearch")?.value || "").trim().toLowerCase();
   return allUsers.filter((u) => {
     if (!q) return true;
-    const hay = [u.fullName, u.email, u.registrationNumber, u.institution].filter(Boolean).join(" ").toLowerCase();
+    const hay = [u.fullName, u.email, u.phone, u.registrationNumber, u.institution].filter(Boolean).join(" ").toLowerCase();
     return hay.includes(q);
   });
 }
@@ -1082,25 +1134,95 @@ function renderUsers() {
   if (!body) return;
   const list = filteredUsers();
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">No users match.</td></tr>`;
+    body.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--text-muted)">No users match.</td></tr>`;
     return;
   }
   body.innerHTML = list.map((u) => {
     const isAdmin = (u.email || "").toLowerCase() === ADMIN_EMAIL.toLowerCase();
     const reports = allReports.filter((r) => r.ownerUid === u.id).length;
+    const status = (u.accountStatus || "active").toLowerCase();
+    const statusClass = status === "suspended" ? "suspended" : (status === "disabled" ? "revoked" : "approved");
+    const emailBtn = u.email ? `<button type="button" class="mini" data-action="emailUser" data-uid="${escapeHtml(u.id)}" title="Send email">✉️ Email</button>` : "";
+    const editBtn = `<button type="button" class="mini primary" data-action="editUser" data-uid="${escapeHtml(u.id)}">Edit</button>`;
     return `<tr>
       <td><div class="title-cell">${escapeHtml(u.fullName || "—")}</div>${u.registrationNumber ? `<div class="sub">${escapeHtml(u.registrationNumber)}</div>` : ""}</td>
       <td>${escapeHtml(u.email || "—")}</td>
       <td>${escapeHtml(u.phone || "—")}</td>
       <td>${escapeHtml(fmtShort(u.createdAt))}</td>
       <td>${reports}</td>
-      <td><span class="pill ${isAdmin ? "admin" : "student"}">${isAdmin ? "admin" : "student"}</span></td>
+      <td><span class="pill ${statusClass}">${escapeHtml(status)}</span>${isAdmin ? ` <span class="pill admin">admin</span>` : ""}</td>
+      <td><div class="row-actions">${editBtn}${emailBtn}</div></td>
     </tr>`;
   }).join("");
 }
 $("#userSearch")?.addEventListener("input", renderUsers);
 
-/* ----------------------------------------------------------- REPORTS */
+/* ---- Edit user ---- */
+function openEditUserModal(uid) {
+  const u = allUsers.find((x) => x.id === uid);
+  if (!u) return;
+  editingUserId = uid;
+  $("#editUserMeta").innerHTML = `<div class="detail-grid">
+    <dt>Email</dt><dd>${escapeHtml(u.email || "—")}</dd>
+    <dt>UID</dt><dd style="font-family:var(--font-mono);font-size:.78em;word-break:break-all">${escapeHtml(u.id)}</dd>
+  </div>`;
+  $("#editUserName").value = u.fullName || "";
+  $("#editUserPhone").value = u.phone || "";
+  $("#editUserCountry").value = u.country || "";
+  $("#editUserInstitution").value = u.institution || "";
+  $("#editUserRegNumber").value = u.registrationNumber || "";
+  $("#editUserStatus").value = (u.accountStatus || "active").toLowerCase();
+  openModal("editUserModal");
+}
+$("#saveUserBtn")?.addEventListener("click", async () => {
+  const uid = editingUserId;
+  if (!uid) return;
+  const btn = $("#saveUserBtn");
+  btn.classList.add("loading"); btn.disabled = true;
+  try {
+    const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
+    await updateDoc(doc(fb.db, "users", uid), {
+      fullName: $("#editUserName").value.trim(),
+      phone: $("#editUserPhone").value.trim(),
+      country: $("#editUserCountry").value.trim(),
+      institution: $("#editUserInstitution").value.trim(),
+      registrationNumber: $("#editUserRegNumber").value.trim(),
+      accountStatus: $("#editUserStatus").value,
+      updatedAt: serverTimestamp(),
+      updatedBy: currentUser.uid
+    });
+    editingUserId = null;
+    closeModal($("#editUserModal"));
+    toast("User profile updated.", "success");
+  } catch (err) {
+    toast("Could not update user: " + (err?.message || err), "error");
+  } finally { btn.classList.remove("loading"); btn.disabled = false; }
+});
+
+/* ---- Email user ---- */
+function openEmailModal(uid) {
+  const u = allUsers.find((x) => x.id === uid);
+  if (!u || !u.email) { toast("That user has no email on file.", "warn"); return; }
+  $("#emailTo").value = u.email;
+  $("#emailSubject").value = "REPORTX.COM — Message from administration";
+  $("#emailBody").value = `Hello ${u.fullName || "there"},\n\n`;
+  openModal("emailModal");
+}
+$("#copyEmailBtn")?.addEventListener("click", async () => {
+  const email = $("#emailTo").value;
+  try { await navigator.clipboard.writeText(email); toast("Email address copied.", "success"); }
+  catch { toast("Could not copy — select and copy manually.", "warn"); }
+});
+$("#openEmailBtn")?.addEventListener("click", () => {
+  const to = $("#emailTo").value;
+  const subject = $("#emailSubject").value || "REPORTX.COM";
+  const body = $("#emailBody").value || "";
+  const url = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = url;
+  closeModal($("#emailModal"));
+});
+
+/* ---------------------------------------------------------------- REPORTS */
 function filteredReports() {
   const q = ($("#reportSearch")?.value || "").trim().toLowerCase();
   const payFilter = $("#reportPayFilter")?.value || "all";
@@ -1141,9 +1263,8 @@ function renderReports() {
 $("#reportSearch")?.addEventListener("input", renderReports);
 $("#reportPayFilter")?.addEventListener("change", renderReports);
 
-/* ----------------------------------------------------------- CODES */
+/* ---------------------------------------------------------------- ACCESS CODES */
 function generateCode() {
-  /* Unambiguous characters only */
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const bytes = new Uint8Array(12);
   crypto.getRandomValues(bytes);
@@ -1156,44 +1277,79 @@ async function sha256Hex(text) {
   const hash = await crypto.subtle.digest("SHA-256", buf);
   return Array.from(new Uint8Array(hash)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
-function refreshCodeReportDropdown() {
-  const sel = $("#codeReportSelect");
-  const btn = $("#generateCodeBtn");
+
+/* Refresh the user dropdown */
+function refreshUserDropdowns() {
+  const sel = $("#codeUserSelect");
   if (!sel) return;
-  const paid = allReports.filter((r) => (r.paymentStatus || "").toLowerCase() === "paid");
-  if (!paid.length) {
-    sel.innerHTML = `<option value="">No paid reports yet</option>`;
-    sel.disabled = true;
-    if (btn) btn.disabled = true;
+  const sorted = [...allUsers].sort((a,b) => (a.fullName||a.email||"").localeCompare(b.fullName||b.email||""));
+  if (!sorted.length) {
+    sel.innerHTML = `<option value="">No users registered yet</option>`;
     return;
   }
-  sel.disabled = false;
-  sel.innerHTML = paid.map((r) => {
-    const owner = allUsers.find((u) => u.id === r.ownerUid);
-    return `<option value="${escapeHtml(r.id)}">${escapeHtml(reportTitle(r))} · ${escapeHtml(userLabel(owner))}</option>`;
+  const current = sel.value;
+  sel.innerHTML = `<option value="">— Choose a user —</option>` + sorted.map((u) => {
+    const label = `${u.fullName || "(no name)"} · ${u.email || ""}`;
+    return `<option value="${escapeHtml(u.id)}">${escapeHtml(label)}</option>`;
   }).join("");
-  if (btn) btn.disabled = false;
+  if (current && sorted.find((u) => u.id === current)) sel.value = current;
 }
+
+/* Refresh the report dropdown (any report, not just paid) */
+function refreshReportDropdown() {
+  const sel = $("#codeReportSelect");
+  if (!sel) return;
+  const current = sel.value;
+  const sorted = [...allReports].sort((a,b) => (toDate(b.updatedAt)?.getTime()||0) - (toDate(a.updatedAt)?.getTime()||0));
+  if (!sorted.length) {
+    sel.innerHTML = `<option value="">No reports created yet</option>`;
+    return;
+  }
+  sel.innerHTML = `<option value="">No specific report</option>` + sorted.map((r) => {
+    const owner = allUsers.find((u) => u.id === r.ownerUid);
+    const label = `${reportTitle(r)} · ${userLabel(owner)}`;
+    return `<option value="${escapeHtml(r.id)}">${escapeHtml(label)}</option>`;
+  }).join("");
+  if (current && sorted.find((r) => r.id === current)) sel.value = current;
+}
+
+/* Generate button */
 $("#generateCodeBtn")?.addEventListener("click", async () => {
-  const reportId = $("#codeReportSelect").value;
-  if (!reportId) { toast("Please select a paid report.", "warn"); return; }
-  const report = allReports.find((r) => r.id === reportId);
-  if (!report) { toast("Report not found.", "warn"); return; }
+  const uid = $("#codeUserSelect").value;
+  if (!uid) { toast("Please choose an assigned user.", "warn"); return; }
+  const reportId = $("#codeReportSelect").value || null;
+  const days = Number($("#codeExpiry").value || 30);
+  let plain = $("#codeCustom").value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  if (plain) {
+    /* Normalise custom code into dash-separated 4-char groups */
+    plain = plain.match(/.{1,4}/g).join("-").slice(0, 24);
+    if (plain.replace(/-/g,"").length < 8) { toast("Custom code must be at least 8 characters.", "warn"); return; }
+  } else {
+    plain = generateCode();
+  }
+
   const btn = $("#generateCodeBtn");
-  btn.disabled = true;
+  btn.classList.add("loading"); btn.disabled = true;
   try {
     const { addDoc, collection, serverTimestamp } = fb.api.firestore;
-    const code = generateCode();
-    const hash = await sha256Hex(code);
-    const days = Number($("#codeExpiry")?.value || 30);
+    const hash = await sha256Hex(plain);
+
+    /* Check for collision with an existing active code of the same hash */
+    const existing = allCodes.find((c) => c.codeHash === hash);
+    if (existing) {
+      toast("This exact code already exists. Please try a different one.", "warn");
+      btn.classList.remove("loading"); btn.disabled = false;
+      return;
+    }
+
     const expiresAt = new Date(Date.now() + days * 86400000);
-    const preview = code.slice(0, 4) + "-****-****-" + code.slice(-4);
+    const preview = plain.slice(0, 4) + "-****-****-" + plain.slice(-4);
 
     await addDoc(collection(fb.db, "access_codes"), {
       codeHash: hash,
       codePreview: preview,
-      assignedUid: report.ownerUid,
-      reportId,
+      assignedUid: uid,
+      reportId: reportId,
       status: "active",
       expiresAt,
       usedAt: null,
@@ -1202,16 +1358,29 @@ $("#generateCodeBtn")?.addEventListener("click", async () => {
       note: $("#codeNote").value.trim() || null
     });
 
-    const owner = allUsers.find((u) => u.id === report.ownerUid);
-    lastGeneratedCode = { plain: code, ownerEmail: owner?.email || "", ownerName: owner?.fullName || "", expiresAt, days };
+    const owner = allUsers.find((u) => u.id === uid);
+    lastGeneratedCode = { plain, ownerEmail: owner?.email || "", ownerName: owner?.fullName || "", expiresAt, days };
+
+    /* Reset the form fields */
+    $("#codeCustom").value = "";
     $("#codeNote").value = "";
+
+    toast("Access code generated.", "success");
     showCodeReveal(lastGeneratedCode);
   } catch (err) {
+    console.error("generate:", err);
     toast("Could not generate code: " + (err?.message || err), "error");
   } finally {
-    btn.disabled = false;
+    btn.classList.remove("loading"); btn.disabled = false;
   }
 });
+
+$("#previewCodeBtn")?.addEventListener("click", () => {
+  const sample = generateCode();
+  toast(`Sample format: ${sample}`, "info", 6000);
+});
+
+/* Code reveal modal */
 function showCodeReveal({ plain, ownerEmail, ownerName, expiresAt, days }) {
   $("#codeRevealValue").textContent = plain;
   $("#codeRevealMeta").innerHTML = `
@@ -1222,53 +1391,129 @@ function showCodeReveal({ plain, ownerEmail, ownerName, expiresAt, days }) {
 }
 $("#copyCodeBtn")?.addEventListener("click", async () => {
   const code = $("#codeRevealValue").textContent.trim();
-  try { await navigator.clipboard.writeText(code); toast("Code copied to clipboard.", "success"); }
-  catch { toast("Could not copy automatically — select and copy manually.", "warn"); }
+  try { await navigator.clipboard.writeText(code); toast("Code copied.", "success"); }
+  catch { toast("Could not copy — select and copy manually.", "warn"); }
 });
 $("#whatsappCodeBtn")?.addEventListener("click", () => {
   if (!lastGeneratedCode) return;
   const { plain, ownerName } = lastGeneratedCode;
-  const msg = `Hello ${ownerName || "there"},\n\nYour REPORTX.COM access code for unlocking your internship report download is:\n\n*${plain}*\n\nEnter it on the payment page or the report viewer to unlock downloads. The code is single-use and expires soon.\n\n— REPORTX.COM`;
+  const msg = `Hello ${ownerName || "there"},\n\nYour REPORTX.COM access code for unlocking your internship report download is:\n\n*${plain}*\n\nEnter it on the payment page or report viewer to unlock downloads. The code is single-use and expires soon.\n\n— REPORTX.COM`;
   window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank");
 });
 $("#emailCodeBtn")?.addEventListener("click", () => {
   if (!lastGeneratedCode) return;
   const { plain, ownerEmail, ownerName } = lastGeneratedCode;
   const subject = encodeURIComponent("Your REPORTX.COM access code");
-  const body = encodeURIComponent(`Hello ${ownerName || "there"},\n\nYour access code for unlocking your REPORTX.COM internship report is:\n\n${plain}\n\nEnter it on the payment page or report viewer to unlock downloads.\n\nRegards,\nREPORTX.COM`);
+  const body = encodeURIComponent(`Hello ${ownerName || "there"},\n\nYour access code for unlocking your REPORTX.COM internship report is:\n\n${plain}\n\nEnter it on the payment page or report viewer to unlock downloads. It is single-use and expires soon.\n\nRegards,\nREPORTX.COM`);
   const mailto = ownerEmail ? `mailto:${ownerEmail}?subject=${subject}&body=${body}` : `mailto:?subject=${subject}&body=${body}`;
   window.location.href = mailto;
 });
 
+/* Codes table */
+function filteredCodes() {
+  const q = ($("#codeSearch")?.value || "").trim().toLowerCase();
+  const statusFilter = $("#codeFilter")?.value || "all";
+  const now = Date.now();
+  return allCodes.filter((c) => {
+    const exp = toDate(c.expiresAt);
+    const expired = exp && exp.getTime() < now;
+    const st = (c.status || "active").toLowerCase();
+    const eff = st === "used" ? "used" : (st === "revoked" ? "revoked" : (expired ? "expired" : "active"));
+    if (statusFilter !== "all" && eff !== statusFilter) return false;
+    if (q) {
+      const u = allUsers.find((x) => x.id === c.assignedUid);
+      const r = allReports.find((x) => x.id === c.reportId);
+      const hay = [c.codePreview, u?.email, u?.fullName, r?.title, c.note].filter(Boolean).join(" ").toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
 function renderCodes() {
   const body = $("#codesBody");
   const countEl = $("#codesCount");
   if (!body) return;
   if (countEl) countEl.textContent = `${allCodes.length} total`;
-  if (!allCodes.length) {
-    body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">No access codes issued yet.</td></tr>`;
+  const list = filteredCodes();
+  if (!list.length) {
+    body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">No access codes match.</td></tr>`;
     return;
   }
   const now = Date.now();
-  body.innerHTML = allCodes.map((c) => {
+  body.innerHTML = list.map((c) => {
     const assignedUser = allUsers.find((u) => u.id === c.assignedUid);
     const report = allReports.find((r) => r.id === c.reportId);
     const exp = toDate(c.expiresAt);
     const expired = exp && exp.getTime() < now;
-    const status = c.status === "used" ? "used" : (c.status === "revoked" ? "revoked" : (expired ? "expired" : "active"));
-    const canRevoke = status === "active";
+    const st = (c.status || "active").toLowerCase();
+    const status = st === "used" ? "used" : (st === "revoked" ? "revoked" : (expired ? "expired" : "active"));
+    const emailBtn = assignedUser?.email ? `<button type="button" class="mini" data-action="emailUser" data-uid="${escapeHtml(assignedUser.id)}" title="Email user">✉️</button>` : "";
     return `<tr>
       <td class="mono">${escapeHtml(c.codePreview || "—")}</td>
-      <td>${escapeHtml(userLabel(assignedUser))}</td>
+      <td>${escapeHtml(userLabel(assignedUser))}${assignedUser?.email ? `<div class="sub">${escapeHtml(assignedUser.email)}</div>` : ""}</td>
       <td>${escapeHtml(report ? reportTitle(report) : "—")}</td>
       <td><span class="pill ${escapeHtml(status)}">${escapeHtml(status)}</span></td>
       <td>${escapeHtml(fmtShort(exp))}</td>
-      <td><div class="row-actions">${canRevoke ? `<button type="button" class="mini danger" data-action="revokeCode" data-id="${escapeHtml(c.id)}">Revoke</button>` : `<span style="color:var(--text-dim);font-size:.75rem">—</span>`}</div></td>
+      <td><div class="row-actions">
+        <button type="button" class="mini" data-action="editCode" data-id="${escapeHtml(c.id)}">Edit</button>
+        ${status === "active" ? `<button type="button" class="mini danger" data-action="revokeCode" data-id="${escapeHtml(c.id)}">Revoke</button>` : ""}
+        <button type="button" class="mini danger" data-action="deleteCode" data-id="${escapeHtml(c.id)}" title="Delete permanently">🗑</button>
+        ${emailBtn}
+      </div></td>
     </tr>`;
   }).join("");
 }
+$("#codeSearch")?.addEventListener("input", renderCodes);
+$("#codeFilter")?.addEventListener("change", renderCodes);
+
+/* Edit code */
+function openEditCodeModal(id) {
+  const c = allCodes.find((x) => x.id === id);
+  if (!c) return;
+  editingCodeId = id;
+  const u = allUsers.find((x) => x.id === c.assignedUid);
+  const r = allReports.find((x) => x.id === c.reportId);
+  $("#editCodeMeta").innerHTML = `<div class="detail-grid">
+    <dt>Preview</dt><dd style="font-family:var(--font-mono);color:var(--gold)">${escapeHtml(c.codePreview || "—")}</dd>
+    <dt>Assigned</dt><dd>${escapeHtml(userLabel(u))}${u?.email ? ` &lt;${escapeHtml(u.email)}&gt;` : ""}</dd>
+    <dt>Report</dt><dd>${escapeHtml(r ? reportTitle(r) : "—")}</dd>
+    <dt>Created</dt><dd>${escapeHtml(fmt(c.createdAt))}</dd>
+  </div>`;
+  $("#editCodeStatus").value = (c.status || "active").toLowerCase();
+  $("#editCodeExpiry").value = dateInputValue(c.expiresAt);
+  $("#editCodeNote").value = c.note || "";
+  openModal("editCodeModal");
+}
+$("#saveCodeBtn")?.addEventListener("click", async () => {
+  const id = editingCodeId;
+  if (!id) return;
+  const btn = $("#saveCodeBtn");
+  btn.classList.add("loading"); btn.disabled = true;
+  try {
+    const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
+    const expiryDate = $("#editCodeExpiry").value;
+    const update = {
+      status: $("#editCodeStatus").value,
+      note: $("#editCodeNote").value.trim() || null,
+      updatedAt: serverTimestamp(),
+      updatedBy: currentUser.uid
+    };
+    if (expiryDate) {
+      /* Set expiry to end of that day */
+      update.expiresAt = new Date(expiryDate + "T23:59:59");
+    }
+    await updateDoc(doc(fb.db, "access_codes", id), update);
+    editingCodeId = null;
+    closeModal($("#editCodeModal"));
+    toast("Access code updated.", "success");
+  } catch (err) {
+    toast("Could not update: " + (err?.message || err), "error");
+  } finally { btn.classList.remove("loading"); btn.disabled = false; }
+});
+
+/* Revoke code */
 async function revokeCode(id) {
-  if (!confirm("Revoke this access code? The user will no longer be able to use it.")) return;
+  if (!confirm("Revoke this code? The user will no longer be able to use it.")) return;
   try {
     const { doc, updateDoc, serverTimestamp } = fb.api.firestore;
     await updateDoc(doc(fb.db, "access_codes", id), {
@@ -1280,7 +1525,20 @@ async function revokeCode(id) {
   } catch (err) { toast("Could not revoke: " + (err?.message || err), "error"); }
 }
 
-/* ----------------------------------------------------------- SETTINGS */
+/* Delete code */
+async function deleteCode(id) {
+  const c = allCodes.find((x) => x.id === id);
+  if (!c) return;
+  const label = c.codePreview || id;
+  if (!confirm(`Permanently delete code ${label}? This cannot be undone.`)) return;
+  try {
+    const { doc, deleteDoc } = fb.api.firestore;
+    await deleteDoc(doc(fb.db, "access_codes", id));
+    toast("Access code deleted.", "success");
+  } catch (err) { toast("Could not delete: " + (err?.message || err), "error"); }
+}
+
+/* ---------------------------------------------------------------- SETTINGS */
 async function loadSettings() {
   if (!fb) return;
   try {
@@ -1308,9 +1566,7 @@ async function loadSettings() {
     const info = data.contactInformation || {};
     $("#setContactEmail").value = info.email || "";
     $("#setContactPhone").value = info.phone || "";
-  } catch (err) {
-    console.warn("settings load:", err?.message);
-  }
+  } catch (err) { console.warn("settings load:", err?.message); }
 }
 $("#saveSettingsBtn")?.addEventListener("click", async () => {
   const btn = $("#saveSettingsBtn");
@@ -1353,7 +1609,7 @@ $("#saveSettingsBtn")?.addEventListener("click", async () => {
   finally { btn.classList.remove("loading"); btn.disabled = false; }
 });
 
-/* ----------------------------------------------------------- AUTH INIT */
+/* ---------------------------------------------------------------- AUTH */
 async function initFirebase() {
   try {
     const [{ initializeApp }, authMod, fsMod] = await Promise.all([
@@ -1406,9 +1662,8 @@ async function initFirebase() {
       try { await authMod.signOut(auth); window.location.href = "index.html"; }
       catch (e) { toast("Could not sign out: " + (e?.message || e), "error"); }
     });
-
-    $("#adminSignInGoogle")?.addEventListener("click", () => signInAdminGoogle());
-    $("#deniedSignInGoogle")?.addEventListener("click", () => signInAdminGoogle());
+    $("#adminSignInGoogle")?.addEventListener("click", signInAdminGoogle);
+    $("#deniedSignInGoogle")?.addEventListener("click", signInAdminGoogle);
     $("#deniedSignOut")?.addEventListener("click", async () => {
       try { await authMod.signOut(auth); window.location.reload(); }
       catch (e) { toast("Could not sign out: " + (e?.message || e), "error"); }
@@ -1437,6 +1692,35 @@ async function initFirebase() {
 }
 
 initFirebase();
+
+/* ============================================================================
+   SOURCE-PROTECTION DETERRENT
+   ----------------------------------------------------------------------------
+   Blocks casual right-click, F12, Ctrl+Shift+I/J/C, and Ctrl+U in most desktop
+   browsers. This is a deterrent only. No client-side code can truly hide
+   itself — a determined user can still view source via the browser menu, the
+   network tab, saved files, mobile dev tools, or view-source: URL. Real
+   protection lives in Firestore Security Rules and server-side authorisation.
+   ============================================================================ */
+(function sourceProtection(){
+  document.addEventListener("keydown", (e) => {
+    const k = e.key;
+    if (k === "F12") { e.preventDefault(); return false; }
+    if (e.ctrlKey && e.shiftKey && (k === "I" || k === "i" || k === "J" || k === "j" || k === "C" || k === "c")) {
+      e.preventDefault(); return false;
+    }
+    if (e.ctrlKey && (k === "U" || k === "u")) { e.preventDefault(); return false; }
+    if ((e.metaKey) && e.altKey && (k === "I" || k === "i" || k === "J" || k === "j" || k === "C" || k === "c")) {
+      e.preventDefault(); return false;
+    }
+  }, { capture: true });
+
+  document.addEventListener("contextmenu", (e) => {
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA")) return; /* allow paste in form fields */
+    e.preventDefault();
+  });
+})();
 </script>
 </body>
 </html>
